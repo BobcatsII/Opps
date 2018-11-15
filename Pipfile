@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-sqlalchemy = "*"
+flask-login = "*"
+flask-dropzone = "*"
+flask-mail = "*"
+flask-moment = "*"
+flask-wtf = "*"
+python-dotenv = "*"
+bootstrap-flask = "*"
+flask-whooshee = "*"
+flask-migrate = "*"
+flask-avatars = "*"
+
+[dev-packages]
+coverage = "*"
+watchdog = "*"
+"flake8" = "*"
+
+[requires]
+python_version = "3.6"

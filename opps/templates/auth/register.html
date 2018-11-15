@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-3 w-100 bg-light">
+                    <div class="card-header"><h4>欢迎来到 DevOps!</h4></div>
+                    <div class="card-body">
+                        {{ render_form(form) }}
+                        <hr>
+                        <small>已经拥有账户? <a href="{{ url_for('.login') }}">请点击登录.</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block footer %}{% endblock footer %}
