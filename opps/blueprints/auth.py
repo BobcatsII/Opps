@@ -22,7 +22,6 @@ def login():
         user = User.query.filter_by(email=form.email.data.lower()).first()
         if user is not None and user.validate_password(form.password.data):
             if login_user(user, form.remember_me.data):
-                print ("yesyesyesyesyesyesyesyesyes")
                 flash('登录成功.', 'info')
                 return redirect_back()
             else:
