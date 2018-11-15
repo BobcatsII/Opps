@@ -31,7 +31,7 @@ class BaseConfig(object):
 
 
 class DevelopmentConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:tysxwg07@192.168.23.71:3306/ops?charset=utf8"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:linan123@192.168.23.71:3306/ops?charset=utf8"
 
 
 class TestingConfig(BaseConfig):
