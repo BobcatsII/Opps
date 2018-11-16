@@ -2,6 +2,7 @@
 
 from flask import render_template, redirect, url_for, Blueprint, flash
 from flask_login import login_user, logout_user, login_required, current_user, login_fresh, confirm_login
+from opps.emails import send_confirm_email, send_reset_password_email
 from opps.extensions import db
 from opps.forms.auth import LoginForm, RegisterForm, ForgetPasswordForm, ResetPasswordForm
 from opps.models import User
