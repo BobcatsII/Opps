@@ -51,7 +51,7 @@ class Role(db.Model):
         db.session.commit()
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, index=True)
     email  = db.Column(db.String(254), unique=True, index=True)
