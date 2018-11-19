@@ -4,7 +4,44 @@
 
 {% block content %}
     {% if current_user.is_authenticated %}
-        
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-inner">
+                <a class="navbar-brand" >
+                    <span>运维平台</span></a>
+            </div>
+        </div> 
+        <div class="ch-container">
+            <div class="row">
+                <!-- left menu starts -->
+                <div class="col-sm-2 col-lg-2">
+                    <div class="sidebar-nav">
+                        <div class="nav-canvas">
+                            <ul class="nav nav-pills nav-stacked main-menu">
+                                <li class="nav-header">Main</li>
+                                <li class="accordion">
+                                    <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 部署平台</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+    	    			        <li><a href="/deploy/"><i class="glyphicon glyphicon-random"></i><span> 环境部署</span></a>
+                                        </li>
+                                        <li><a href="/config/"><i class="glyphicon glyphicon-edit"></i><span> 配置中心</span></a>
+                                        </li>
+                                        <li><a href="/project/"><i class="glyphicon glyphicon-tasks"></i><span> 配置项目</span></a>
+                                        </li>
+                                        <li><a href="/version/"><i class="glyphicon glyphicon-bookmark"></i><span> 配置发布版本</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="/tool/get_hosts/"><i class="glyphicon glyphicon-file"></i><span> hosts查看</span></a>
+                                </li>
+                            </ul>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+                <!-- left menu ends -->
+        </div><!--/fluid-row-->
     {% endif %}
 {% endblock %}
 

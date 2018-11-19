@@ -47,6 +47,7 @@ def register_blueprints(app):
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(user_bp, url_prefix='/user')
     app.register_blueprint(admin_bp, url_prefix='/admin')
+    #app.register_blueprint(admin_bp, url_prefix='/deploy')
 
 def register_shell_context(app):
     @app.shell_context_processor

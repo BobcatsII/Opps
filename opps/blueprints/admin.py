@@ -10,7 +10,6 @@ from opps.utils import redirect_back
 
 admin_bp = Blueprint('admin', __name__)
 
-
 @admin_bp.route('/')
 @login_required
 @permission_required('MODERATE')
@@ -20,7 +19,6 @@ def index():
     blocked_user_count = User.query.filter_by(active=False).count()
     return render_template('admin/index.html', user_count=user_count, locked_user_count=locked_user_count,
                            blocked_user_count=blocked_user_count)
-
 
 @admin_bp.route('/profile/<int:user_id>', methods=['GET', 'POST'])
 @login_required

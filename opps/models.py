@@ -56,7 +56,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, index=True)
     email  = db.Column(db.String(254), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    member_since = db.Column(db.DateTime, default=datetime.utcnow)
+    member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar_s = db.Column(db.String(64))
     avatar_m = db.Column(db.String(64))
     avatar_l = db.Column(db.String(64))
@@ -116,7 +116,37 @@ class User(db.Model, UserMixin):
         permission = Permission.query.filter_by(name=permission_name).first()
         return permission is not None and self.role is not None and permission in self.role.permissions
 
+class DeployLog(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    dply_user = db.Column(db.String(20))
+    dply_item = db.Column(db.String(20))
+    dply_ip = db.Column(db.String(20))
+    dply_version = db.Column(db.String(20))
+    dply_date = db.Column(db.DateTime, default=datetime.utcnow)
+    dply_stat = db.Column(db.String(20))
 
+class Version(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    deploy_version = db.Column(db.String(20), unique=True, nullable=False)
+    config_version = db.Column(db.String(20), unique=True, nullable=False)
+    
+    
+class Porject(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project_name = db.Column(db.String(20), nullable=False)
+    project_type = db.Column(db.String(20), nullable=False)
+    project_port = db.Column(db.Integer)
+    project_info = db.Column(db.String(50))
+    #project_stat = db.Column(db.Integer, default=1)
+    project_stat = db.Column(db.Boolean, default=True)
+
+class Config(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    item_name = db.Column(db.String(20), nullable=False)
+    conf_version = db.Column(db.String(20), nullable=False)
+    conf_file = db.Column(db.String(20), nullable=False)
+    conf_date = db.Column(db.DateTime, default=datetime.utcnow)
+    conf_user = db.Column(db.String(20), nullable=False)
 
 @db.event.listens_for(User, 'after_delete', named=True)
 def delete_avatars(**kwargs):
