@@ -9,6 +9,7 @@ from flask_wtf.csrf import CSRFError
 from opps.blueprints.auth import auth_bp
 from opps.blueprints.main import main_bp
 from opps.blueprints.user import user_bp
+from opps.blueprints.admin import admin_bp
 from opps.extensions import bootstrap, db, login_manager, dropzone, csrf, mail, moment, avatars
 from opps.models import Role, User, Permission
 from opps.settings import config
@@ -37,7 +38,6 @@ def register_extensions(app):
     mail.init_app(app)
     dropzone.init_app(app)
     moment.init_app(app)
-    #whooshee.init_app(app)
     avatars.init_app(app)
     csrf.init_app(app)
 
@@ -46,6 +46,7 @@ def register_blueprints(app):
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(user_bp, url_prefix='/user')
+    app.register_blueprint(admin_bp, url_prefix='/admin')
 
 def register_shell_context(app):
     @app.shell_context_processor

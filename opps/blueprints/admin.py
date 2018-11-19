@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from flask import render_template, flash, Blueprint, request, current_app
 from flask_login import login_required
 from opps.decorators import admin_required, permission_required
 from opps.extensions import db
@@ -28,29 +29,21 @@ def edit_profile_admin(user_id):
     user = User.query.get_or_404(user_id)
     form = EditProfileAdminForm(user=user)
     if form.validate_on_submit():
-        user.name = form.name.data
         role = Role.query.get(form.role.data)
         if role.name == 'Locked':
             user.lock()
         user.role = role
-        user.bio = form.bio.data
-        user.website = form.website.data
-        user.confirmed = form.confirmed.data
-        user.active = form.active.data
-        user.location = form.location.data
         user.username = form.username.data
+        user.confirmed = form.confirmed.data
         user.email = form.email.data
+        user.active = form.active.data
         db.session.commit()
-        flash('Profile updated.', 'success')
+        flash('资料已更新.', 'success')
         return redirect_back()
-    form.name.data = user.name
     form.role.data = user.role_id
-    form.bio.data = user.bio
-    form.website.data = user.website
-    form.location.data = user.location
     form.username.data = user.username
-    form.email.data = user.email
     form.confirmed.data = user.confirmed
+    form.email.data = user.email
     form.active.data = user.active
     return render_template('admin/edit_profile.html', form=form, user=user)
 
@@ -61,7 +54,7 @@ def edit_profile_admin(user_id):
 def block_user(user_id):
     user = User.query.get_or_404(user_id)
     user.block()
-    flash('Account blocked.', 'info')
+    flash('帐户已被屏蔽.', 'info')
     return redirect_back()
 
 
@@ -71,7 +64,7 @@ def block_user(user_id):
 def unblock_user(user_id):
     user = User.query.get_or_404(user_id)
     user.unblock()
-    flash('Block canceled.', 'info')
+    flash('屏蔽解除.', 'info')
     return redirect_back()
 
 
@@ -81,7 +74,7 @@ def unblock_user(user_id):
 def lock_user(user_id):
     user = User.query.get_or_404(user_id)
     user.lock()
-    flash('Account locked.', 'info')
+    flash('账户被锁定.', 'info')
     return redirect_back()
 
 
@@ -91,7 +84,7 @@ def lock_user(user_id):
 def unlock_user(user_id):
     user = User.query.get_or_404(user_id)
     user.unlock()
-    flash('Lock canceled.', 'info')
+    flash('锁定解除.', 'info')
     return redirect_back()
 
 @admin_bp.route('/manage/user')

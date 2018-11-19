@@ -28,6 +28,7 @@ class BaseConfig(object):
     AVATARS_SIZE_TUPLE = (30, 100, 200)
     BOOTSTRAP_SERVE_LOCAL = True
     MAX_CONTENT_LENGTH = 3 * 1024 * 1024
+    OPPS_MANAGE_USER_PER_PAGE = 30
 
 
 class DevelopmentConfig(BaseConfig):

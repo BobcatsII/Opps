@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from wtforms import StringField, SelectField, BooleanField, SubmitField
 from wtforms import ValidationError
 from wtforms.validators import DataRequired, Length, Email
 
@@ -7,11 +8,11 @@ from opps.models import User, Role
 
 
 class EditProfileAdminForm(EditProfileForm):
-    email = StringField('Email', validators=[DataRequired(), Length(1, 254), Email()])
-    role = SelectField('Role', coerce=int)
-    active = BooleanField('Active')
-    confirmed = BooleanField('Confirmed')
-    submit = SubmitField()
+    email = StringField('邮箱', validators=[DataRequired(), Length(1, 254), Email()])
+    role = SelectField('权限', coerce=int)
+    active = BooleanField('活跃')
+    confirmed = BooleanField('认证')
+    submit = SubmitField('确定')
 
     def __init__(self, user, *args, **kwargs):
         super(EditProfileAdminForm, self).__init__(*args, **kwargs)
@@ -21,8 +22,8 @@ class EditProfileAdminForm(EditProfileForm):
 
     def validate_username(self, field):
         if field.data != self.user.username and User.query.filter_by(email=field.data).first():
-            raise ValidationError('The username is already in use.')
+            raise ValidationError('用户名已被使用.')
 
     def validate_email(self, field):
         if field.data != self.user.email and User.query.filter_by(email=field.data).first():
-            raise ValidationError('The email is already in use.')
+            raise ValidationError('邮箱已被使用.')

@@ -8,10 +8,10 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional, R
 from opps.models import User
 
 class EditProfileForm(FlaskForm):
-    username = StringField('用户名', validators=[DataRequired(), Length(1, 20),
+    username = StringField('填入新用户名即可更改', validators=[DataRequired(), Length(1, 20),
                                                    Regexp('^[a-zA-Z0-9]*$',
                                                    message='用户名应仅包含 a-z, A-Z and 0-9.')])
-    submit = SubmitField()
+    submit = SubmitField('确定')
 
     def validate_username(self, field):
         if field.data != current_user.username and User.query.filter_by(username=field.data).first():
@@ -22,7 +22,7 @@ class UploadAvatarForm(FlaskForm):
         FileRequired(),
         FileAllowed(['jpg', 'png'], '文件格式应该为 .jpg 或 .png.')
     ])
-    submit = SubmitField()
+    submit = SubmitField('确定')
 
 
 class CropAvatarForm(FlaskForm):
@@ -35,7 +35,7 @@ class CropAvatarForm(FlaskForm):
 
 class ChangeEmailForm(FlaskForm):
     email = StringField('新邮箱', validators=[DataRequired(), Length(1, 254), Email()])
-    submit = SubmitField()
+    submit = SubmitField('确定')
 
 
 class ChangePasswordForm(FlaskForm):
@@ -43,12 +43,12 @@ class ChangePasswordForm(FlaskForm):
     password = PasswordField('新密码', validators=[
         DataRequired(), Length(8, 128), EqualTo('password2')])
     password2 = PasswordField('确认密码', validators=[DataRequired()])
-    submit = SubmitField()
+    submit = SubmitField('确定')
 
 
 class DeleteAccountForm(FlaskForm):
     username = StringField('用户名', validators=[DataRequired(), Length(1, 20)])
-    submit = SubmitField()
+    submit = SubmitField('确定')
 
     def validate_username(self, field):
         if field.data != current_user.username:

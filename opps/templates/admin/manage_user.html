@@ -1,39 +1,39 @@
 {% extends 'admin/index.html' %}
 {% from 'bootstrap/pagination.html' import render_pagination %}
 
-{% block title %}Manage Users{% endblock %}
+{% block title %}Manage User{% endblock %}
 
 {% block content %}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            {{ render_breadcrumb_item('admin.index', 'Dashboard Home') }}
-            {{ render_breadcrumb_item('admin.manage_user', 'Manage User') }}
+            {{ render_breadcrumb_item('admin.index', '管理面板') }}
+            {{ render_breadcrumb_item('admin.manage_user', '用户管理') }}
         </ol>
     </nav>
     <div class="page-header">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Filter </a>
+                <a class="nav-link disabled" href="#">标签 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {% if request.args.get('filter', 'all') == 'all' %}active{% endif %}"
-                   href="{{ url_for('admin.manage_user', filter='all') }}">All</a>
+                   href="{{ url_for('admin.manage_user', filter='all') }}">全部</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {% if request.args.get('filter') == 'locked' %}active{% endif %}"
-                   href="{{ url_for('admin.manage_user', filter='locked') }}">Locked</a>
+                   href="{{ url_for('admin.manage_user', filter='locked') }}">被锁定</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {% if request.args.get('filter') == 'blocked' %}active{% endif %}"
-                   href="{{ url_for('admin.manage_user', filter='blocked') }}">Blocked</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {% if request.args.get('filter') == 'administrator' %}active{% endif %}"
-                   href="{{ url_for('admin.manage_user', filter='administrator') }}">Administrator</a>
+                   href="{{ url_for('admin.manage_user', filter='blocked') }}">被屏蔽</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {% if request.args.get('filter') == 'moderator' %}active{% endif %}"
-                   href="{{ url_for('admin.manage_user', filter='moderator') }}">Moderator</a>
+                   href="{{ url_for('admin.manage_user', filter='moderator') }}">辅助管理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.args.get('filter') == 'administrator' %}active{% endif %}"
+                   href="{{ url_for('admin.manage_user', filter='administrator') }}">管理员</a>
             </li>
         </ul>
     </div>
@@ -42,7 +42,7 @@
             <thead>
             <tr>
                 <th>Avatars</th>
-                <th>Name/username</th>
+                <th>Username</th>
                 <th>Role</th>
                 <th>Date</th>
                 <th>Actions</th>
@@ -51,12 +51,9 @@
             {% for user in users %}
                 <tr>
                     <td><img src="{{ url_for('main.get_avatar', filename=user.avatar_s) }}"></td>
-                    <td>{{ user.name }}<br>{{ user.username }}</td>
+                    <td>{{ user.username }}</td>
                     <td>{{ user.role.name }}</td>
                     <td>{{ moment(user.member_since).format('LL') }}</td>
-                    <td>
-                        <a href="{{ url_for('user.index', username=user.username) }}">{{ user.photos|length }}</a>
-                    </td>
                     <td>
                         {% if user.locked %}
                             <form class="inline" action="{{ url_for('admin.unlock_user', user_id=user.id) }}"
