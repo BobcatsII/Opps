@@ -7,9 +7,15 @@ from flask_login import current_user, login_required
 from opps.extensions import db
 
 
+@user_bp.route('/deploy')
+@login_required
+@confirm_required
+def deploy():
+    return render_template('deploy/deploy.html')
+
 @user_bp.route('/deploy/create', methods=['GET', 'POST'])
 @login_required
 @confirm_required
 def create_deploy():
-    
-    
+    pass
+
