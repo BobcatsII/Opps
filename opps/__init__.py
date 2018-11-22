@@ -10,6 +10,7 @@ from opps.blueprints.auth import auth_bp
 from opps.blueprints.main import main_bp
 from opps.blueprints.user import user_bp
 from opps.blueprints.admin import admin_bp
+from opps.blueprints.deploy import deploy_bp
 from opps.extensions import bootstrap, db, login_manager, dropzone, csrf, mail, moment, avatars
 from opps.models import Role, User, Permission
 from opps.settings import config
@@ -47,7 +48,7 @@ def register_blueprints(app):
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(user_bp, url_prefix='/user')
     app.register_blueprint(admin_bp, url_prefix='/admin')
-    #app.register_blueprint(admin_bp, url_prefix='/deploy')
+    app.register_blueprint(deploy_bp, url_prefix='/deploy')
 
 def register_shell_context(app):
     @app.shell_context_processor
