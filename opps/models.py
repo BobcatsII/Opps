@@ -67,6 +67,7 @@ class User(db.Model, UserMixin):
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
     role = db.relationship('Role', back_populates='users')
 
+
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
         self.generate_avatar()
@@ -130,8 +131,7 @@ class Version(db.Model):
     deploy_version = db.Column(db.String(20), unique=True, nullable=False)
     config_version = db.Column(db.String(20), unique=True, nullable=False)
     
-    
-class Porject(db.Model):
+class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_name = db.Column(db.String(20), nullable=False)
     project_type = db.Column(db.String(20), nullable=False)

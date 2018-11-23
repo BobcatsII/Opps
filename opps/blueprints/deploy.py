@@ -5,22 +5,26 @@ from flask import render_template, flash, redirect, url_for, current_app, reques
 from flask_login import current_user, login_required
 from opps.forms.deploy import CreateDeployForm
 from opps.extensions import db
-#from opps.models import User
+from opps.models import DeployLog
 
 deploy_bp = Blueprint('deploy', __name__)
 
 
 @deploy_bp.route('/')
 def index():
-    return render_template('deploy/index.html')
+    op = DeployLog.query.filter_by().all()
+    return render_template('deploy/index.html', op=op)
 
 @deploy_bp.route('/create', methods=['GET', 'POST'])
 def create():
     form = CreateDeployForm()
     if form.validate_on_submit():
+        user = form.deploy_user.data
         project = form.deploy_project.data
         ip = form.deploy_ip.data
-        version = form.deploy_version
+        version = form.deploy_version.data
+        deploy = DeployLog(dply_user=user, dply_item=project, dply_ip=ip, dply_version=version, dply_stat='1')
+        db.session.add(deploy)
         if not project or not ip or not version:
             flash('缺少参数,请确认参数','warning')
         else:
