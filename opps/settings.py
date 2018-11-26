@@ -29,6 +29,7 @@ class BaseConfig(object):
     BOOTSTRAP_SERVE_LOCAL = True
     MAX_CONTENT_LENGTH = 3 * 1024 * 1024
     OPPS_MANAGE_USER_PER_PAGE = 30
+    DEPLOY_ITEM_PER_PAGE = 5
 
 
 class DevelopmentConfig(BaseConfig):

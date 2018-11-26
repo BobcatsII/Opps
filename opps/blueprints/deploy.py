@@ -11,21 +11,27 @@ deploy_bp = Blueprint('deploy', __name__)
 
 
 @deploy_bp.route('/')
+@login_required
 def index():
-    op = DeployLog.query.filter_by().all()
-    return render_template('deploy/index.html', op=op)
+    page = request.args.get('page', 1, type=int)
+    per_page = current_app.config['DEPLOY_ITEM_PER_PAGE']
+    pagination = DeployLog.query.order_by(DeployLog.dply_date.desc()).paginate(page, per_page=per_page)
+    deploy_pages = pagination.items
+    return render_template('deploy/index.html', page=page, pagination=pagination, deploy_pages=deploy_pages)
 
 @deploy_bp.route('/create', methods=['GET', 'POST'])
+@login_required
 def create():
     form = CreateDeployForm()
     if form.validate_on_submit():
         user = form.deploy_user.data
         project = form.deploy_project.data
-        ip = form.deploy_ip.data
+        host = form.deploy_host.data
         version = form.deploy_version.data
-        deploy = DeployLog(dply_user=user, dply_item=project, dply_ip=ip, dply_version=version, dply_stat='1')
+        deploy = DeployLog(dply_user=user, dply_item=project, 
+                           dply_host=host, dply_version=version, dply_stat='部署成功')
         db.session.add(deploy)
-        if not project or not ip or not version:
+        if not project or not host or not version:
             flash('缺少参数,请确认参数','warning')
         else:
             db.session.commit()

@@ -56,7 +56,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, index=True)
     email  = db.Column(db.String(254), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    member_since = db.Column(db.DateTime(), default=datetime.utcnow)
+    member_since = db.Column(db.DateTime(), default=datetime.now)
     avatar_s = db.Column(db.String(64))
     avatar_m = db.Column(db.String(64))
     avatar_l = db.Column(db.String(64))
@@ -121,9 +121,9 @@ class DeployLog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     dply_user = db.Column(db.String(20))
     dply_item = db.Column(db.String(20))
-    dply_ip = db.Column(db.String(20))
+    dply_host = db.Column(db.String(30))
     dply_version = db.Column(db.String(20))
-    dply_date = db.Column(db.DateTime, default=datetime.utcnow)
+    dply_date = db.Column(db.DateTime, default=datetime.now)
     dply_stat = db.Column(db.String(20))
 
 class Version(db.Model):
@@ -145,8 +145,12 @@ class Config(db.Model):
     item_name = db.Column(db.String(20), nullable=False)
     conf_version = db.Column(db.String(20), nullable=False)
     conf_file = db.Column(db.String(20), nullable=False)
-    conf_date = db.Column(db.DateTime, default=datetime.utcnow)
+    conf_date = db.Column(db.DateTime, default=datetime.now)
     conf_user = db.Column(db.String(20), nullable=False)
+
+class Hosts(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    host_name = db.Column(db.String(30), nullable=False)
 
 @db.event.listens_for(User, 'after_delete', named=True)
 def delete_avatars(**kwargs):
