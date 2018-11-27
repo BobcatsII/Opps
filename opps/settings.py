@@ -30,6 +30,7 @@ class BaseConfig(object):
     MAX_CONTENT_LENGTH = 3 * 1024 * 1024
     OPPS_MANAGE_USER_PER_PAGE = 30
     DEPLOY_ITEM_PER_PAGE = 5
+    VERSIONS_PER_PAGE = 5
 
 
 class DevelopmentConfig(BaseConfig):

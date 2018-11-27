@@ -130,6 +130,8 @@ class Version(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     deploy_version = db.Column(db.String(20), unique=True, nullable=False)
     config_version = db.Column(db.String(20), unique=True, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
+    add_user = db.Column(db.String(20))
     
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -139,6 +141,7 @@ class Project(db.Model):
     project_info = db.Column(db.String(50))
     #project_stat = db.Column(db.Integer, default=1)
     project_stat = db.Column(db.Boolean, default=True)
+    timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
 class Config(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -147,10 +150,12 @@ class Config(db.Model):
     conf_file = db.Column(db.String(20), nullable=False)
     conf_date = db.Column(db.DateTime, default=datetime.now)
     conf_user = db.Column(db.String(20), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
 class Hosts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     host_name = db.Column(db.String(30), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
 @db.event.listens_for(User, 'after_delete', named=True)
 def delete_avatars(**kwargs):
