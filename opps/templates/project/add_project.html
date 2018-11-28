@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block title %}Add Item{% endblock %}
+
+{% block content %}
+    <div class="card w-100 bg-light">
+        <h3 class="card-header">新增项目</h3>
+        <div class="card-body">
+            {{ render_form(form) }}
+        </div>
+    </div>
+{% endblock %}
+

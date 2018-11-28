@@ -1,7 +1,7 @@
 #-*- coding:utf-8 -*-
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, ValidationError, SelectField
+from wtforms import StringField, SubmitField, ValidationError, SelectField, DecimalField
 from wtforms.validators import DataRequired, Length
 from opps.models import Version, User
 

@@ -135,12 +135,12 @@ class Version(db.Model):
     
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    project_name = db.Column(db.String(20), nullable=False)
-    project_type = db.Column(db.String(20), nullable=False)
+    project_name = db.Column(db.String(50), nullable=False)
+    project_type = db.Column(db.String(50), nullable=False)
     project_port = db.Column(db.Integer)
     project_info = db.Column(db.String(50))
     #project_stat = db.Column(db.Integer, default=1)
-    project_stat = db.Column(db.Boolean, default=True)
+    project_stat = db.Column(db.String(10))
     timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
 class Config(db.Model):
@@ -152,10 +152,6 @@ class Config(db.Model):
     conf_user = db.Column(db.String(20), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
-class Hosts(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    host_name = db.Column(db.String(30), nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
 @db.event.listens_for(User, 'after_delete', named=True)
 def delete_avatars(**kwargs):

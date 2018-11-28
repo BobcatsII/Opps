@@ -31,18 +31,27 @@ class BaseConfig(object):
     OPPS_MANAGE_USER_PER_PAGE = 30
     DEPLOY_ITEM_PER_PAGE = 5
     VERSIONS_PER_PAGE = 5
-
-
+    PROJECTS_PER_PAGE = 5
+    SYSTEM = ['conf','item']
+    MODULE = ['config.py', 'start_sss.py']
+    DEPLOY_HOST = {
+                    "prod":{
+                             "conf":["192.168.200.41","192.168.200.43","192.168.100.1"], 
+                             "item":["192.168.200.141","192.168.200.143","192.168.100.1"]
+                           }
+                  }
+    
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:tysxwg07@192.168.23.71:3306/ops?charset=utf8"
-
 
 class TestingConfig(BaseConfig):
     pass
 
-
 class ProductionConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:linan123@192.168.277.128:3306/ops?charset=utf8"
+
+
+
 
 
 config = {
