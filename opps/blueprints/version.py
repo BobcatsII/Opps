@@ -10,7 +10,7 @@ from opps.models import Version
 version_bp = Blueprint('version', __name__)
 
 @version_bp.route('/')
-@login_required
+#@login_required
 def index():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['VERSIONS_PER_PAGE']
@@ -20,14 +20,13 @@ def index():
 
 
 @version_bp.route('/create', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def create():
     form = VersionForm()
     if form.validate_on_submit():
         proj_vers = form.deploy_version.data
         conf_vers = form.config_version.data
-        add_user = form.add_user.data
-        version = Version(deploy_version=proj_vers, config_version=conf_vers, add_user=add_user)
+        version = Version(deploy_version=proj_vers, config_version=conf_vers)
         db.session.add(version)
         if not proj_vers or not conf_vers:
             flash('缺少参数,请确认参数','warning')

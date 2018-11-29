@@ -32,6 +32,7 @@ class BaseConfig(object):
     DEPLOY_ITEM_PER_PAGE = 5
     VERSIONS_PER_PAGE = 5
     PROJECTS_PER_PAGE = 5
+    CONFIG_ITEM_PER_PAGE = 5
     SYSTEM = ['conf','item']
     MODULE = ['config.py', 'start_sss.py']
     DEPLOY_HOST = {

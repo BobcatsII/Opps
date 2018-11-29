@@ -131,7 +131,6 @@ class Version(db.Model):
     deploy_version = db.Column(db.String(20), unique=True, nullable=False)
     config_version = db.Column(db.String(20), unique=True, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
-    add_user = db.Column(db.String(20))
     
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -139,8 +138,7 @@ class Project(db.Model):
     project_type = db.Column(db.String(50), nullable=False)
     project_port = db.Column(db.Integer)
     project_info = db.Column(db.String(50))
-    #project_stat = db.Column(db.Integer, default=1)
-    project_stat = db.Column(db.String(10))
+    project_stat = db.Column(db.Integer, default=1)
     timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
 class Config(db.Model):
@@ -148,7 +146,6 @@ class Config(db.Model):
     item_name = db.Column(db.String(20), nullable=False)
     conf_version = db.Column(db.String(20), nullable=False)
     conf_file = db.Column(db.String(20), nullable=False)
-    conf_date = db.Column(db.DateTime, default=datetime.now)
     conf_user = db.Column(db.String(20), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
