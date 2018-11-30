@@ -13,7 +13,7 @@ from itsdangerous import BadSignature, SignatureExpired
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 from opps.extensions import db
-from opps.models import User
+from opps.models import User, Version, Config
 from opps.settings import Operations
 
 
@@ -77,3 +77,23 @@ def flash_errors(form):
                 getattr(form, field).label.text,
                 error
             ))
+
+def get_conf_file_path(version,project=''):
+    conf_file_dir = current_app.config['CONF_FILE_DIR'] + '/' + version + '/' + project
+    return conf_file_dir
+
+def save_files(project,module,conf_text,version):
+    files_dir = get_conf_file_path(version, project)
+    if not os.path.exists(files_dir):
+        os.makedirs(files_dir)
+    conf_file=files_dir + '/' + module
+    f=open('%s'%conf_file,'w')
+    f.write(conf_text.encode('utf-8'))
+    f.close()
+
+def get_files(project,module,version):
+    filepath = get_conf_file_path(version, project)
+    filetext = os.path.join(filepath, module)
+    f = open('{0}'.format(filetext), 'r')
+    lines = f.readlines()
+    return lines 

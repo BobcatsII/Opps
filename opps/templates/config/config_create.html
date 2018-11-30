@@ -1,15 +1,22 @@
-{% extends "base.html" %}
-{%block content%}  	
+{% extends 'base.html' %}
+
+{% block title %}Add Config{% endblock %}
+{% block content %}
+
 <script language="javascript" type="text/javascript">
 function submit_config(data){
     //debugger;
     var data = {
         item_name:$("#item_name").val(),
         conf_file:$("#conf_file").val(),
+        conf_text:$("#conf_text").val(),
+        conf_user:$("#conf_user").val(),
+        conf_version:$("#conf_version").val(),
     };
     $.ajax({
         type: "post",
         url: "/config/create/",
+        data: data,
         beforeSend: function(xhr, settings){  
             var csrftoken = $.cookie('csrftoken');  
             xhr.setRequestHeader("X-CSRFToken", csrftoken);  
@@ -22,85 +29,73 @@ function submit_config(data){
 }
 </script> 
 
+
 <div class="row">
     <div class="row">
     <div class="box col-md-8">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-user"></i> 新增 {% load show_env %}{% show_env as env %}{{env}}环境配置</h2>
+                <h3><i class="glyphicon glyphicon-user"></i>文件配置</h3>
                 <div class="box-icon">
 				</div>
             </div>
             <div class="box-content">
             <a class="btn btn-info btn-sm" href="/config/">返回>></a><p/>
-				<!-- <form action="/config/create/" method="POST"> -->
-				<!-- {% csrf_token %} -->
-                <table class="table table-striped table-bordered responsive">
+                <table width="150%" border="1" class="table-striped table-bordered responsive">
                     <tbody>
                     <tr>  
-                        <td class="center">项目</td>
-                        <td class="center">
-                            <select {%if config %}disabled="true"{%endif%} name="project" id="project" class="form-control">
-                            {% for p in project%}
-                            <option value='{{p.project}}' {%if p.project == config.project%}selected="selected" {%endif%}>{{p.project}}</option>
-                            {% endfor %}  
-                            </select>
+                        <td width="5%" border="1" align="center">项目</td>
+                        <td width="12%" border="1">
+                            {{ form.item_name  }}
                         </td>
-                        <td class="center">配置块</td>
-                        <td class="center">
-                            <select {%if config %}disabled="true"{%endif%} name="module" id="module" class="form-control">
-                            {% for m in module%}
-                            <option value='{{m}}' {%if m == config.module%}selected="selected"{%endif%}>{{m}}</option>
-                            {% endfor %}  
-                            </select>
+                        <td width="5%" border="1" align="center">配置文件</td>
+                        <td width="12%" border="1">
+                            {{ form.conf_file}}
                         </td>
-                        <td class="center">发布版本</td>
-                        <!--<td class="center"><input {%if config %}disabled="true"{%endif%}  class="form-control" type="text" name="version" id="version" value="{{config.version}}" /></td>-->
-                        <td class="center">
-                            <select {%if config %}disabled="true"{%endif%} name="version" id="version" class="form-control">
-                            {% for n in deploy_version %}
-                            <option value='{{n.deploy_version}}' {%if n.deploy_version == config.version%}selected="selected" {%endif%}>{{n.deploy_version}}</option>
-                            {% endfor %}
-                             </select>
+                        <td width="5%" border="1" align="center">版本号</td>
+                        <td width="12%" border="1">
+                            {{ form.conf_version }}
+                        </td>
+                        <td width="5%" border="1" align="center">配置用户</td>
+                        <td width="12%" border="1">
+                            {{ form.conf_user }}
                         </td>
                     </tr>
                     </tbody>
                     </table>
-                    <table class="table table-striped table-bordered responsive">
+                    <table width="150%" border="1" class="table-striped table-bordered responsive">
                     <tbody>
                     <tr>
-                        <td class="center">配置内容</td>
-                        <td class="center" ><textarea class="form-control" style="resize: none;" rows="20" cols="80" name="configtext" id='configtext'>{% for config in properties %}{{config}}{% endfor %}</textarea>
+                        <td width="10%" border="1" align="center">配置内容</td>
+                        <td align="center" >
+                        {{ form.conf_text }}
+                        <!--<textarea class="form-control" style="resize: none;" rows="20" cols="80" name="conf_text" id='conf_text'>
+                        </textarea>-->
                         </td>
                     </tr>
                     </tbody>
                 </table>
-                {% if config.id %}
-                <input type="hidden" name="cid" id="cid" value="{{config.id}}" />
-                {% endif %}
-				<a href="#" class="btn btn-setting btn-primary">保存</a>
+                {{ form.submit }}
             </div>
         </div>
     </div>
-    <!--/span-->
-</div><!--/row-->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h3>确认保存？</h3>
-                </div>
-                <div class="modal-body">
-                    <p id="deploy"></p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-                    <input class="btn btn-primary" type="submit" value="确认保存" onclick="submit_config()"/>
-                </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>确认保存？</h3>
+            </div>
+            <div class="modal-body">
+                <p id="deploy"></p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                <input class="btn btn-primary" type="submit" value="确认保存" onclick="submit_config()"/>
             </div>
         </div>
     </div>
-<!-- </form>		 -->
+</div>
 {% endblock %}

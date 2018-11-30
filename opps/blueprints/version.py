@@ -28,11 +28,8 @@ def create():
         conf_vers = form.config_version.data
         version = Version(deploy_version=proj_vers, config_version=conf_vers)
         db.session.add(version)
-        if not proj_vers or not conf_vers:
-            flash('缺少参数,请确认参数','warning')
-        else:
-            db.session.commit()
-            flash('版本信息已提交', 'success')
-            return redirect(url_for('.index'))
+        db.session.commit()
+        flash('版本信息已提交', 'success')
+        return redirect(url_for('.index'))
     return render_template('version/add_version.html', form=form)
 

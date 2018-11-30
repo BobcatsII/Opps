@@ -33,8 +33,9 @@ class BaseConfig(object):
     VERSIONS_PER_PAGE = 5
     PROJECTS_PER_PAGE = 5
     CONFIG_ITEM_PER_PAGE = 5
+    CONF_FILE_DIR = os.path.join("/data/deploy","conf_file")
     SYSTEM = ['conf','item']
-    MODULE = ['config.py', 'start_sss.py']
+    MODULE = [('config.py','config.py'), ('start_sss.py','start_sss.py')]
     DEPLOY_HOST = {
                     "prod":{
                              "conf":["192.168.200.41","192.168.200.43","192.168.100.1"], 
