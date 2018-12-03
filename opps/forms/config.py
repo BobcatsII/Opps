@@ -2,7 +2,7 @@
 
 from flask import current_app
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, ValidationError, BooleanField, SelectFieldBase, TextAreaField
+from wtforms import StringField, SubmitField, SelectField, ValidationError, BooleanField, SelectFieldBase, TextAreaField, TextField
 from wtforms.validators import DataRequired, Length
 from opps.models import User, Config, Version, Project
 
@@ -11,7 +11,7 @@ class CreateConfigForm(FlaskForm):
     conf_version = SelectField(label='配置版本', validators=[DataRequired()], choices=[])
     conf_file = SelectField(label='配置文件', validators=[DataRequired()], choices=[])
     conf_user = SelectField(label='操作用户', validators=[DataRequired()], choices=[])  
-    conf_text = TextAreaField('配置内容', validators=[DataRequired()])
+    conf_text = TextAreaField('配置内容', validators=[DataRequired(), Length(1, 3000)])
     submit = SubmitField('保存配置')
 
     def __init__(self, *args, **kwargs):

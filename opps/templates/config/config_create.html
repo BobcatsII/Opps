@@ -1,35 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %}Add Config{% endblock %}
+
 {% block content %}
-
-<script language="javascript" type="text/javascript">
-function submit_config(data){
-    //debugger;
-    var data = {
-        item_name:$("#item_name").val(),
-        conf_file:$("#conf_file").val(),
-        conf_text:$("#conf_text").val(),
-        conf_user:$("#conf_user").val(),
-        conf_version:$("#conf_version").val(),
-    };
-    $.ajax({
-        type: "post",
-        url: "/config/create/",
-        data: data,
-        beforeSend: function(xhr, settings){  
-            var csrftoken = $.cookie('csrftoken');  
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);  
-        },
-        success: function (result) {
-            alert(result);
-            location.href = "/config/";
-        },
-    })
-}
-</script> 
-
-
 <div class="row">
     <div class="row">
     <div class="box col-md-8">
@@ -37,20 +10,22 @@ function submit_config(data){
             <div class="box-header well" data-original-title="">
                 <h3><i class="glyphicon glyphicon-user"></i>文件配置</h3>
                 <div class="box-icon">
-				</div>
+                </div>
             </div>
             <div class="box-content">
             <a class="btn btn-info btn-sm" href="/config/">返回>></a><p/>
+            <form  action="" method="post" class="form" role="form">
+                {{ form.csrf_token }}
                 <table width="150%" border="1" class="table-striped table-bordered responsive">
                     <tbody>
                     <tr>  
                         <td width="5%" border="1" align="center">项目</td>
                         <td width="12%" border="1">
-                            {{ form.item_name  }}
+                            {{ form.item_name }}
                         </td>
                         <td width="5%" border="1" align="center">配置文件</td>
                         <td width="12%" border="1">
-                            {{ form.conf_file}}
+                            {{ form.conf_file }}
                         </td>
                         <td width="5%" border="1" align="center">版本号</td>
                         <td width="12%" border="1">
@@ -68,32 +43,14 @@ function submit_config(data){
                     <tr>
                         <td width="10%" border="1" align="center">配置内容</td>
                         <td align="center" >
-                        {{ form.conf_text }}
-                        <!--<textarea class="form-control" style="resize: none;" rows="20" cols="80" name="conf_text" id='conf_text'>
-                        </textarea>-->
+                        {{ form.conf_text(cols="140", rows="20") }}
                         </td>
                     </tr>
                     </tbody>
-                </table>
-                {{ form.submit }}
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3>确认保存？</h3>
-            </div>
-            <div class="modal-body">
-                <p id="deploy"></p>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-                <input class="btn btn-primary" type="submit" value="确认保存" onclick="submit_config()"/>
+                    </table>
+                </table><br/>
+                {{ form.submit(class="btn btn-setting btn-primary") }}
+            </form>
             </div>
         </div>
     </div>
