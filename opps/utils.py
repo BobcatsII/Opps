@@ -2,6 +2,7 @@
 
 import os
 import uuid
+import datetime
 
 try:
     from urlparse import urlparse, urljoin
@@ -15,7 +16,6 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from opps.extensions import db
 from opps.models import User, Version, Config
 from opps.settings import Operations
-
 
 
 
@@ -94,6 +94,6 @@ def save_files(project,module,conf_text,version):
 def get_files(project,module,version):
     filepath = get_conf_file_path(version, project)
     filetext = os.path.join(filepath, module)
-    f = open('{0}'.format(filetext), 'r')
-    lines = f.readlines()
+    with open('{0}'.format(filetext), 'r') as f:
+        lines = f.readlines()
     return lines 

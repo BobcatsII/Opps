@@ -1,14 +1,49 @@
 {% extends 'base.html' %}
-{% from 'bootstrap/form.html' import render_form %}
 
 {% block title %}Add Item{% endblock %}
 
 {% block content %}
-    <div class="card w-100 bg-light">
-        <h3 class="card-header">新增项目</h3>
-        <div class="card-body">
-            {{ render_form(form) }}
+<div class="row">
+    <div class="row">
+    <div class="box col-md-8">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h3><i class="glyphicon glyphicon-user"></i>项目配置</h3>
+                <div class="box-icon">
+                </div>
+            </div>
+            <div class="box-content">
+            <a class="btn btn-info btn-sm" href="/project/">返回>></a><p/>
+            <form  action="" method="post" class="form" role="form">
+                {{ form.csrf_token }}
+                <table width="100%" border="1" class="table-striped table-bordered responsive">
+                <tbody>
+                    <tr>
+                        <td width="1%" border="1" align="center">项目名称</td>
+                        <td width="8%" border="1" align="center">
+                            {{form.project_name}}
+                        </td>
+                        <td width="1%" border="1" align="center">项目类别</td>
+                        <td width="12%" border="1" align="center">
+                            {{form.project_type}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="1%" border="1" align="center">端口号</td>
+                        <td width="8%" border="1" align="center">
+                            {{form.project_port}}
+                        </td>
+                        <td width="1%" border="1" align="center">项目简介</td>
+                        <td width="8%" border="1" align="center">
+                            {{form.project_info}}
+                        </td>
+                    </tr>
+                    </tbody>
+               </table><br/>
+               {{ form.submit(class="btn btn-setting btn-primary") }}
+           </form>
+           </div>
         </div>
     </div>
+</div>
 {% endblock %}
-

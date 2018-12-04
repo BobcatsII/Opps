@@ -13,6 +13,7 @@ config_bp = Blueprint('config', __name__)
 @config_bp.route('/')
 @login_required
 def index():
+    print (Config.timestamp)
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['CONFIG_ITEM_PER_PAGE']
     pagination = Config.query.order_by(Config.timestamp.desc()).paginate(page, per_page=per_page)

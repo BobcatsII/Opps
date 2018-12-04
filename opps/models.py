@@ -134,19 +134,19 @@ class Version(db.Model):
     
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    project_name = db.Column(db.String(50), nullable=False)
-    project_type = db.Column(db.String(50), nullable=False)
+    project_name = db.Column(db.String(100), nullable=False)
+    project_type = db.Column(db.String(100), nullable=False)
     project_port = db.Column(db.Integer)
-    project_info = db.Column(db.String(50))
+    project_info = db.Column(db.String(100))
     project_stat = db.Column(db.Integer, default=1)
     timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
 class Config(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    item_name = db.Column(db.String(20), nullable=False)
-    conf_version = db.Column(db.String(20), nullable=False)
-    conf_file = db.Column(db.String(20), nullable=False)
-    conf_user = db.Column(db.String(20), nullable=False)
+    item_name = db.Column(db.String(80), nullable=False)
+    conf_version = db.Column(db.String(50), nullable=False)
+    conf_file = db.Column(db.String(50), nullable=False)
+    conf_user = db.Column(db.String(50), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
 

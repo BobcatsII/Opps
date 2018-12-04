@@ -5,7 +5,7 @@ from flask import render_template, flash, redirect, url_for, current_app, reques
 from flask_login import current_user, login_required
 from opps.forms.project import ProjectForm
 from opps.extensions import db
-from opps.models import Project
+from opps.models import Project, User
 
 project_bp = Blueprint('project', __name__)
 
@@ -28,11 +28,17 @@ def create():
         proj_type = form.project_type.data
         proj_port = form.project_port.data
         proj_info = form.project_info.data
-        proj_stat = form.project_stat.data
-        project = Project(project_name=proj_name, project_type=proj_type, project_port=proj_port, project_info=proj_info, project_stat=proj_stat)
+        project = Project(project_name=proj_name, project_type=proj_type, project_port=proj_port, project_info=proj_info)
         db.session.add(project)
         db.session.commit()
         flash('项目信息已提交', 'success')
         return redirect(url_for('.index'))
     return render_template('project/add_project.html', form=form)
 
+@project_bp.route('/disable/<int:proj_id>', methods=['GET', 'POST'])
+@login_required
+def disable(proj_id):
+   sql = Project.query.get(proj_id)
+   sql.project_stat = 0
+   db.session.commit()
+   return redirect(url_for('.index'))
