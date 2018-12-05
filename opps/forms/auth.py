@@ -33,7 +33,7 @@ class RegisterForm(FlaskForm):
 
 class ForgetPasswordForm(FlaskForm):
     email = StringField('邮箱', validators=[DataRequired(), Length(1, 254), Email()])
-    submit = SubmitField()
+    submit = SubmitField("点击发送")
 
 class ResetPasswordForm(FlaskForm):
     email = StringField('邮箱', validators=[DataRequired(), Length(1, 254), Email()])

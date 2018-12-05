@@ -1,14 +1,42 @@
 {% extends 'base.html' %}
-{% from 'bootstrap/form.html' import render_form %}
 
 {% block title %}Add Version{% endblock %}
 
 {% block content %}
-    <div class="card w-100 bg-light">
-        <h3 class="card-header">新增版本</h3>
-        <div class="card-body">
-            {{ render_form(form) }}
+<div class="row">
+    <div class="row">
+    <div class="box col-md-8">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h3><i class="glyphicon glyphicon-user"></i>版本配置</h3>
+                <div class="box-icon">
+                </div>
+            </div>
+            <div class="box-content">
+            <a class="btn btn-info btn-sm" href="/version/">返回>></a><p/>
+            <form  action="" method="post" class="form" role="form">
+                {{ form.csrf_token }}
+                <table width="100%" class="table table-striped table-bordered responsive">
+                    <tbody>
+                    <tr>
+                        <td width="20%" border="1" align="center">项目部署版本</td>
+                        <td width="30%" border="1">
+                        {{form.deploy_version}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="20%" border="1" align="center">文件配置版本</td>
+                        <td width="30%" border="1">
+                        {{form.config_version}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table><br/>
+                {{ form.submit(class="btn btn-setting btn-primary") }}
+            </form>
+            </div>
         </div>
     </div>
+    </div>
+</div>
 {% endblock %}
-

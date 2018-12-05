@@ -5,7 +5,7 @@ from flask import render_template, flash, redirect, url_for, current_app, reques
 from flask_login import current_user, login_required
 from opps.forms.deploy import CreateDeployForm
 from opps.extensions import db
-from opps.models import DeployLog
+from opps.models import DeployLog, Project
 
 deploy_bp = Blueprint('deploy', __name__)
 
@@ -24,11 +24,12 @@ def index():
 def create():
     form = CreateDeployForm()
     if form.validate_on_submit():
+        dtype = form.deploy_type.data
         user = form.deploy_user.data
         project = form.deploy_project.data
         host = form.deploy_host.data
         version = form.deploy_version.data
-        deploy = DeployLog(dply_user=user, dply_item=project, 
+        deploy = DeployLog(dply_type=dtype, dply_user=user, dply_item=project, 
                            dply_host=host, dply_version=version, dply_stat='部署成功')
         db.session.add(deploy)
         if not project or not host or not version:
@@ -38,3 +39,6 @@ def create():
             flash('部署信息已提交', 'success')
             return redirect(url_for('.index'))
     return render_template('deploy/create_deploy.html', form=form)
+
+
+

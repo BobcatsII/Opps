@@ -12,8 +12,8 @@
             {{ render_form(form, extra_classes='col-6') }}
         </div>
         <div class="page-header" style="padding-left:275px;">
-            <small>没有账户? <a href="{{ url_for('auth.register') }}">请点击注册.</a>
-            </small>
+            <small>没有账户? <a href="{{ url_for('auth.register') }}">请点击注册</a></small><br/>
+            <small>忘记密码? <a href="{{ url_for('auth.forget_password') }}">请点这里</a></small>
         </div>
     </div>
 {% endblock %}

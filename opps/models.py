@@ -119,10 +119,11 @@ class User(db.Model, UserMixin):
 
 class DeployLog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    dply_user = db.Column(db.String(20))
+    dply_type = db.Column(db.String(20))
     dply_item = db.Column(db.String(20))
     dply_host = db.Column(db.String(30))
     dply_version = db.Column(db.String(20))
+    dply_user = db.Column(db.String(20))
     dply_date = db.Column(db.DateTime, default=datetime.now)
     dply_stat = db.Column(db.String(20))
 

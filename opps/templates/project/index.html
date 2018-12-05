@@ -8,7 +8,6 @@
         <small class="text-muted"> (已添加项目数: {{ pagination.total }})</small>
         <span class="float-right"><a class="btn btn-primary btn-bg"
                              href="{{ url_for('project.create') }}">新增项目</a></span>
-
     </h3>
 </div>
 {% if project_pages %}
@@ -34,10 +33,10 @@
             <td>{{a.project_port}}</td>
             <td>{{a.project_info}}</td>
             {% if a.project_stat == 1 %}
-                <td><span class="glyphicon glyphicon-zoom-in icon-white" >已启用</span>
-                    <a class="label label-danger" onclick="disable_project({{a.id}})"> 停用</a>
+                <td><span class="btn btn-xs btn-setting btn-success" >已启用</span>
+                    <a class="btn btn-xs btn-danger" href="/project/disable/{{a.id}}"> 停用</a>
             {% else %}
-                <td><span class="label-warning label label-default">项目已停用</span>
+                <td><span class="btn btn-xs btn-setting btn-info">项目已停用</span>
             {% endif %}
             </td>
         </tr>
