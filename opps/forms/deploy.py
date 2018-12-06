@@ -17,12 +17,13 @@ class CreateDeployForm(FlaskForm):
     def __init__(self, *args, **kwargs):
         super(CreateDeployForm, self).__init__(*args, **kwargs)
         self.deploy_project.choices = [(deploy_name.project_name, deploy_name.project_name) for deploy_name in Project.query.filter_by(project_stat=1).order_by(Project.project_name).all()]
-#        if self.deploy_type == "app":
-#            self.deploy_project.choices = [(deploy_name.project_name, deploy_name.project_name) 
-#                                           for deploy_name in Project.query.filter_by(project_stat=1, project_type="app").order_by(Project.project_name).all()]
-#        elif self.deploy_type == "conf":
-#            self.deploy_project.choices = [(deploy_name.project_name, deploy_name.project_name) 
-#                                           for deploy_name in Project.query.filter_by(project_stat=1, project_type="conf").order_by(Project.project_name).all()]
+        
+        #if self.deploy_type == "app":
+        #    self.deploy_project.choices = [(deploy_name.project_name, deploy_name.project_name) 
+        #                                   for deploy_name in Project.query.filter_by(project_stat=1, project_type="app").order_by(Project.project_name).all()]
+        #else:
+        #    self.deploy_project.choices = [(deploy_name.project_name, deploy_name.project_name) 
+        #                                   for deploy_name in Project.query.filter_by(project_stat=1, project_type="conf").order_by(Project.project_name).all()]
 
         self.deploy_version.choices = [(deploy_ver.deploy_version, deploy_ver.deploy_version) for deploy_ver in Version.query.order_by(Version.deploy_version).all()]
         self.deploy_user.choices = [(deploy_user.username, deploy_user.username) for deploy_user in User.query.order_by(User.username).all()]

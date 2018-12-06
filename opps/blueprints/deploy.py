@@ -23,6 +23,8 @@ def index():
 @login_required
 def create():
     form = CreateDeployForm()
+    print (form.deploy_type)
+    print (form.deploy_project)
     if form.validate_on_submit():
         dtype = form.deploy_type.data
         user = form.deploy_user.data
@@ -41,4 +43,13 @@ def create():
     return render_template('deploy/create_deploy.html', form=form)
 
 
+@deploy_bp.route('/get_project/<string:project_type>', methods=['GET', 'POST'])
+@login_required
+def get_project(project_type):
+    project = Project.query.filter_by(project_stat=1, project_type=project_type).order_by(Project.project_name).all()
+    project = str(project)
+    project = project.strip('[]').replace(' ', '')
+    print (project)
+    return project
+        
 
