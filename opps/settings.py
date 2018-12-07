@@ -34,6 +34,7 @@ class BaseConfig(object):
     PROJECTS_PER_PAGE = 5
     CONFIG_ITEM_PER_PAGE = 5
     CONF_FILE_DIR = os.path.join("/data/deploy","config_file")
+    DEPLOY_LOGS_DIR = os.path.join(basedir+'/opps/logs')
     SYSTEM = [
                ('conf','conf'),
                ('app','app')

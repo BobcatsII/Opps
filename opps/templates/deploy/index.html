@@ -4,6 +4,26 @@
 {% block title %}Deploy{% endblock %}
 
 {% block content %}
+<script type="text/javascript">
+function showlog(deploy_id,logtype){
+	$.get("/deploy/detail", {deploy_id: deploy_id, logtype: logtype}, function(data){
+        alert("fslfjlasjf;sldfjasl;fjk")
+	var obj = document.getElementById("showlog");
+	obj.innerHTML = data;
+ 	//window.open("/deploy/detail?deploy_id=" + deploy_id + "&logtype=" + logtype); //页面跳转并传参 */
+	});
+}
+function getlog(deploy_id,logtype){
+	showlog(deploy_id,logtype);
+	flush=setInterval(showlog, 3000, deploy_id, logtype);
+}
+
+function stoplog(){
+	clearTimeout(flush);
+	window.location.reload();
+}
+</script>
+
 <div class="page-header">
     <h3>环境部署
         <small class="text-muted"> (已部署项目: {{ pagination.total }})</small>
@@ -65,5 +85,25 @@
 <div class="tip"><h5>当前没有部署任务.</h5></div>
 {% endif %}
 </div>
+
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onClick="stoplog()">×</button>
+                <h4>页面自动刷新</h4>
+            </div>
+            <div class="modal-body">
+            	<pre>
+                	<p id="showlog"></p>
+                </pre>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal" onClick="stoplog()">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
-        <th>部署项目</th>

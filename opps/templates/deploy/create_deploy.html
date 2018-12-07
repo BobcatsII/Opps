@@ -5,32 +5,35 @@
 {% block content %}
 <script language="javascript" type="text/javascript">
 $(function(){
-$('#deploy_type-0').change(function(){
-    $('#type input').attr("value",'app');
-    $.ajax({
-        type: "get",
-        contentType: "application/json",
-        dataType:"html",
-        url: "/deploy/get_project/app",
-        data: "type=" + $(this).val(),
-        success: function (data) {
-            $('#deploy_project').empty();
-            result = data.split(',');
-            var stroarea = '';
-            for (var i = 0; i < result.length; i++) {
-                stroarea += '<option value=' + result[i].substr(1,result[i].length-2) + '>';
-                stroarea += result[i].substr(1,result[i].length-2);
-                stroarea += '</option>';
+    $('#deploy_type-0').change(function(){
+        $('#type input').attr("value",'app');
+        alert("yesss")
+        $.ajax({
+            type: "get",
+            contentType: "application/json",
+            dataType:"html",
+            url: "/deploy/get_project",
+            data: "type=" + $(this).val(),
+            success: function (data) {
+                $('#project').empty();
+                result = data.split(',');
+                var stroarea = '';
+                for (var i = 0; i < result.length; i++) {
+                    stroarea += '<option value=' + result[i].substr(1,result[i].length-2) + '>';
+                    stroarea += result[i].substr(1,result[i].length-2);
+                    stroarea += '</option>';
+                    }
+                    $('#project').append(stroarea);
+                $('#deploy_project').multiselect({
+                    enableFiltering: true,
+                    filterBehavior: 'value',
+                    buttonWidth: '400px',
+                    dropRight: true
+                });
                 }
-                $('#deploy_project').append(stroarea);
-            $('#deploy_project').multiselect({
-                enableFiltering: true,
-                filterBehavior: 'value',
-                buttonWidth: '400px',
-                dropRight: true
             });
-            }
         });
+    });
 </script>
 
 <div class="row">
@@ -51,19 +54,16 @@ $('#deploy_type-0').change(function(){
                     <tr>
                         <td width="10%" border="1" align="center">项目类型</td>
                         <td>
-                             <div class="control-group">
-                                {% for type in form.deploy_type %}
-                                <label>
-                                    {{type}}
-                                    {{type.label}}
-                                </label>
-                                {% endfor%}
-                            </div>
+                                              
+                          
+                          
+                          
                         </td>
                         <td width="10%" border="1" align="center">项目名称</td>
                         <td>
-                            <select id="deploy_project" name="deploy_project" class="form-control">
-                            </select>
+                           <select name="deploy_project" id="deploy_project" class="form-control">
+                           </select>
+                           {{form.deploy_project}}
                         </td>
                     </tr>
                     <tr>

@@ -10,7 +10,7 @@ from opps.models import Version
 version_bp = Blueprint('version', __name__)
 
 @version_bp.route('/')
-#@login_required
+@login_required
 def index():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['VERSIONS_PER_PAGE']
@@ -20,7 +20,7 @@ def index():
 
 
 @version_bp.route('/create', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def create():
     form = VersionForm()
     if form.validate_on_submit():
