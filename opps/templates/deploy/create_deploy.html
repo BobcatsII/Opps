@@ -54,15 +54,15 @@ $(function(){
                     <tr>
                         <td width="10%" border="1" align="center">项目类型</td>
                         <td>
-                                              
-                          
-                          
-                          
+                            {% for type in form.deploy_type %}
+                            <label>
+                                {{type}}
+                                {{type.label}}
+                            </label>
+                            {% endfor%}
                         </td>
                         <td width="10%" border="1" align="center">项目名称</td>
                         <td>
-                           <select name="deploy_project" id="deploy_project" class="form-control">
-                           </select>
                            {{form.deploy_project}}
                         </td>
                     </tr>
@@ -80,6 +80,9 @@ $(function(){
                         <td width="10%" border="1" align="center">部署人员</td>
                         <td>
                             {{form.deploy_user}}
+                        </td>
+                        <td width="10%" border="1" align="center">上传文件</td>
+                        <td>
                         </td>
                     </tr>
                 </tbody>

@@ -1,11 +1,11 @@
 #-*- coding:utf-8 -*-
 
 import os
-from flask import render_template, flash, redirect, url_for, current_app, request, abort, Blueprint,jsonify
+from flask import render_template, flash, redirect, url_for, current_app, request, abort, Blueprint, jsonify
 from flask_login import current_user, login_required
 from opps.forms.deploy import CreateDeployForm
 from opps.extensions import db
-from opps.models import DeployLog, Project
+from opps.models import DeployLog, Project, Config
 from opps.settings import Operations
 
 deploy_bp = Blueprint('deploy', __name__)
@@ -14,20 +14,16 @@ deploy_bp = Blueprint('deploy', __name__)
 @deploy_bp.route('/')
 @login_required
 def index():
-    op = DeployLog.query.filter()
-    print (op)
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['DEPLOY_ITEM_PER_PAGE']
     pagination = DeployLog.query.order_by(DeployLog.dply_date.desc()).paginate(page, per_page=per_page)
     deploy_pages = pagination.items
-    return render_template('deploy/index.html', page=page, pagination=pagination, deploy_pages=deploy_pages, op=op)
+    return render_template('deploy/index.html', page=page, pagination=pagination, deploy_pages=deploy_pages)
 
 @deploy_bp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
     form = CreateDeployForm()
-    print (form.deploy_type)
-    #print (form.deploy_project)
     if form.validate_on_submit():
         dtype = form.deploy_type.data
         user = form.deploy_user.data
@@ -53,7 +49,6 @@ def get_project():
     project = a.strip('[]').replace(' ', '')
     return jsonify(project)
         
-
 @deploy_bp.route('/detail', methods=['GET','POST'])
 @login_required
 def detail():
@@ -69,7 +64,14 @@ def detail():
 def rollback():
     pass
 
-
-
-
-
+@deploy_bp.route('/create/upload', methods=['GET', 'POST'])
+@login_required
+def upload():
+    filedir = current_app.config['UPLODE_FILE_DIR']
+    if not os.path.exists(filedir):
+        os.makedirs(filedir)
+    if request.method == 'POST' and 'file' in request.files:
+        upfile = request.files.get('file')
+        filename = upfile.filename
+        upfile.save(os.path.join(filedir, filename))
+    return render_template('deploy/upload_file.html')    

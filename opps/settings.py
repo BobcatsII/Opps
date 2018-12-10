@@ -27,14 +27,22 @@ class BaseConfig(object):
     AVATARS_SAVE_PATH = os.path.join(OPPS_UPLOAD_PATH, 'avatars')
     AVATARS_SIZE_TUPLE = (30, 100, 200)
     BOOTSTRAP_SERVE_LOCAL = True
-    MAX_CONTENT_LENGTH = 3 * 1024 * 1024
     OPPS_MANAGE_USER_PER_PAGE = 30
     DEPLOY_ITEM_PER_PAGE = 5
     VERSIONS_PER_PAGE = 5
     PROJECTS_PER_PAGE = 5
     CONFIG_ITEM_PER_PAGE = 5
     CONF_FILE_DIR = os.path.join("/data/deploy","config_file")
+    UPLODE_FILE_DIR = os.path.join("/data/deploy","upload_file")
     DEPLOY_LOGS_DIR = os.path.join(basedir+'/opps/logs')
+
+    DROPZONE_ALLOWED_FILE_CUSTOM = True
+    DROPZONE_ALLOWED_FILE_TYPE = UPLODE_FILE_DIR + '/*, ' + '.war, .jar'
+    MAX_CONTENT_LENGTH = 80 * 1024 * 1024
+    DROPZONE_MAX_FILE_SIZE = 80
+    DROPZONE_MAX_FILES = 1
+    DROPZONE_ENABLE_CSRF = True
+
     SYSTEM = [
                ('conf','conf'),
                ('app','app')
