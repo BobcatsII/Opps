@@ -35,13 +35,22 @@ class BaseConfig(object):
     CONF_FILE_DIR = os.path.join("/data/deploy","config_file")
     UPLODE_FILE_DIR = os.path.join("/data/deploy","upload_file")
     DEPLOY_LOGS_DIR = os.path.join(basedir+'/opps/logs')
+    MAX_CONTENT_LENGTH = 80 * 1024 * 1024
 
     DROPZONE_ALLOWED_FILE_CUSTOM = True
     DROPZONE_ALLOWED_FILE_TYPE = UPLODE_FILE_DIR + '/*, ' + '.war, .jar'
-    MAX_CONTENT_LENGTH = 80 * 1024 * 1024
-    DROPZONE_MAX_FILE_SIZE = 80
-    DROPZONE_MAX_FILES = 1
+    DROPZONE_MAX_FILE_SIZE = 500
+    DROPZONE_MAX_FILES = 8
     DROPZONE_ENABLE_CSRF = True
+    DROPZONE_DEFAULT_MESSAGE = "将文件拖拽至此处 (单次上传最大数量: 8)"
+    DROPZONE_INVALID_FILE_TYPE = "只允许JAR/WAR包"
+    DROPZONE_FILE_TOO_BIG = "文件大小:{{filesize}}MB 文件最大限制:{{maxFilesize}}MB"
+    DROPZONE_MAX_FILE_EXCEED = "上传文件已至最大数量"
+    DROPZONE_UPLOAD_MULTIPLE = False
+    DROPZONE_SERVER_ERROR = "Server Error:{{statusCode}}"
+    DROPZONE_BROWSER_UNSUPPORTED = "您的浏览器不支持拖放文件上传"
+    
+    
 
     SYSTEM = [
                ('conf','conf'),

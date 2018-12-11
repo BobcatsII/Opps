@@ -30,6 +30,8 @@ function stoplog(){
         <span class="float-right"><a class="btn btn-primary btn-bg"
                              href="{{ url_for('deploy.create') }}">新增部署</a></span>
     </h3>
+        <span class="float-right"><a class="btn btn-warning btn-bg"
+                             href="{{ url_for('deploy.upload') }}">上传文件</a></span><br/>
 </div>
 {% if deploy_pages %}
 <table  class="table table-striped table-bordered bootstrap-datatable datatable responsive">

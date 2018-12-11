@@ -72,6 +72,5 @@ def upload():
         os.makedirs(filedir)
     if request.method == 'POST' and 'file' in request.files:
         upfile = request.files.get('file')
-        filename = upfile.filename
-        upfile.save(os.path.join(filedir, filename))
+        upfile.save(os.path.join(filedir, upfile.filename))
     return render_template('deploy/upload_file.html')    

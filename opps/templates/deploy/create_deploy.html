@@ -46,7 +46,7 @@ $(function(){
                 </div>
             </div>
             <div class="box-content">
-            <a class="btn btn-info btn-sm" href="/deploy">返回>></a><p/>
+            <a class="btn btn-info btn-bg" href="/deploy">返回</a><p/>
             <form  action="" method="post" class="form" role="form">
                 {{ form.csrf_token }}
                 <table width="100%" border="1" class="table table-bordered">
@@ -80,9 +80,6 @@ $(function(){
                         <td width="10%" border="1" align="center">部署人员</td>
                         <td>
                             {{form.deploy_user}}
-                        </td>
-                        <td width="10%" border="1" align="center">上传文件</td>
-                        <td>
                         </td>
                     </tr>
                 </tbody>

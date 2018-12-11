@@ -2,13 +2,12 @@
 
 {% block title %}Upload{% endblock %}
 
-{% block style %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dropzone.min.css') }}" type="text/css">
-    {{ dropzone.style('margin: 20px 0; border: 2px dashed #0087F7; min-height: 400px;') }}
-{% endblock %}
 
 {% block content %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dropzone.min.css') }}" type="text/css">
+    {{ dropzone.style('margin: 20px 0; border: 2px dashed #0087F7; min-height: 40px;') }}
+
     <div class="page-header">
         <h1>上传页面</h1>
     </div>
@@ -17,15 +16,12 @@
             {{ dropzone.create(action='deploy.upload') }}<br/>
         </div>
         <div>
-            <a class="btn btn-setting btn-primary" href="{{ url_for('deploy.create') }}">
-                完成
+            <a class="btn btn-info btn-primary" href="{{ url_for('deploy.index') }}">
+                返回
             </a>
         </div>
     </div>
-{% endblock %}
 
-{% block scripts %}
-    {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/dropzone.min.js') }}"></script>
     {{ dropzone.config() }}
 {% endblock %}
