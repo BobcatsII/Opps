@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 
 import os
+import time
 from datetime import datetime
-
 from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -120,12 +120,18 @@ class User(db.Model, UserMixin):
 class DeployLog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     dply_type = db.Column(db.String(20))
-    dply_item = db.Column(db.String(20))
+    dply_item = db.Column(db.String(50))
     dply_host = db.Column(db.String(30))
     dply_version = db.Column(db.String(20))
     dply_user = db.Column(db.String(20))
     dply_date = db.Column(db.DateTime, default=datetime.now)
     dply_stat = db.Column(db.String(20))
+
+    @classmethod
+    def get_deploy_timestamp(cls,delpoy_id):
+        date = cls.query.get(delpoy_id).dply_date
+        timestamp = int(time.mktime(date.timetuple()))
+        return timestamp
 
 class Version(db.Model):
     id = db.Column(db.Integer, primary_key=True)

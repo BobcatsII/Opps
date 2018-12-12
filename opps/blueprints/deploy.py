@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 from opps.forms.deploy import CreateDeployForm
 from opps.extensions import db
 from opps.models import DeployLog, Project, Config
-from opps.settings import Operations
+#from opps.settings import Operations
 
 deploy_bp = Blueprint('deploy', __name__)
 
@@ -30,11 +30,17 @@ def create():
         project = form.deploy_project.data
         host = form.deploy_host.data
         version = form.deploy_version.data
-        stat = "正在部署"
-        deploy = DeployLog(dply_type=dtype, dply_user=user, dply_item=project, dply_host=host, dply_version=version, dply_stat=stat)
+        deploy = DeployLog(dply_type=dtype, dply_user=user, dply_item=project, dply_host=host, dply_version=version)
         db.session.add(deploy)
         db.session.commit()
         flash('部署信息已提交', 'success')
+        deploy_last = DeployLog.query.order_by(DeployLog.dply_date.desc()).first()
+        deploy_id = deploy_last.id
+        deploy_timestamp = DeployLog.get_deploy_timestamp(deploy_id)
+        sql = DeployLog.query.get(deploy_id)
+        sql.dply_stat = "正在部署"
+        db.session.commit()
+        #task_id = 
         return redirect(url_for('.index'))
     return render_template('deploy/create_deploy.html', form=form)
 
@@ -64,7 +70,7 @@ def detail():
 def rollback():
     pass
 
-@deploy_bp.route('/create/upload', methods=['GET', 'POST'])
+@deploy_bp.route('/upload', methods=['GET', 'POST'])
 @login_required
 def upload():
     filedir = current_app.config['UPLODE_FILE_DIR']
@@ -72,5 +78,10 @@ def upload():
         os.makedirs(filedir)
     if request.method == 'POST' and 'file' in request.files:
         upfile = request.files.get('file')
-        upfile.save(os.path.join(filedir, upfile.filename))
+        bag = upfile.filename.split('.')[1]
+        bagdir = filedir + '/' + bag
+        print (bagdir)
+        if not os.path.exists(bagdir):
+            os.makedirs(bagdir)
+        upfile.save(os.path.join(bagdir, upfile.filename))
     return render_template('deploy/upload_file.html')    
