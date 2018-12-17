@@ -19,7 +19,7 @@
     shell: netstat -ntlp|grep {{port.stdout}}|wc -l
   
   - name: 拷贝新程序到服务器
-    synchronize: src={{package_dir}}/{{package_name}}.jar dest={{code_path}}
+    synchronize: src={{package_path}}/{{package_name}}.jar dest={{code_path}}
 
   - name: 拷贝软链接
     file: src={{code_path}} dest={{project_path}}/target/{{package_name}}.jar owner={{run_user}} group={{run_user}} state=link

@@ -5,7 +5,8 @@
   become_user: root
   tasks:
   - name: 检查程序端口
-    shell: grep -E 'protocol="org.apache.coyote.http11.Http11NioProtocol"|protocol="HTTP/1.1"' {{project_path}}/conf/server.xml | grep -v '<!--'| grep "<Connector" |cut -d '"' -f 2 |head -n1
+    #shell: grep -E 'protocol="org.apache.coyote.http11.Http11NioProtocol"|protocol="HTTP/1.1"' {{project_path}}/conf/server.xml | grep -v '<!--'| grep "<Connector" |cut -d '"' -f 2 |head -n1
+    shell: grep -E 'protocol="org.apache.coyote.http11.Http11NioProtocol"|protocol="HTTP/1.1"' {{project_path}}/conf/server.xml |cut -d '"' -f 2 |head -n1
     register: port
 
   - name: 检查代码目录是否存在
@@ -19,14 +20,16 @@
     shell: netstat -ntlp|grep {{port.stdout}}|wc -l
   
   - name: 拷贝新程序到服务器
-    synchronize: src={{package_dir}}/{{package_name}}.war dest={{code_path}}
+    synchronize: src={{package_path}}/{{package_name}}.war dest={{code_path}}
 
   - name: 拷贝软链接
     file: src={{code_path}} dest={{project_path}}/webapps/{{package_name}}.war owner={{run_user}} group={{run_user}} state=link
+    no_log: false
 
   - name: 启动服务
     command: chdir={{project_path}}/bin nohup bash catalina.sh start &
     become_user: "{{run_user}}"
+    no_log: false
  
   - name: 检查程序启动结果
     wait_for: host={{ansible_default_ipv4.address}} port={{port.stdout}} delay=20 timeout=50    

@@ -23,25 +23,40 @@ fi
 
 
 if [[ "$types" == "app" ]];then
+        package_name=${project_name}
         package_source="/data/deploy/upload_file"
         package_tmp=`ls -d ${package_source}/*/*${project_name}*`
         pdir="/data/deploy/upload_file/${version}"
-        bagtag=`echo $package_path |awk -F'.' '{print \$2}'`
-        package_dir="${pdir}/${bagtag}"
-        mkdir -p $package_dir
-        mv $package_path $package_dir
-        project_path="/opt/app/*${project_name}*"
+        bagtag=`echo $package_tmp |awk -F'.' '{print \$2}'`
+        package_path="${pdir}/${bagtag}"
+        mkdir -p $package_path
+        mv $package_tmp $package_path
+	project_path="/opt/app/${project_name}"
         code_dir="/data/repos/$version/$project_name/"
-        code_path="$code_dir/$project_name"_"$datestamp"
+        code_path="$code_dir/$project_name"".${bagtag}_""$datestamp"
         yaml_file="$script_path/ansible_files/app_${bagtag}.yaml"
 elif [[ "$types" == "conf" ]];then
         package_source="/data/deploy/config_file"
         package_path=`ls ${package_source}/${version}/*${project_name}*/*.py`
         if [[ $project_name =~ "srs" ]];then
+            package_name=${project_name}
+            filename=`echo $package_path|awk -F'/' '{print $NF}'`
             project_path="/opt/pro/${project_name}/research/api-server"
+            project_file="${project_path}/${filename}"
+            project_file_bak="${project_path}/${filename}_bak"
             code_dir="/data/repos/$version/$project_name/"
-            code_path="$code_dir/$project_name"_"$datestamp"
+            code_path="$code_dir/$project_name"".py_""$datestamp"
             yaml_file="$script_path/ansible_files/config.yaml"
+        elif [[ $project_name =~ "trans" ]];then
+            package_name=${project_name}
+            filename=`echo $package_path|awk -F'/' '{print $NF}'`
+            project_path="/opt/shell/live_record_task"
+            project_file="$project_path/$filename"
+            project_file_bak="${project_file}_bak"
+            code_dir="/data/repos/$version/$project_name/"
+            code_path="$code_dir/$project_name"".py_""$datestamp"
+            yaml_file="$script_path/ansible_files/trans.yaml"
+        fi
 fi
 
 echo ""
