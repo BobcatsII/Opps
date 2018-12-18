@@ -18,17 +18,16 @@
   - name: 检查程序是否停止
     shell: netstat -ntlp|grep {{port.stdout}}|wc -l
 
-  - name: 更改原文件
-    move: src={{project_file}} dest={{project_file_bak}}
-
   - name: 拷贝新程序到服务器
-    synchronize: src={{package_path}}/ dest={{code_path}}
+    synchronize: src={{package_path}} dest={{code_path}}
+    no_log: false
 
   - name: 拷贝软链接
     file: src={{code_path}} dest={{project_file}}  owner={{run_user}} group={{run_user}} state=link
+    no_log: false
 
   - name: 启动服务
-    command: chdir={{project_path}} nohup bash startup.sh &
+    command: chdir={{project_path}} nohup /etc/init.d/{{package_name}}-api start &
     become_user: "{{run_user}}"
  
   - name: 检查程序启动结果

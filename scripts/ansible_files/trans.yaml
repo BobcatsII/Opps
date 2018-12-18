@@ -17,11 +17,8 @@
 
   - name: 检查程序是否停止
     shell: ps aux |grep {{package_name}} |grep -v grep |wc -l
-    register: down
-    when: {{down.stdout}} == 0
-
-  - name: 更改原文件
-    move: src={{project_file}} dest={{project_file_bak}}
+  #  register: down
+  #  when: {{down.stdout}} == 0
 
   - name: 拷贝新程序到服务器
     synchronize: src={{package_path}} dest={{code_path}}
@@ -35,7 +32,7 @@
  
   - name: 检查程序启动结果
     wait_for: host={{ansible_default_ipv4.address}} num={{num.stdout}} delay=20 timeout=50
-    when: {{num.stdout}} != 0
+   # when: {{num.stdout}} != 0
    
   - name: 启动成功,添加版本号
     shell: echo '{{version}}' > {{project_path}}/version.txt

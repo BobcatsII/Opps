@@ -50,16 +50,18 @@ class BaseConfig(object):
     DROPZONE_SERVER_ERROR = "Server Error:{{statusCode}}"
     DROPZONE_BROWSER_UNSUPPORTED = "您的浏览器不支持拖放文件上传"
     
-    
+    DEPLOY_DIR = "/opt/scripts/deploy"
 
     SYSTEM = [
                ('conf','conf'),
                ('app','app')
              ]
+
     MODULE = [
                  ('config.py','config.py'), 
                  ('start_sss.py','start_sss.py')
              ]
+
     DEPLOY_HOST = {
                     "conf":["192.168.200.41","192.168.200.43","192.168.100.1"], 
                     "item":["192.168.200.141","192.168.200.143","192.168.100.1"]

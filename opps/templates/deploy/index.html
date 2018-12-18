@@ -65,7 +65,7 @@ function stoplog(){
                 </a>
                 {% if a.dply_stat == "部署成功" %}
                     <a class="btn btn-xs btn-danger" onclick="rollback({{a.id}})">
-                        回滚到上个版本
+                        回滚
                     </a>
                 {% elif a.dply_state == "部署失败" %}
                     <a class="btn btn-xs btn-warning" onclick="deploy_again({{a.id}})">
