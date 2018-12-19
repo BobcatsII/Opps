@@ -3,39 +3,6 @@
 {% block title %}Add Deploy{% endblock %}
 
 {% block content %}
-<script language="javascript" type="text/javascript">
-$(function(){
-    $('#deploy_type-0').change(function(){
-        $('#type input').attr("value",'app');
-        alert("yesss")
-        $.ajax({
-            type: "get",
-            contentType: "application/json",
-            dataType:"html",
-            url: "/deploy/get_project",
-            data: "type=" + $(this).val(),
-            success: function (data) {
-                $('#project').empty();
-                result = data.split(',');
-                var stroarea = '';
-                for (var i = 0; i < result.length; i++) {
-                    stroarea += '<option value=' + result[i].substr(1,result[i].length-2) + '>';
-                    stroarea += result[i].substr(1,result[i].length-2);
-                    stroarea += '</option>';
-                    }
-                    $('#project').append(stroarea);
-                $('#deploy_project').multiselect({
-                    enableFiltering: true,
-                    filterBehavior: 'value',
-                    buttonWidth: '400px',
-                    dropRight: true
-                });
-                }
-            });
-        });
-    });
-</script>
-
 <div class="row">
     <div class="row">
     <div class="box col-md-8">
@@ -84,7 +51,7 @@ $(function(){
                     </tr>
                 </tbody>
                 </table><br/>
-                {{ form.submit(class="btn btn-setting btn-primary") }}
+                {{ form.submit(class="btn btn-setting btn-primary")}}
             </form>
            </div>
         </div>

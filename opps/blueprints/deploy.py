@@ -10,7 +10,6 @@ from opps.tasks import ansible_deploy
 
 deploy_bp = Blueprint('deploy', __name__)
 
-
 @deploy_bp.route('/')
 @login_required
 def index():
@@ -27,21 +26,23 @@ def create():
     if form.validate_on_submit():
         dtype = form.deploy_type.data
         user = form.deploy_user.data
-        project = form.deploy_project.data
+        projects = form.deploy_project.data
         host = form.deploy_host.data
         version = form.deploy_version.data
-        deploy = DeployLog(dply_type=dtype, dply_user=user, dply_item=project, dply_host=host, dply_version=version)
-        db.session.add(deploy)
-        db.session.commit()
+        for project in projects.split(','):
+            deploy = DeployLog(dply_type=dtype, dply_user=user, dply_item=project, dply_host=host, dply_version=version)
+            db.session.add(deploy)
+            db.session.commit()
+            deploy_last = DeployLog.query.order_by(DeployLog.dply_date.desc()).first()
+            deploy_id = deploy_last.id
+            deploy_timestamp = DeployLog.get_deploy_timestamp(deploy_id)
+            sql = DeployLog.query.get(deploy_id)
+            sql.dply_stat = "正在部署"
+            db.session.commit()
+            task_id = ansible_deploy.delay(sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp)
+            sql.celery_id = task_id[0]
+            db.session.commit()
         flash('部署信息已提交', 'success')
-        deploy_last = DeployLog.query.order_by(DeployLog.dply_date.desc()).first()
-        deploy_id = deploy_last.id
-        deploy_timestamp = DeployLog.get_deploy_timestamp(deploy_id)
-        sql = DeployLog.query.get(deploy_id)
-        sql.dply_stat = "正在部署"
-        task_id = ansible_deploy.delay(dtype, project, version, host, deploy_id, deploy_timestamp)
-        sql.celery_id = task_id
-        db.session.commit()
         return redirect(url_for('.index'))
     return render_template('deploy/create_deploy.html', form=form)
 

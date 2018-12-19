@@ -126,7 +126,7 @@ class DeployLog(db.Model):
     dply_user = db.Column(db.String(20))
     dply_date = db.Column(db.DateTime, default=datetime.now)
     dply_stat = db.Column(db.String(20))
-    celery_id = db.Column(db.String(20))
+    celery_id = db.Column(db.String(200))
 
     @classmethod
     def get_deploy_timestamp(cls,delpoy_id):
