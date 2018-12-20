@@ -40,10 +40,11 @@ def create():
             sql.dply_stat = "正在部署"
             db.session.commit()
             task_id = ansible_deploy.delay(sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp)
-            sql.celery_id = task_id[0]
-            db.session.commit()
-        flash('部署信息已提交', 'success')
-        return redirect(url_for('.index'))
+            #task_id = ansible_deploy.apply_async(args=[sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp], queue='myvhost')
+            #sql.celery_id = task_id
+            #db.session.commit()
+            flash('部署信息已提交', 'success')
+            return redirect(url_for('.index'))
     return render_template('deploy/create_deploy.html', form=form)
 
 

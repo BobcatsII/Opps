@@ -51,6 +51,14 @@ class BaseConfig(object):
     DROPZONE_BROWSER_UNSUPPORTED = "您的浏览器不支持拖放文件上传"
     
     DEPLOY_DIR = "/opt/scripts/deploy"
+    
+    CELERY_BROKER_URL = "amqp://linan:linan123@192.168.227.128:5672/linanhost/"
+    CELERY_RESULT_BACKEND = "amqp://linan:linan123@192.168.227.128:5672/linanhost/"
+    #CELERY_TRACK_STARTED = True
+    #CELERYD_PREFETCH_MULTIPLIER = 1
+    #CELERY_TASK_RESULT_EXPIRES = 60
+    #CELERYD_HIJACK_ROOT_LOGGER = False
+    #CELERY_DEFAULT_QUEUE = 'DEFAULT_QUEUE'
 
     SYSTEM = [
                ('conf','conf'),

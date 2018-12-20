@@ -8,6 +8,7 @@ from flask_wtf import CSRFProtect
 from flask_mail import Mail
 from flask_moment import Moment
 from flask_avatars import Avatars
+from flask_celery import Celery
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
@@ -17,6 +18,7 @@ csrf = CSRFProtect()
 mail = Mail()
 moment = Moment()
 avatars = Avatars()
+celery = Celery()
 
 
 @login_manager.user_loader
