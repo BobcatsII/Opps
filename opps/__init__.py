@@ -5,7 +5,6 @@ import click
 from flask import Flask, render_template
 from flask_login import current_user
 from flask_wtf.csrf import CSRFError
-
 from opps.blueprints.auth import auth_bp
 from opps.blueprints.main import main_bp
 from opps.blueprints.user import user_bp
@@ -19,7 +18,6 @@ from opps.models import Role, User, Permission
 from opps.settings import config
 from celery import Celery
 
-
 def create_app(config_name=None):
     if config_name is None:
         config_name = os.getenv('FLASK_CONFIG', 'development')
@@ -32,17 +30,26 @@ def create_app(config_name=None):
     register_blueprints(app)
     register_commands(app)
     register_errorhandlers(app)
-    register_shell_context(app)
-    
-    global celery
-    register_celery(app)
+    register_shell_context(app) 
+    #make_celery(app)
 
     return app
 
-def register_celery(app):
-    celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'],backend=app.config['CELERY_RESULT_BACKEND'])
-    celery.conf.update(app.config)
-    return celery
+
+#def make_celery(app):
+#    celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'],backend=app.config['CELERY_RESULT_BACKEND'])
+#    celery.conf.update(app.config)
+#    TaskBase = celery.Task
+#    
+#    class ContextTask(TaskBase):
+#        abstract = True
+#
+#        def __call__(self, *args, **kwargs):
+#            with app.app_context():
+#                return TaskBase.__call__(self, *args, **kwargs)
+#
+#    celery.Task = ContextTask
+#    return celery
 
 
 def register_extensions(app):
@@ -54,7 +61,7 @@ def register_extensions(app):
     moment.init_app(app)
     avatars.init_app(app)
     csrf.init_app(app)
-    celery.init_app(app)
+#    celery.init_app(app)
 
 
 def register_blueprints(app):
@@ -67,11 +74,11 @@ def register_blueprints(app):
     app.register_blueprint(project_bp, url_prefix='/project')
     app.register_blueprint(config_bp, url_prefix='/config')
 
+
 def register_shell_context(app):
     @app.shell_context_processor
     def make_shell_context():
         return dict(db=db, User=User)
-
 
 
 def register_errorhandlers(app):

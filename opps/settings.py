@@ -52,13 +52,30 @@ class BaseConfig(object):
     
     DEPLOY_DIR = "/opt/scripts/deploy"
     
-    CELERY_BROKER_URL = "amqp://linan:linan123@192.168.227.128:5672/linanhost/"
-    CELERY_RESULT_BACKEND = "amqp://linan:linan123@192.168.227.128:5672/linanhost/"
-    #CELERY_TRACK_STARTED = True
-    #CELERYD_PREFETCH_MULTIPLIER = 1
-    #CELERY_TASK_RESULT_EXPIRES = 60
-    #CELERYD_HIJACK_ROOT_LOGGER = False
-    #CELERY_DEFAULT_QUEUE = 'DEFAULT_QUEUE'
+    CELERY_BROKER_URL = "amqp://linan:linan123@192.168.227.128:5672/linanhost"
+    CELERY_RESULT_BACKEND = "amqp://linan:linan123@192.168.227.128:5672/linanhost"
+#    CELERY_BROKER_URL = "redis://192.168.227.128:6879/0"
+#    CELERY_RESULT_BACKEND = "redis://192.168.227.128:6879/0"
+
+#    CELERY_DEFAULT_QUEUE = "default"
+#    CELERY_QUEUES = {
+#                        "default": {
+#                            "exchange": "default",
+#                            "exchange_type": "direct",
+#                            "routing_key": "default"
+#                        },
+#                        "topicqueue": {
+#                           "routing_key": "topic.#",
+#                            "exchange": "topic_exchange",
+#                            "exchange_type": "topic",
+#                        },
+#                        "task_eeg": {
+#                            "exchange": "tasks",
+#                            "exchange_type": "fanout",
+#                            "binding_key": "tasks",
+#                        },
+#                        
+#                    }
 
     SYSTEM = [
                ('conf','conf'),

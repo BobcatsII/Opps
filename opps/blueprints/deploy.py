@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 
 import os
+import time
 from flask import render_template, flash, redirect, url_for, current_app, request, abort, Blueprint, jsonify
 from flask_login import current_user, login_required
 from opps.forms.deploy import CreateDeployForm
@@ -39,9 +40,8 @@ def create():
             sql = DeployLog.query.get(deploy_id)
             sql.dply_stat = "正在部署"
             db.session.commit()
-            task_id = ansible_deploy.delay(sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp)
-            #task_id = ansible_deploy.apply_async(args=[sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp], queue='myvhost')
-            #sql.celery_id = task_id
+            rsp = ansible_deploy.delay(sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp)
+            #task_id = rsp.task_id
             #db.session.commit()
             flash('部署信息已提交', 'success')
             return redirect(url_for('.index'))
