@@ -25,31 +25,30 @@ def create_app(config_name=None):
     app = Flask('opps')
     
     app.config.from_object(config[config_name])
-
+  
     register_extensions(app)
     register_blueprints(app)
     register_commands(app)
     register_errorhandlers(app)
-    register_shell_context(app) 
-    #make_celery(app)
+    register_shell_context(app)
+    make_celery(app)
 
     return app
 
+def make_celery(app):
+    celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'],backend=app.config['CELERY_RESULT_BACKEND'])
+    celery.conf.update(app.config)
+    TaskBase = celery.Task
+    
+    class ContextTask(TaskBase):
+        abstract = True
 
-#def make_celery(app):
-#    celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'],backend=app.config['CELERY_RESULT_BACKEND'])
-#    celery.conf.update(app.config)
-#    TaskBase = celery.Task
-#    
-#    class ContextTask(TaskBase):
-#        abstract = True
-#
-#        def __call__(self, *args, **kwargs):
-#            with app.app_context():
-#                return TaskBase.__call__(self, *args, **kwargs)
-#
-#    celery.Task = ContextTask
-#    return celery
+        def __call__(self, *args, **kwargs):
+            with app.app_context():
+                return TaskBase.__call__(self, *args, **kwargs)
+
+    celery.Task = ContextTask
+    return celery
 
 
 def register_extensions(app):
@@ -61,8 +60,7 @@ def register_extensions(app):
     moment.init_app(app)
     avatars.init_app(app)
     csrf.init_app(app)
-#    celery.init_app(app)
-
+    celery.init_app(app)
 
 def register_blueprints(app):
     app.register_blueprint(main_bp)
@@ -129,3 +127,4 @@ def register_commands(app):
         Role.init_role()
 
         click.echo('完成.')
+

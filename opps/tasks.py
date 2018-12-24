@@ -11,12 +11,12 @@ from time import sleep
 from celery import platforms
 from opps.extensions import db, celery
 from opps.models import DeployLog
-from flask import render_template, flash, redirect, url_for, current_app, request, abort, Blueprint, jsonify
+from flask import Flask,render_template, flash, redirect, url_for, current_app, request, abort, Blueprint, jsonify
 
 platforms.C_FORCE_ROOT = True
 
-#@celery.task(name="opps.tasks.ansible_deploy")
 @celery.task()
+#@task
 def ansible_deploy(type, project, version, ip, deploy_id, deploy_date):
     script_path = current_app.config['DEPLOY_DIR'] + '/prod_vms-deploy.sh'
     task = subprocess.getstatusoutput('bash {0} {1} {2} {3} {4} {5} > {6}/deploy/{7}.log 2>&1'.format(script_path,project,version,ip,type,deploy_date,current_app.config['DEPLOY_LOGS_DIR'],deploy_id))
@@ -27,5 +27,3 @@ def ansible_deploy(type, project, version, ip, deploy_id, deploy_date):
         sql.dply_stat = '部署失败'
     db.session.commit()
     return task
-
-
