@@ -52,8 +52,10 @@ class BaseConfig(object):
     
     DEPLOY_DIR = "/opt/scripts/deploy"
     
-    CELERY_BROKER_URL = "amqp://linan:linan123@192.168.227.128:5672/linanhost"
-    CELERY_RESULT_BACKEND = "amqp://linan:linan123@192.168.227.128:5672/linanhost"
+    #CELERY_BROKER_URL = "amqp://linan:linan123@192.168.227.128:5672/linanhost"
+    #CELERY_RESULT_BACKEND = "amqp://linan:linan123@192.168.227.128:5672/linanhost"
+    CELERY_BROKER_URL = "amqp://linan:linan123@127.0.0.1:5672/linanhost"
+    CELERY_RESULT_BACKEND = "amqp://linan:linan123@127.0.01:5672/linanhost"
 #    CELERY_BROKER_URL = "redis://192.168.227.128:6879/0"
 #    CELERY_RESULT_BACKEND = "redis://192.168.227.128:6879/0"
 

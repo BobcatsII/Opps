@@ -16,6 +16,7 @@ bootstrap-flask = "*"
 flask-whooshee = "*"
 flask-migrate = "*"
 flask-avatars = "*"
+celery = "==3.1.25"
 
 [dev-packages]
 coverage = "*"

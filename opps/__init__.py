@@ -13,10 +13,10 @@ from opps.blueprints.deploy import deploy_bp
 from opps.blueprints.version import version_bp
 from opps.blueprints.project import project_bp
 from opps.blueprints.config import config_bp
-from opps.extensions import bootstrap, db, login_manager, dropzone, csrf, mail, moment, avatars, celery
+from opps.extensions import bootstrap, db, login_manager, dropzone, csrf, mail, moment, avatars
 from opps.models import Role, User, Permission
 from opps.settings import config
-from celery import Celery
+
 
 def create_app(config_name=None):
     if config_name is None:
@@ -31,25 +31,8 @@ def create_app(config_name=None):
     register_commands(app)
     register_errorhandlers(app)
     register_shell_context(app)
-    make_celery(app)
 
     return app
-
-def make_celery(app):
-    celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'],backend=app.config['CELERY_RESULT_BACKEND'])
-    celery.conf.update(app.config)
-    TaskBase = celery.Task
-    
-    class ContextTask(TaskBase):
-        abstract = True
-
-        def __call__(self, *args, **kwargs):
-            with app.app_context():
-                return TaskBase.__call__(self, *args, **kwargs)
-
-    celery.Task = ContextTask
-    return celery
-
 
 def register_extensions(app):
     bootstrap.init_app(app)
@@ -60,7 +43,6 @@ def register_extensions(app):
     moment.init_app(app)
     avatars.init_app(app)
     csrf.init_app(app)
-    celery.init_app(app)
 
 def register_blueprints(app):
     app.register_blueprint(main_bp)

@@ -8,7 +8,6 @@ from flask_wtf import CSRFProtect
 from flask_mail import Mail
 from flask_moment import Moment
 from flask_avatars import Avatars
-from flask_celery import Celery
 #from celery import Celery
 
 bootstrap = Bootstrap()
@@ -19,7 +18,7 @@ csrf = CSRFProtect()
 mail = Mail()
 moment = Moment()
 avatars = Avatars()
-celery = Celery()
+#celery = Celery()
 #celery = Celery('opps', broker="amqp://linan:linan123@192.168.227.128:5672/linanhost", backend="amqp://linan:linan123@192.168.227.128:5672/linanhost")
 #celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
 
