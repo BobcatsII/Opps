@@ -58,7 +58,6 @@ class BaseConfig(object):
     CELERY_RESULT_BACKEND = "amqp://linan:linan123@127.0.01:5672/linanhost"
 #    CELERY_BROKER_URL = "redis://192.168.227.128:6879/0"
 #    CELERY_RESULT_BACKEND = "redis://192.168.227.128:6879/0"
-
 #    CELERY_DEFAULT_QUEUE = "default"
 #    CELERY_QUEUES = {
 #                        "default": {
@@ -93,7 +92,10 @@ class BaseConfig(object):
                     "conf":["192.168.200.41","192.168.200.43","192.168.100.1"], 
                     "item":["192.168.200.141","192.168.200.143","192.168.100.1"]
                   }
-    
+
+
+
+
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:tysxwg07@192.168.23.71:3306/ops?charset=utf8"
 

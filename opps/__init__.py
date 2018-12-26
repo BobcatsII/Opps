@@ -17,7 +17,6 @@ from opps.extensions import bootstrap, db, login_manager, dropzone, csrf, mail, 
 from opps.models import Role, User, Permission
 from opps.settings import config
 
-
 def create_app(config_name=None):
     if config_name is None:
         config_name = os.getenv('FLASK_CONFIG', 'development')
