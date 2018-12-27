@@ -1229,3 +1229,1462 @@ Trying again in 32.00 seconds...
 [2018-12-20 17:12:40,970: DEBUG/MainProcess] | Consumer: Shutdown Events...
 [2018-12-20 17:12:40,971: DEBUG/MainProcess] | Consumer: Shutdown Connection...
 [2018-12-20 17:12:40,973: DEBUG/MainProcess] removing tasks from inqueue until task handler finished
+[2018-12-26 17:01:31,470: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2018-12-26 17:01:31,474: DEBUG/MainProcess] | Worker: Building graph...
+[2018-12-26 17:01:31,475: DEBUG/MainProcess] | Worker: New boot order: {Timer, Hub, Queues (intra), Pool, Autoscaler, Autoreloader, Beat, StateDB, Consumer}
+[2018-12-26 17:01:31,479: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2018-12-26 17:01:31,480: DEBUG/MainProcess] | Consumer: Building graph...
+[2018-12-26 17:01:31,486: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Events, Mingle, Gossip, Agent, Heart, Tasks, Control, event loop}
+[2018-12-26 17:01:31,486: WARNING/MainProcess] /root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2018-12-26 17:01:31,501: DEBUG/MainProcess] | Worker: Starting Hub
+[2018-12-26 17:01:31,502: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:01:31,502: DEBUG/MainProcess] | Worker: Starting Pool
+[2018-12-26 17:01:31,535: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:01:31,554: DEBUG/MainProcess] | Worker: Starting Consumer
+[2018-12-26 17:01:31,554: DEBUG/MainProcess] | Consumer: Starting Connection
+[2018-12-26 17:01:31,571: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2018-12-26 17:01:31,572: DEBUG/MainProcess] Open OK!
+[2018-12-26 17:01:31,573: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2018-12-26 17:01:31,573: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:01:31,573: DEBUG/MainProcess] | Consumer: Starting Events
+[2018-12-26 17:01:31,588: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2018-12-26 17:01:31,589: DEBUG/MainProcess] Open OK!
+[2018-12-26 17:01:31,590: DEBUG/MainProcess] using channel_id: 1
+[2018-12-26 17:01:31,593: DEBUG/MainProcess] Channel open
+[2018-12-26 17:01:31,593: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:01:31,593: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2018-12-26 17:01:31,594: INFO/MainProcess] mingle: searching for neighbors
+[2018-12-26 17:01:31,594: DEBUG/MainProcess] using channel_id: 1
+[2018-12-26 17:01:31,595: DEBUG/MainProcess] Channel open
+[2018-12-26 17:01:32,607: INFO/MainProcess] mingle: all alone
+[2018-12-26 17:01:32,607: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:01:32,609: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2018-12-26 17:01:32,609: DEBUG/MainProcess] using channel_id: 2
+[2018-12-26 17:01:32,611: DEBUG/MainProcess] Channel open
+[2018-12-26 17:01:32,619: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:01:32,620: DEBUG/MainProcess] | Consumer: Starting Heart
+[2018-12-26 17:01:32,622: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:01:32,623: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2018-12-26 17:01:32,635: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:01:32,635: DEBUG/MainProcess] | Consumer: Starting Control
+[2018-12-26 17:01:32,635: DEBUG/MainProcess] using channel_id: 3
+[2018-12-26 17:01:32,637: DEBUG/MainProcess] Channel open
+[2018-12-26 17:01:32,643: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:01:32,643: DEBUG/MainProcess] | Consumer: Starting event loop
+[2018-12-26 17:01:32,643: WARNING/MainProcess] celery@test ready.
+[2018-12-26 17:01:32,644: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2018-12-26 17:01:32,644: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[2018-12-26 17:02:10,006: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2018-12-26 17:02:10,009: DEBUG/MainProcess] | Worker: Building graph...
+[2018-12-26 17:02:10,010: DEBUG/MainProcess] | Worker: New boot order: {Beat, Timer, Hub, Queues (intra), Pool, Autoscaler, StateDB, Autoreloader, Consumer}
+[2018-12-26 17:02:10,016: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2018-12-26 17:02:10,016: DEBUG/MainProcess] | Consumer: Building graph...
+[2018-12-26 17:02:10,021: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Agent, Events, Heart, Mingle, Gossip, Tasks, Control, event loop}
+[2018-12-26 17:02:10,022: WARNING/MainProcess] /root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2018-12-26 17:02:10,026: DEBUG/MainProcess] | Worker: Starting Hub
+[2018-12-26 17:02:10,026: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:02:10,027: DEBUG/MainProcess] | Worker: Starting Pool
+[2018-12-26 17:02:10,052: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:02:10,053: DEBUG/MainProcess] | Worker: Starting Consumer
+[2018-12-26 17:02:10,053: DEBUG/MainProcess] | Consumer: Starting Connection
+[2018-12-26 17:02:10,075: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2018-12-26 17:02:10,077: DEBUG/MainProcess] Open OK!
+[2018-12-26 17:02:10,077: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2018-12-26 17:02:10,078: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:02:10,078: DEBUG/MainProcess] | Consumer: Starting Events
+[2018-12-26 17:02:10,088: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2018-12-26 17:02:10,089: DEBUG/MainProcess] Open OK!
+[2018-12-26 17:02:10,090: DEBUG/MainProcess] using channel_id: 1
+[2018-12-26 17:02:10,092: DEBUG/MainProcess] Channel open
+[2018-12-26 17:02:10,093: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:02:10,093: DEBUG/MainProcess] | Consumer: Starting Heart
+[2018-12-26 17:02:10,094: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:02:10,095: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2018-12-26 17:02:10,095: INFO/MainProcess] mingle: searching for neighbors
+[2018-12-26 17:02:10,095: DEBUG/MainProcess] using channel_id: 1
+[2018-12-26 17:02:10,096: DEBUG/MainProcess] Channel open
+[2018-12-26 17:02:11,106: INFO/MainProcess] mingle: all alone
+[2018-12-26 17:02:11,107: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:02:11,107: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2018-12-26 17:02:11,107: DEBUG/MainProcess] using channel_id: 2
+[2018-12-26 17:02:11,109: DEBUG/MainProcess] Channel open
+[2018-12-26 17:02:11,117: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:02:11,117: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2018-12-26 17:02:11,125: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:02:11,125: DEBUG/MainProcess] | Consumer: Starting Control
+[2018-12-26 17:02:11,126: DEBUG/MainProcess] using channel_id: 3
+[2018-12-26 17:02:11,127: DEBUG/MainProcess] Channel open
+[2018-12-26 17:02:11,134: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:02:11,134: DEBUG/MainProcess] | Consumer: Starting event loop
+[2018-12-26 17:02:11,135: WARNING/MainProcess] celery@test ready.
+[2018-12-26 17:02:11,136: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2018-12-26 17:02:11,137: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[2018-12-26 17:03:09,944: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[8d8f4d23-afe3-4aff-bf54-0aedd1d72e55]
+[2018-12-26 17:03:09,945: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7fa2ba0172f0> (args:('opps.tasks.ansible_deploy', '8d8f4d23-afe3-4aff-bf54-0aedd1d72e55', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 52, 1545814990), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '8d8f4d23-afe3-4aff-bf54-0aedd1d72e55', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 52, 1545814990), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': 'b2de2800-fbb3-313a-91fb-7c72ef7ff663', 'correlation_id': '8d8f4d23-afe3-4aff-bf54-0aedd1d72e55', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2018-12-26 17:03:09,958: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[8d8f4d23-afe3-4aff-bf54-0aedd1d72e55] pid:6114
+[2018-12-26 17:03:48,033: DEBUG/Worker-1] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2018-12-26 17:03:48,037: DEBUG/Worker-1] Open OK!
+[2018-12-26 17:03:48,037: DEBUG/Worker-1] using channel_id: 1
+[2018-12-26 17:03:48,040: DEBUG/Worker-1] Channel open
+[2018-12-26 17:03:48,076: INFO/MainProcess] Task opps.tasks.ansible_deploy[8d8f4d23-afe3-4aff-bf54-0aedd1d72e55] succeeded in 38.12138623899955s: (0, '')
+[2018-12-26 17:33:52,930: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2018-12-26 17:33:52,933: DEBUG/MainProcess] | Worker: Building graph...
+[2018-12-26 17:33:52,934: DEBUG/MainProcess] | Worker: New boot order: {Timer, Hub, Queues (intra), Pool, Autoscaler, Autoreloader, StateDB, Beat, Consumer}
+[2018-12-26 17:33:52,938: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2018-12-26 17:33:52,939: DEBUG/MainProcess] | Consumer: Building graph...
+[2018-12-26 17:33:52,946: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Events, Mingle, Tasks, Control, Agent, Gossip, Heart, event loop}
+[2018-12-26 17:33:52,947: WARNING/MainProcess] /root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2018-12-26 17:33:52,956: DEBUG/MainProcess] | Worker: Starting Hub
+[2018-12-26 17:33:52,956: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:33:52,956: DEBUG/MainProcess] | Worker: Starting Pool
+[2018-12-26 17:33:52,983: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:33:52,984: DEBUG/MainProcess] | Worker: Starting Consumer
+[2018-12-26 17:33:52,985: DEBUG/MainProcess] | Consumer: Starting Connection
+[2018-12-26 17:33:53,010: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2018-12-26 17:33:53,011: DEBUG/MainProcess] Open OK!
+[2018-12-26 17:33:53,012: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2018-12-26 17:33:53,012: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:33:53,012: DEBUG/MainProcess] | Consumer: Starting Events
+[2018-12-26 17:33:53,023: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2018-12-26 17:33:53,024: DEBUG/MainProcess] Open OK!
+[2018-12-26 17:33:53,025: DEBUG/MainProcess] using channel_id: 1
+[2018-12-26 17:33:53,028: DEBUG/MainProcess] Channel open
+[2018-12-26 17:33:53,029: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:33:53,029: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2018-12-26 17:33:53,029: INFO/MainProcess] mingle: searching for neighbors
+[2018-12-26 17:33:53,030: DEBUG/MainProcess] using channel_id: 1
+[2018-12-26 17:33:53,030: DEBUG/MainProcess] Channel open
+[2018-12-26 17:33:54,039: INFO/MainProcess] mingle: all alone
+[2018-12-26 17:33:54,039: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:33:54,040: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2018-12-26 17:33:54,043: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:33:54,043: DEBUG/MainProcess] | Consumer: Starting Control
+[2018-12-26 17:33:54,044: DEBUG/MainProcess] using channel_id: 2
+[2018-12-26 17:33:54,044: DEBUG/MainProcess] Channel open
+[2018-12-26 17:33:54,047: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:33:54,047: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2018-12-26 17:33:54,047: DEBUG/MainProcess] using channel_id: 3
+[2018-12-26 17:33:54,048: DEBUG/MainProcess] Channel open
+[2018-12-26 17:33:54,052: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:33:54,052: DEBUG/MainProcess] | Consumer: Starting Heart
+[2018-12-26 17:33:54,053: DEBUG/MainProcess] ^-- substep ok
+[2018-12-26 17:33:54,053: DEBUG/MainProcess] | Consumer: Starting event loop
+[2018-12-26 17:33:54,054: WARNING/MainProcess] celery@test ready.
+[2018-12-26 17:33:54,055: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2018-12-26 17:33:54,055: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[2018-12-26 18:11:38,967: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 280, in start
+    blueprint.start(self)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/bootsteps.py", line 123, in start
+    step.start(parent)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 884, in start
+    c.loop(*c.loop_args())
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/loops.py", line 76, in asynloop
+    next(loop)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/async/hub.py", line 340, in create_loop
+    cb(*cbargs)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/transport/base.py", line 164, in on_readable
+    reader(loop)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/transport/base.py", line 146, in _read
+    drain_events(timeout=0)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/connection.py", line 303, in drain_events
+    chanmap, None, timeout=timeout,
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/connection.py", line 366, in _wait_multiple
+    channel, method_sig, args, content = read_timeout(timeout)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/connection.py", line 337, in read_timeout
+    return self.method_reader.read_method()
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/method_framing.py", line 189, in read_method
+    raise m
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/method_framing.py", line 107, in _next_method
+    frame_type, channel, payload = read_frame()
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/transport.py", line 154, in read_frame
+    frame_header = read(7, True)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/transport.py", line 277, in _read
+    s = recv(n - len(rbuf))
+ConnectionResetError: [Errno 104] Connection reset by peer
+[2018-12-26 18:11:48,329: DEBUG/MainProcess] | Consumer: Restarting event loop...
+[2018-12-26 18:11:48,330: DEBUG/MainProcess] | Consumer: Restarting Heart...
+[2018-12-26 18:11:48,331: DEBUG/MainProcess] | Consumer: Restarting Gossip...
+[2018-12-26 18:11:48,332: DEBUG/MainProcess] | Consumer: Restarting Control...
+[2018-12-26 18:11:48,332: DEBUG/MainProcess] | Consumer: Restarting Tasks...
+[2018-12-26 18:11:48,333: DEBUG/MainProcess] Canceling task consumer...
+[2018-12-26 18:11:48,333: DEBUG/MainProcess] | Consumer: Restarting Mingle...
+[2018-12-26 18:11:48,334: DEBUG/MainProcess] | Consumer: Restarting Events...
+[2018-12-26 18:11:48,334: DEBUG/MainProcess] | Consumer: Restarting Connection...
+[2018-12-26 18:11:48,334: DEBUG/MainProcess] | Consumer: Starting Connection
+[2018-12-26 18:11:48,441: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2018-12-26 18:11:50,561: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 4.00 seconds...
+
+[2018-12-26 18:11:54,590: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 6.00 seconds...
+
+[2018-12-26 18:12:00,611: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 8.00 seconds...
+
+[2018-12-26 18:12:08,649: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 10.00 seconds...
+
+[2018-12-26 18:12:18,693: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 12.00 seconds...
+
+[2018-12-26 18:12:30,740: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 14.00 seconds...
+
+[2018-12-26 18:12:44,788: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 16.00 seconds...
+
+[2018-12-26 18:13:00,840: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 18.00 seconds...
+
+[2018-12-26 18:13:18,879: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 20.00 seconds...
+
+[2018-12-26 18:13:38,930: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 22.00 seconds...
+
+[2018-12-26 18:13:45,115: DEBUG/MainProcess] | Worker: Closing Hub...
+[2018-12-26 18:13:45,115: DEBUG/MainProcess] | Worker: Closing Pool...
+[2018-12-26 18:13:45,116: DEBUG/MainProcess] | Worker: Closing Consumer...
+[2018-12-26 18:13:45,116: DEBUG/MainProcess] | Worker: Stopping Consumer...
+[2018-12-26 18:13:45,116: DEBUG/MainProcess] | Worker: Stopping Pool...
+[2018-12-26 18:13:46,121: DEBUG/MainProcess] | Worker: Stopping Hub...
+[2018-12-26 18:13:46,122: DEBUG/MainProcess] | Consumer: Shutdown Heart...
+[2018-12-26 18:13:46,122: DEBUG/MainProcess] | Consumer: Shutdown Gossip...
+[2018-12-26 18:13:46,122: DEBUG/MainProcess] | Consumer: Shutdown Control...
+[2018-12-26 18:13:46,122: DEBUG/MainProcess] | Consumer: Shutdown Tasks...
+[2018-12-26 18:13:46,122: DEBUG/MainProcess] Canceling task consumer...
+[2018-12-26 18:13:46,123: DEBUG/MainProcess] Closing consumer channel...
+[2018-12-26 18:13:46,123: DEBUG/MainProcess] | Consumer: Shutdown Events...
+[2018-12-26 18:13:46,128: DEBUG/MainProcess] | Consumer: Shutdown Connection...
+[2018-12-26 18:13:46,129: DEBUG/MainProcess] removing tasks from inqueue until task handler finished
+[2018-12-27 13:48:38,638: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2018-12-27 13:48:38,697: DEBUG/MainProcess] | Worker: Building graph...
+[2018-12-27 13:48:38,698: DEBUG/MainProcess] | Worker: New boot order: {StateDB, Timer, Hub, Queues (intra), Pool, Autoreloader, Beat, Autoscaler, Consumer}
+[2018-12-27 13:48:38,750: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2018-12-27 13:48:38,751: DEBUG/MainProcess] | Consumer: Building graph...
+[2018-12-27 13:48:38,794: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Events, Heart, Mingle, Gossip, Tasks, Control, Agent, event loop}
+[2018-12-27 13:48:38,819: WARNING/MainProcess] /root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2018-12-27 13:48:38,862: DEBUG/MainProcess] | Worker: Starting Hub
+[2018-12-27 13:48:38,862: DEBUG/MainProcess] ^-- substep ok
+[2018-12-27 13:48:38,863: DEBUG/MainProcess] | Worker: Starting Pool
+[2018-12-27 13:48:38,900: DEBUG/MainProcess] ^-- substep ok
+[2018-12-27 13:48:38,904: DEBUG/MainProcess] | Worker: Starting Consumer
+[2018-12-27 13:48:38,904: DEBUG/MainProcess] | Consumer: Starting Connection
+[2018-12-27 13:48:38,929: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2018-12-27 13:48:40,942: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 4.00 seconds...
+
+[2018-12-27 13:48:44,970: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 6.00 seconds...
+
+[2018-12-27 13:48:50,994: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 8.00 seconds...
+
+[2018-12-27 13:48:59,028: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 10.00 seconds...
+
+[2018-12-27 13:49:09,051: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 12.00 seconds...
+
+[2018-12-27 13:49:21,078: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 14.00 seconds...
+
+[2018-12-27 13:49:35,106: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 16.00 seconds...
+
+[2018-12-27 13:49:51,158: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 18.00 seconds...
+
+[2018-12-27 13:50:09,203: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 20.00 seconds...
+
+[2018-12-27 13:50:29,262: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 22.00 seconds...
+
+[2018-12-27 13:50:51,322: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 24.00 seconds...
+
+[2018-12-27 13:51:15,378: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 26.00 seconds...
+
+[2018-12-27 13:51:41,445: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 28.00 seconds...
+
+[2018-12-27 13:52:09,509: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 30.00 seconds...
+
+[2018-12-27 13:52:39,580: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:53:11,674: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:53:43,746: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:54:15,818: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:54:47,889: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:55:20,175: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:55:52,253: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:56:24,334: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:56:56,438: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:57:28,502: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:58:00,578: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:58:32,649: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:59:04,727: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 13:59:36,794: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:00:08,878: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:00:40,937: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:01:13,009: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:01:45,090: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:02:17,170: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:02:49,249: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:03:21,314: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:03:53,398: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:04:25,572: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:04:57,652: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:05:29,730: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:06:01,796: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:06:33,861: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:07:05,935: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:07:38,017: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:08:10,199: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:08:42,276: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:09:14,476: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:09:46,754: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:10:18,825: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:10:50,891: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:11:22,953: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:11:55,032: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:12:27,107: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:12:59,192: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:13:31,266: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:14:03,528: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:14:35,594: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:15:07,665: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:15:39,741: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:16:11,815: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:16:43,878: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:17:15,954: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:17:48,029: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:18:20,111: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:18:52,183: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:19:24,261: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:19:56,340: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:20:28,413: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:21:00,480: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:21:32,556: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:22:04,636: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:22:36,756: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:23:08,838: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:23:40,910: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:24:12,991: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:24:45,066: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:25:17,272: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:25:49,346: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:26:21,411: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:26:53,491: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:27:25,559: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:27:57,634: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:28:29,709: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:29:01,798: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:29:33,870: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:30:05,941: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:30:38,027: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:31:10,107: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:31:42,179: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:32:14,257: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:32:46,346: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:33:18,414: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:33:50,490: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:34:22,557: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:34:54,677: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:35:26,740: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:35:58,823: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:36:30,904: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:37:02,982: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:37:35,061: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:38:07,144: DEBUG/MainProcess] | Consumer: Starting Connection
+[2018-12-27 14:38:07,158: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2018-12-27 14:38:09,178: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 4.00 seconds...
+
+[2018-12-27 14:38:13,194: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 6.00 seconds...
+
+[2018-12-27 14:38:19,223: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 8.00 seconds...
+
+[2018-12-27 14:38:27,256: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 10.00 seconds...
+
+[2018-12-27 14:38:37,283: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 12.00 seconds...
+
+[2018-12-27 14:38:49,313: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 14.00 seconds...
+
+[2018-12-27 14:39:03,349: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 16.00 seconds...
+
+[2018-12-27 14:39:19,387: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 18.00 seconds...
+
+[2018-12-27 14:39:37,442: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 20.00 seconds...
+
+[2018-12-27 14:39:57,492: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 22.00 seconds...
+
+[2018-12-27 14:40:19,552: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 24.00 seconds...
+
+[2018-12-27 14:40:43,609: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 26.00 seconds...
+
+[2018-12-27 14:41:09,675: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 28.00 seconds...
+
+[2018-12-27 14:41:37,756: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 30.00 seconds...
+
+[2018-12-27 14:42:07,836: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:42:39,907: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:43:11,988: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:43:44,068: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:44:16,148: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:44:48,228: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:45:20,301: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:45:52,373: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:46:24,441: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:46:56,520: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:47:28,597: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:48:00,673: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:48:32,948: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:49:05,023: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:49:37,106: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:50:09,195: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:50:41,304: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:51:13,615: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:51:45,683: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:52:17,764: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:52:50,036: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:53:22,108: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:53:54,191: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:54:26,268: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:54:58,343: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:55:30,421: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:56:02,489: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:56:34,571: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:57:06,649: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:57:38,718: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:58:10,798: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:58:42,875: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:59:14,954: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 14:59:47,028: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:00:19,109: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:00:51,194: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:01:23,271: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:01:55,375: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:02:27,458: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:02:59,536: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:03:31,603: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:04:03,684: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:04:35,757: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:05:07,831: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:05:39,902: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:06:11,975: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:06:44,094: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:07:16,177: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:07:48,256: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:08:20,320: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:08:52,388: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:09:24,460: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:09:56,790: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:10:28,868: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:11:00,938: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:11:33,025: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:12:05,087: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:12:37,158: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:13:09,234: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:13:41,308: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:14:13,376: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:14:45,449: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:15:17,521: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:15:49,597: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:16:21,667: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:16:53,739: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:17:25,807: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:17:57,875: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:18:29,949: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:19:02,026: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:19:34,111: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:20:06,179: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:20:38,257: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:21:10,336: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:21:42,414: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:22:14,485: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:22:46,580: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:23:18,661: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:23:50,739: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:24:22,817: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:24:54,899: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:25:26,982: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:25:59,061: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:26:31,147: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:27:03,222: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:27:35,292: DEBUG/MainProcess] | Consumer: Starting Connection
+[2018-12-27 15:27:35,301: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2018-12-27 15:27:37,317: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 4.00 seconds...
+
+[2018-12-27 15:27:41,345: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 6.00 seconds...
+
+[2018-12-27 15:27:47,365: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 8.00 seconds...
+
+[2018-12-27 15:27:55,401: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 10.00 seconds...
+
+[2018-12-27 15:28:05,439: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 12.00 seconds...
+
+[2018-12-27 15:28:17,472: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 14.00 seconds...
+
+[2018-12-27 15:28:31,517: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 16.00 seconds...
+
+[2018-12-27 15:28:47,566: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 18.00 seconds...
+
+[2018-12-27 15:29:05,620: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 20.00 seconds...
+
+[2018-12-27 15:29:25,672: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 22.00 seconds...
+
+[2018-12-27 15:29:47,725: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 24.00 seconds...
+
+[2018-12-27 15:30:11,778: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 26.00 seconds...
+
+[2018-12-27 15:30:37,835: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 28.00 seconds...
+
+[2018-12-27 15:31:05,920: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 30.00 seconds...
+
+[2018-12-27 15:31:35,983: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:32:08,079: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:32:40,164: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:33:12,246: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:33:44,317: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:34:16,404: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:34:48,478: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:35:20,546: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:35:52,628: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:36:24,710: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:36:56,788: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:37:28,862: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:38:00,938: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:38:33,012: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:39:05,078: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:39:37,148: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:40:09,222: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:40:41,419: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:41:13,498: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:41:45,568: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:42:17,653: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:42:49,724: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:43:21,803: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:43:53,875: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:44:25,970: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:44:58,051: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:45:30,134: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:46:02,213: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:46:34,284: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:47:06,357: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:47:38,430: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:48:10,500: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:48:42,567: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:49:14,749: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:49:46,823: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:50:18,899: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:50:50,969: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:51:23,035: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:51:55,108: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:52:27,178: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:52:59,260: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:53:31,335: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:54:03,418: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:54:35,490: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:55:07,568: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:55:39,641: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:56:11,712: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:56:43,803: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:57:15,878: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:57:47,950: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:58:20,028: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:58:52,104: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:59:24,189: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 15:59:56,264: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:00:28,335: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:01:00,668: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:01:32,752: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:02:04,970: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:02:37,056: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:03:09,128: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:03:41,194: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:04:13,267: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:04:45,334: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:05:17,407: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:05:49,476: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:06:21,546: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:06:53,616: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:07:25,684: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:07:57,762: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:08:29,838: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:09:01,912: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:09:33,989: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:10:06,054: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:10:38,121: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:11:10,198: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:11:42,270: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:12:14,340: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:12:46,409: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:13:18,479: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:13:50,547: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:14:22,628: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:14:54,707: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:15:26,773: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:15:58,872: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:16:31,026: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:17:03,095: DEBUG/MainProcess] | Consumer: Starting Connection
+[2018-12-27 16:17:03,109: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2018-12-27 16:17:05,125: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 4.00 seconds...
+
+[2018-12-27 16:17:09,147: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 6.00 seconds...
+
+[2018-12-27 16:17:15,177: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 8.00 seconds...
+
+[2018-12-27 16:17:23,214: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 10.00 seconds...
+
+[2018-12-27 16:17:33,240: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 12.00 seconds...
+
+[2018-12-27 16:17:45,280: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 14.00 seconds...
+
+[2018-12-27 16:17:59,323: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 16.00 seconds...
+
+[2018-12-27 16:18:15,460: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 18.00 seconds...
+
+[2018-12-27 16:18:33,520: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 20.00 seconds...
+
+[2018-12-27 16:18:53,570: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 22.00 seconds...
+
+[2018-12-27 16:19:15,630: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 24.00 seconds...
+
+[2018-12-27 16:19:39,700: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 26.00 seconds...
+
+[2018-12-27 16:20:05,976: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 28.00 seconds...
+
+[2018-12-27 16:20:34,043: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 30.00 seconds...
+
+[2018-12-27 16:21:04,125: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:21:36,211: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:22:08,283: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:22:40,361: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:23:12,675: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:23:44,745: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:24:16,827: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:24:49,492: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:25:21,557: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:25:53,633: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:26:25,762: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:26:57,844: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:27:29,945: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:28:02,012: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:28:34,090: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:29:06,159: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:29:38,352: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:30:10,421: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:30:42,492: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:31:14,569: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:31:46,650: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:32:18,728: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:32:50,847: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:33:22,922: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:33:55,153: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:34:27,232: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:34:59,305: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:35:31,377: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:36:03,455: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:36:35,532: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:37:07,851: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:37:39,932: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:38:12,023: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:38:44,107: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:39:16,181: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:39:48,307: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:40:20,507: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:40:52,587: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:41:24,660: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:41:56,741: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:42:28,822: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:43:00,903: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:43:32,975: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:44:05,052: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:44:37,135: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:45:09,215: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:45:41,297: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:46:13,376: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:46:45,446: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:47:17,526: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:47:49,605: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:48:21,682: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:48:53,764: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:49:25,833: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 32.00 seconds...
+
+[2018-12-27 16:49:57,937: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2018-12-27 16:49:57,939: DEBUG/MainProcess] Open OK!
+[2018-12-27 16:49:57,940: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2018-12-27 16:49:57,940: DEBUG/MainProcess] ^-- substep ok
+[2018-12-27 16:49:57,940: DEBUG/MainProcess] | Consumer: Starting Events
+[2018-12-27 16:49:57,955: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2018-12-27 16:49:57,956: DEBUG/MainProcess] Open OK!
+[2018-12-27 16:49:57,957: DEBUG/MainProcess] using channel_id: 1
+[2018-12-27 16:49:57,959: DEBUG/MainProcess] Channel open
+[2018-12-27 16:49:57,960: DEBUG/MainProcess] ^-- substep ok
+[2018-12-27 16:49:57,960: DEBUG/MainProcess] | Consumer: Starting Heart
+[2018-12-27 16:49:57,966: DEBUG/MainProcess] ^-- substep ok
+[2018-12-27 16:49:57,966: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2018-12-27 16:49:57,966: INFO/MainProcess] mingle: searching for neighbors
+[2018-12-27 16:49:57,967: DEBUG/MainProcess] using channel_id: 1
+[2018-12-27 16:49:57,970: DEBUG/MainProcess] Channel open
+[2018-12-27 16:49:58,981: INFO/MainProcess] mingle: all alone
+[2018-12-27 16:49:58,981: DEBUG/MainProcess] ^-- substep ok
+[2018-12-27 16:49:58,982: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2018-12-27 16:49:58,982: DEBUG/MainProcess] using channel_id: 2
+[2018-12-27 16:49:58,982: DEBUG/MainProcess] Channel open
+[2018-12-27 16:49:58,986: DEBUG/MainProcess] ^-- substep ok
+[2018-12-27 16:49:58,986: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2018-12-27 16:49:59,019: DEBUG/MainProcess] ^-- substep ok
+[2018-12-27 16:49:59,019: DEBUG/MainProcess] | Consumer: Starting Control
+[2018-12-27 16:49:59,019: DEBUG/MainProcess] using channel_id: 3
+[2018-12-27 16:49:59,020: DEBUG/MainProcess] Channel open
+[2018-12-27 16:49:59,022: DEBUG/MainProcess] ^-- substep ok
+[2018-12-27 16:49:59,022: DEBUG/MainProcess] | Consumer: Starting event loop
+[2018-12-27 16:49:59,023: WARNING/MainProcess] celery@test ready.
+[2018-12-27 16:49:59,023: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2018-12-27 16:49:59,024: DEBUG/MainProcess] basic.qos: prefetch_count->4

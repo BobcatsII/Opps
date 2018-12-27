@@ -18,6 +18,10 @@ main_bp = Blueprint('main', __name__)
 @main_bp.route('/')
 def index():
     if current_user.is_authenticated: 
+        #项目统计
+        project_count = Project.query.count()
+        project_enable = Project.query.filter_by(project_stat=1).count()
+        project_disable = Project.query.filter_by(project_stat=0).count()
         return render_template('main/index.html')
     else:
         return redirect(url_for('auth.login'))

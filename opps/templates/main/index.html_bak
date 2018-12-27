@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}DashBoard{% endblock %}
+
+{% block content %}
+<body>
+<div class="ch-container">
+    <div class="row">
+        <!-- left menu starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <ul class="nav nav-pills nav-stacked main-menu">
+                        <li ><a href="/deploy/"><i class="glyphicon glyphicon-eye-open"></i><span> 环境部署</span></a>
+                        </li>
+                        <li><a href="/project/"><i class="glyphicon glyphicon-picture"></i><span> 查看项目</span></a>
+                        </li>
+                        <li><a href="/version/"><i class="glyphicon glyphicon-picture"></i><span> 查看发布版本</span></a>
+                        </li>
+                        <li ><a href="/deploy/"><i class="glyphicon glyphicon-eye-open"></i><span> 环境部署</span></a></li>
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 配置中心</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="/config/"><i class="glyphicon glyphicon-picture"></i><span> 文件配置</span></a>
+                                </li>
+                                <li><a href="/project/"><i class="glyphicon glyphicon-picture"></i><span> 项目配置</span></a>
+                                </li>
+                                <li><a href="/version/"><i class="glyphicon glyphicon-picture"></i><span> 版本配置</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<body>
+{% endblock %}
