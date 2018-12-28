@@ -4,10 +4,10 @@
 {% block title %}Configs{% endblock %}
 {% block content %}
 <div class="page-header">
-    <h3>文件配置列表
-        <small class="text-muted"> (已添加版本数: {{ pagination.total }})</small>
+    <h3>文件配置
+        <small class="text-muted"> (已添加配置: {{ pagination.total }})</small>
         <span class="float-right"><a class="btn btn-primary btn-bg"
-                             href="{{ url_for('config.create') }}">新增文件配置</a></span>
+                             href="{{ url_for('config.create') }}">新增配置</a></span>
 
     </h3>
 </div>

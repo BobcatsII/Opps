@@ -21,12 +21,14 @@
                     <tr>
                         <td width="10%" border="1" align="center">项目类型</td>
                         <td>
-                            {% for type in form.deploy_type %}
-                            <label>
-                                {{type}}
-                                {{type.label}}
-                            </label>
-                            {% endfor%}
+                            <div class="radio" id="type">
+                                <label>
+                                <input type="radio" name="type" id="type_app" value="web" >APP服务
+                                </label>
+                                <label>
+                                <input type="radio" name="type" id="type_conf" value="service" >CONF服务
+                                </label>
+                            </div> 
                         </td>
                         <td width="10%" border="1" align="center">项目名称</td>
                         <td>

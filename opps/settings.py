@@ -78,16 +78,17 @@ class BaseConfig(object):
 #                        
 #                    }
 
+    #项目所属类型
     SYSTEM = [
                ('conf','conf'),
                ('app','app')
              ]
-
+    #配置文件名称
     MODULE = [
                  ('config.py','config.py'), 
                  ('start_sss.py','start_sss.py')
              ]
-
+    #
     DEPLOY_HOST = {
                     "conf":["192.168.200.41","192.168.200.43","192.168.100.1"], 
                     "item":["192.168.200.141","192.168.200.143","192.168.100.1"]

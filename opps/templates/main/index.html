@@ -12,17 +12,43 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card border-secondary mb-3">
-                <div class="card-header"><span class="oi oi-people"></span> 用户</div>
+                <div class="card-header"><span class="oi oi-people"></span> 部署配置</div>
                 <div class="card-body">
-                    <h4 class="card-title">统计: {{ user_count|default('0') }}</h4>
-                    <p class="card-text">锁定: {{ locked_user_count|default('0') }}
-                        屏蔽: {{ blocked_user_count|default('0') }}</p>
-                    <a class="btn btn-primary text-white" href="{{ url_for('.manage_user') }}">管理</a>
-                    <a class="btn btn-secondary text-white" href="{{ url_for('.manage_user', filter='locked') }}">锁定用户</a>
-                    <a class="btn btn-secondary text-white" href="{{ url_for('.manage_user', filter='blocked') }}">屏蔽用户</a>
+                    <h5 class="card-title">部署统计: {{ deploy_count|default('0') }}</h5>
+                    <p class="card-text">应用部署: {{ deploy_app|default('0') }}
+                         文件部署: {{ deploy_conf|default('0') }}</p>
+                    <a class="btn btn-primary text-white" href="{{ url_for('deploy.index') }}">部署列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-secondary mb-3">
+                <div class="card-header"><span class="oi oi-people"></span> 项目配置</div>
+                <div class="card-body">
+                    <h5 class="card-title">项目统计: {{ project_count|default('0') }}</h5>
+                    <p class="card-text">启用项目: {{ project_enable|default('0') }}
+                         停用项目: {{ project_disable|default('0') }}</p>
+                    <a class="btn btn-primary text-white" href="{{ url_for('project.index') }}">项目列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-secondary mb-3">
+                <div class="card-header"><span class="oi oi-people"></span> 文件配置</div>
+                <div class="card-body">
+                    <h5 class="card-title">配置统计: {{ config_count|default('0') }}</h5>
+                    <a class="btn btn-primary text-white" href="{{ url_for('config.index') }}">配置列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-secondary mb-3">
+                <div class="card-header"><span class="oi oi-people"></span> 版本配置</div>
+                <div class="card-body">
+                    <h5 class="card-title">版本统计: {{ version_count|default('0') }}</h5>
+                    <a class="btn btn-primary text-white" href="{{ url_for('version.index') }}">版本列表</a>
                 </div>
             </div>
         </div>
     </div>
-
 {% endblock %}
