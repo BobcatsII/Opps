@@ -3,6 +3,25 @@
 {% block title %}Add Deploy{% endblock %}
 
 {% block content %}
+<script language="javascript" type="text/javascript">
+function choiceApp()
+{
+	document.getElementById("deploy_type-0").checked=true;
+	document.getElementById("deploy_type-1").checked=false;
+	// 显示男性消费信息
+	for(var i=0; i<document.getElementsByName("nanhx").length;i++)
+	{
+		//document.getElementsByName("nanhx").item(i).style.visibility ="visible";
+		document.getElementsByName("nanhx").item(i).style.display="table-row";
+	}
+	// 隐藏女性消费信息
+	for(var i=0; i<document.getElementsByName("nvhx").length;i++)
+	{	//document.getElementsByName("nvhx").item(i).style.visibility ="hidden";
+		document.getElementsByName("nvhx").item(i).style.display="none";
+	}
+ 
+}
+</script>
 <div class="row">
     <div class="row">
     <div class="box col-md-8">
@@ -21,20 +40,29 @@
                     <tr>
                         <td width="10%" border="1" align="center">项目类型</td>
                         <td>
-                            <div class="radio" id="type">
+                            <div class="radio" id="deploy_type">
                                 <label>
-                                <input type="radio" name="type" id="type_app" value="web" >APP服务
-                                </label>
+                                    <input type="radio" name="deploy_type" id="deploy_type-0" value="app" >APP服务
+                                </label><br/>
                                 <label>
-                                <input type="radio" name="type" id="type_conf" value="service" >CONF服务
+                                    <input type="radio" name="deploy_type" id="deploy_type-1" value="conf" >CONF配置
                                 </label>
                             </div> 
                         </td>
+                    </tr>
+                    <tr name="app">
                         <td width="10%" border="1" align="center">项目名称</td>
                         <td>
-                           {{form.deploy_project}}
+                           {{form.deploy_project_app}}
                         </td>
                     </tr>
+                    <tr name="conf">
+                        <td width="10%" border="1" align="center">项目名称</td>
+                        <td>
+                           {{form.deploy_project_conf}}
+                        </td>
+                    </tr>
+                    <tr>
                     <tr>
                         <td width="10%" border="1" align="center">目标主机</td>
                         <td>
@@ -42,7 +70,8 @@
                         </td>
                         <td width="10%" border="1" align="center">项目版本</td>
                         <td>
-                            {{form.deploy_version}}
+                            {{form.deploy_version_app}}
+                            {{form.deploy_version_conf}}
                         </td>
                     </tr> 
                     <tr>

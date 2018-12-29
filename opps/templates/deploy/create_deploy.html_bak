@@ -1,14 +1,69 @@
 {% extends 'base.html' %}
-{% from 'bootstrap/form.html' import render_form %}
 
 {% block title %}Add Deploy{% endblock %}
 
 {% block content %}
-    <div class="card w-100 bg-light">
-        <h3 class="card-header">新增部署</h3>
-        <div class="card-body">
-            {{ render_form(form) }}
+<div class="row">
+    <div class="row">
+    <div class="box col-md-8">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h3><i class="glyphicon glyphicon-user"></i>新增部署</h3>
+                <div class="box-icon">
+                </div>
+            </div>
+            <div class="box-content">
+            <a class="btn btn-info btn-bg" href="/deploy">返回</a><p/>
+            <form  action="" method="post" class="form" role="form">
+                {{ form.csrf_token }}
+                <table width="100%" border="1" class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td width="10%" border="1" align="center">项目类型</td>
+                        <td>
+                            {% for type in form.deploy_type %}
+                                <div class="radio" id="type">
+                                <label>
+                                    {{type}} {{type.label}}
+                                </label>
+                            {% endfor %}
+                                <label>
+                                <input type="radio" name="type" id="type_app" value="web" >APP服务
+                                </label>
+                                <label>
+                                <input type="radio" name="type" id="type_conf" value="service" >CONF服务
+                                </label>
+                            </div> 
+                        </td>
+                        <td width="10%" border="1" align="center">项目名称</td>
+                        <td>
+                           {{form.deploy_project}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%" border="1" align="center">目标主机</td>
+                        <td>
+                            {{form.deploy_host}}
+                        </td>
+                        <td width="10%" border="1" align="center">项目版本</td>
+                        <td>
+                            {{form.deploy_version}}
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td width="10%" border="1" align="center">部署人员</td>
+                        <td>
+                            {{form.deploy_user}}
+                        </td>
+                    </tr>
+                </tbody>
+                </table><br/>
+                {{ form.submit(class="btn btn-setting btn-primary")}}
+            </form>
+           </div>
         </div>
     </div>
+    </div>
+</div>
 {% endblock %}
 

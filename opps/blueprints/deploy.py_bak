@@ -26,11 +26,11 @@ def create():
     form = CreateDeployForm()
     if form.validate_on_submit():
         dtype = form.deploy_type.data
-        if dtype == "app":
-            user = form.deploy_user.data
-            projects = form.deploy_project_app.data
-            host = form.deploy_host.data
-            version = form.deploy_version_app.data
+        user = form.deploy_user.data
+        projects = form.deploy_project.data
+        host = form.deploy_host.data
+        version = form.deploy_version.data
+        for project in projects.split(','):
             deploy = DeployLog(dply_type=dtype, dply_user=user, dply_item=project, dply_host=host, dply_version=version)
             db.session.add(deploy)
             db.session.commit()
@@ -41,23 +41,8 @@ def create():
             sql.dply_stat = "正在部署"
             db.session.commit()
             rsp = ansible_deploy.delay(sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp)
-        else:
-            user = form.deploy_user.data
-            projects = form.deploy_project_conf.data
-            host = form.deploy_host.data
-            version = form.deploy_version_conf.data
-            deploy = DeployLog(dply_type=dtype, dply_user=user, dply_item=project, dply_host=host, dply_version=version)
-            db.session.add(deploy)
-            db.session.commit()
-            deploy_last = DeployLog.query.order_by(DeployLog.dply_date.desc()).first()
-            deploy_id = deploy_last.id
-            deploy_timestamp = DeployLog.get_deploy_timestamp(deploy_id)
-            sql = DeployLog.query.get(deploy_id)
-            sql.dply_stat = "正在部署"
-            db.session.commit()
-            rsp = ansible_deploy.delay(sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp)
-        flash('部署信息已提交', 'success')
-        return redirect(url_for('.index'))
+            flash('部署信息已提交', 'success')
+            return redirect(url_for('.index'))
     return render_template('deploy/create_deploy.html', form=form)
 
 
