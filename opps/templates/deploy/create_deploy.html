@@ -6,22 +6,39 @@
 <script language="javascript" type="text/javascript">
 function choiceApp()
 {
-	document.getElementById("deploy_type-0").checked=true;
-	document.getElementById("deploy_type-1").checked=false;
-	// 显示男性消费信息
-	for(var i=0; i<document.getElementsByName("nanhx").length;i++)
-	{
-		//document.getElementsByName("nanhx").item(i).style.visibility ="visible";
-		document.getElementsByName("nanhx").item(i).style.display="table-row";
-	}
-	// 隐藏女性消费信息
-	for(var i=0; i<document.getElementsByName("nvhx").length;i++)
-	{	//document.getElementsByName("nvhx").item(i).style.visibility ="hidden";
-		document.getElementsByName("nvhx").item(i).style.display="none";
-	}
- 
+    document.getElementById("deploy_type-0").checked=true;
+    document.getElementById("deploy_type-1").checked=false;
+    // 显示APP消费信息
+    for(var i=0; i<document.getElementsByName("app").length;i++)
+    {
+        document.getElementsByName("app").item(i).style.display="table-row";
+    }
+    // 隐藏CONF消费信息
+    for(var i=0; i<document.getElementsByName("conf").length;i++)
+    {
+        document.getElementsByName("conf").item(i).style.display="none";
+    }
 }
+
+function choiceConf()
+{
+    document.getElementById("deploy_type-0").checked=false;
+    document.getElementById("deploy_type-1").checked=true;
+    // 隐藏APP消费信息
+    for(var i=0; i<document.getElementsByName("app").length;i++)
+    {
+        document.getElementsByName("app").item(i).style.display="none";
+    }
+    // 显示CONF消费信息
+    for(var i=0; i<document.getElementsByName("conf").length;i++)
+    {
+        document.getElementsByName("conf").item(i).style.display="table-row";
+    }
+}
+
 </script>
+
+
 <div class="row">
     <div class="row">
     <div class="box col-md-8">
@@ -42,10 +59,10 @@ function choiceApp()
                         <td>
                             <div class="radio" id="deploy_type">
                                 <label>
-                                    <input type="radio" name="deploy_type" id="deploy_type-0" value="app" >APP服务
+                                    <input type="radio" name="deploy_type" id="deploy_type-0" value="app"  checked="checked" onclick="choiceApp();">APP服务
                                 </label><br/>
                                 <label>
-                                    <input type="radio" name="deploy_type" id="deploy_type-1" value="conf" >CONF配置
+                                    <input type="radio" name="deploy_type" id="deploy_type-1" value="conf" onclick="choiceConf();">CONF配置
                                 </label>
                             </div> 
                         </td>
@@ -63,17 +80,32 @@ function choiceApp()
                         </td>
                     </tr>
                     <tr>
-                    <tr>
+<!--
+                    <tr name="app">
                         <td width="10%" border="1" align="center">目标主机</td>
                         <td>
                             {{form.deploy_host}}
                         </td>
+                    </tr>
+                    <tr name="conf">
+                        <td width="10%" border="1" align="center">目标主机</td>
+                        <td>
+                            {{form.deploy_host}}
+                        </td>
+                    </tr>
+-->
+                    <tr name="app">
                         <td width="10%" border="1" align="center">项目版本</td>
                         <td>
                             {{form.deploy_version_app}}
-                            {{form.deploy_version_conf}}
                         </td>
                     </tr> 
+                    <tr name="conf">
+                        <td width="10%" border="1" align="center">项目版本</td>
+                        <td>
+                            {{form.deploy_version_conf}}
+                        </td>
+                    </tr>
                     <tr>
                         <td width="10%" border="1" align="center">部署人员</td>
                         <td>
