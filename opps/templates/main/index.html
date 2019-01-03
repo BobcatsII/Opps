@@ -50,5 +50,14 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="card border-secondary mb-3">
+                <div class="card-header"><span class="oi oi-people"></span> 主机配置</div>
+                <div class="card-body">
+                    <h5 class="card-title">主机统计: {{ host_count|default('0') }}</h5>
+                    <a class="btn btn-primary text-white" href="{{ url_for('host.index') }}">主机列表</a>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

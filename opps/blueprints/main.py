@@ -10,7 +10,7 @@ from opps.models import User
 from opps.forms.auth import LoginForm
 from opps.decorators import confirm_required, permission_required
 from opps.utils import redirect_back, flash_errors
-from opps.models import Project, Version, Config, DeployLog
+from opps.models import Project, Version, Config, Hosts, DeployLog
 
 main_bp = Blueprint('main', __name__)
 
@@ -25,12 +25,14 @@ def index():
         config_count = Config.query.count()
         #版本统计
         version_count = Version.query.count()
+        #主机统计
+        host_count = Hosts.query.count()
         #部署统计
         deploy_count = DeployLog.query.count()
         deploy_app = DeployLog.query.filter_by(dply_type='app').count()
         deploy_conf = DeployLog.query.filter_by(dply_type='conf').count()
         return render_template('main/index.html', project_count=project_count, project_enable=project_enable, project_disable=project_disable, config_count=config_count, 
-                                version_count=version_count, deploy_count=deploy_count, deploy_app=deploy_app, deploy_conf=deploy_conf)
+                                version_count=version_count, host_count=host_count, deploy_count=deploy_count, deploy_app=deploy_app, deploy_conf=deploy_conf)
     else:
         return redirect(url_for('auth.login'))
 

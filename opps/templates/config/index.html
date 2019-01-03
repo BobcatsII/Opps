@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 {% from 'bootstrap/pagination.html' import render_pagination %}
+{% from 'bootstrap/nav.html' import render_breadcrumb_item %}
 
 {% block title %}Configs{% endblock %}
 {% block content %}
-<div class="page-header">
-    <h3>文件配置
-        <small class="text-muted"> (已添加配置: {{ pagination.total }})</small>
-        <span class="float-right"><a class="btn btn-primary btn-bg"
-                             href="{{ url_for('config.create') }}">新增配置</a></span>
-
-    </h3>
-</div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        {{ render_breadcrumb_item('config.index', '文件配置列表') }}
+    </ol>
+</nav>
+<h5>
+    <small class="text-muted"> (已添加配置: {{ pagination.total }})</small>
+    <span class="float-right"><a class="btn btn-primary btn-sm"
+                         href="{{ url_for('config.create') }}">新增配置</a></span>
+</h5>
 {% if config_pages %}
-<table  class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+<table class="table table-striped">
     <thead>
     <tr>
         <th>序号</th>

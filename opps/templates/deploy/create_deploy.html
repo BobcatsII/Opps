@@ -59,11 +59,12 @@ function choiceConf()
                         <td>
                             <div class="radio" id="deploy_type">
                                 <label>
-                                    <input type="radio" name="deploy_type" id="deploy_type-0" value="app"  checked="checked" onclick="choiceApp();">APP服务
+                                    <input type="radio" name="deploy_type" id="deploy_type-0" value="app"  onclick="choiceApp();">APP服务
                                 </label><br/>
                                 <label>
                                     <input type="radio" name="deploy_type" id="deploy_type-1" value="conf" onclick="choiceConf();">CONF配置
                                 </label>
+                                
                             </div> 
                         </td>
                     </tr>
@@ -80,20 +81,18 @@ function choiceConf()
                         </td>
                     </tr>
                     <tr>
-<!--
                     <tr name="app">
                         <td width="10%" border="1" align="center">目标主机</td>
                         <td>
-                            {{form.deploy_host}}
+                            {{form.deploy_host_app}}
                         </td>
                     </tr>
                     <tr name="conf">
                         <td width="10%" border="1" align="center">目标主机</td>
                         <td>
-                            {{form.deploy_host}}
+                            {{form.deploy_host_conf}}
                         </td>
                     </tr>
--->
                     <tr name="app">
                         <td width="10%" border="1" align="center">项目版本</td>
                         <td>

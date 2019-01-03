@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
 {% from 'bootstrap/pagination.html' import render_pagination %}
+{% from 'bootstrap/nav.html' import render_breadcrumb_item %}
+
 
 {% block title %}Projects{% endblock %}
 {% block content %}
-<div class="page-header">
-    <h3>项目列表
-        <small class="text-muted"> (已添加项目: {{ pagination.total }})</small>
-        <span class="float-right"><a class="btn btn-primary btn-bg"
-                             href="{{ url_for('project.create') }}">新增项目</a></span>
-    </h3>
-</div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        {{ render_breadcrumb_item('project.index', '项目列表') }}
+    </ol>
+</nav>
+<h5>
+    <small class="text-muted"> (已添加项目: {{ pagination.total }})</small>
+    <span class="float-right"><a class="btn btn-primary btn-sm"
+                         href="{{ url_for('project.create') }}">新增项目</a></span>
+</h5>
 {% if project_pages %}
-<table  class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+<table class="table table-striped">
     <thead>
     <tr>
         <th>序号</th>
@@ -33,10 +38,10 @@
             <td>{{a.project_port}}</td>
             <td>{{a.project_info}}</td>
             {% if a.project_stat == 1 %}
-                <td><span class="btn btn-xs btn-setting btn-success" >已启用</span>
-                    <a class="btn btn-xs btn-danger" href="/project/disable/{{a.id}}"> 停用</a>
+                <td><span class="btn btn-sm btn-success" >已启用</span>
+                    <a class="btn btn-sm btn-danger" href="/project/disable/{{a.id}}"> 停用</a>
             {% else %}
-                <td><span class="btn btn-xs btn-setting btn-info">项目已停用</span>
+                <td><span class="btn btn-sm btn-warning">项目已停用</span>
             {% endif %}
             </td>
         </tr>

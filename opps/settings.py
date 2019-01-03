@@ -30,6 +30,7 @@ class BaseConfig(object):
     OPPS_MANAGE_USER_PER_PAGE = 30
     DEPLOY_ITEM_PER_PAGE = 5
     VERSIONS_PER_PAGE = 5
+    HOSTS_PER_PAGE = 5
     PROJECTS_PER_PAGE = 5
     CONFIG_ITEM_PER_PAGE = 5
     CONF_FILE_DIR = os.path.join("/data/deploy","config_file")
@@ -55,28 +56,9 @@ class BaseConfig(object):
     #CELERY_BROKER_URL = "amqp://linan:linan123@192.168.227.128:5672/linanhost"
     #CELERY_RESULT_BACKEND = "amqp://linan:linan123@192.168.227.128:5672/linanhost"
     CELERY_BROKER_URL = "amqp://linan:linan123@127.0.0.1:5672/linanhost"
-    CELERY_RESULT_BACKEND = "amqp://linan:linan123@127.0.01:5672/linanhost"
+    CELERY_RESULT_BACKEND = "amqp://linan:linan123@127.0.0.1:5672/linanhost"
 #    CELERY_BROKER_URL = "redis://192.168.227.128:6879/0"
 #    CELERY_RESULT_BACKEND = "redis://192.168.227.128:6879/0"
-#    CELERY_DEFAULT_QUEUE = "default"
-#    CELERY_QUEUES = {
-#                        "default": {
-#                            "exchange": "default",
-#                            "exchange_type": "direct",
-#                            "routing_key": "default"
-#                        },
-#                        "topicqueue": {
-#                           "routing_key": "topic.#",
-#                            "exchange": "topic_exchange",
-#                            "exchange_type": "topic",
-#                        },
-#                        "task_eeg": {
-#                            "exchange": "tasks",
-#                            "exchange_type": "fanout",
-#                            "binding_key": "tasks",
-#                        },
-#                        
-#                    }
 
     #项目所属类型
     SYSTEM = [
@@ -88,13 +70,6 @@ class BaseConfig(object):
                  ('config.py','config.py'), 
                  ('start_sss.py','start_sss.py')
              ]
-    #
-    DEPLOY_HOST = {
-                    "conf":["192.168.200.41","192.168.200.43","192.168.100.1"], 
-                    "item":["192.168.200.141","192.168.200.143","192.168.100.1"]
-                  }
-
-
 
 
 class DevelopmentConfig(BaseConfig):

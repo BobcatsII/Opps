@@ -156,6 +156,11 @@ class Config(db.Model):
     conf_user = db.Column(db.String(50), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
+class Hosts(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    host = db.Column(db.String(80), nullable=False)
+    host_type = db.Column(db.String(80), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.now, index=True)
 
 @db.event.listens_for(User, 'after_delete', named=True)
 def delete_avatars(**kwargs):
