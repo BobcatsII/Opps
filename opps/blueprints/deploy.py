@@ -40,8 +40,7 @@ def create():
             sql = DeployLog.query.get(deploy_id)
             sql.dply_stat = "正在部署"
             db.session.commit()
-            #rsp = ansible_deploy.delay(sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp)
-            rsp = ansible_deploy(sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp)
+            rsp = ansible_deploy.delay(sql.dply_type, sql.dply_item, sql.dply_version, sql.dply_host, deploy_id, deploy_timestamp)
         else:
             user = form.deploy_user.data
             project = form.deploy_project_conf.data
