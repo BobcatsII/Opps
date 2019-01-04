@@ -116,6 +116,11 @@ class User(db.Model, UserMixin):
     def can(self, permission_name):
         permission = Permission.query.filter_by(name=permission_name).first()
         return permission is not None and self.role is not None and permission in self.role.permissions
+    
+    @classmethod
+    def get_username(cls,uid):
+        username = cls.query.get(id=uid).username
+        return username
 
 class DeployLog(db.Model):
     id = db.Column(db.Integer, primary_key=True)

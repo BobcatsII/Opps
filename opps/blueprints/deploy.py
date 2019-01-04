@@ -6,7 +6,7 @@ from flask import render_template, flash, redirect, url_for, current_app, reques
 from flask_login import current_user, login_required
 from opps.forms.deploy import CreateDeployForm
 from opps.extensions import db
-from opps.models import DeployLog, Project, Config
+from opps.models import DeployLog, Project, Config, User
 from opps.tasks import ansible_deploy
 
 deploy_bp = Blueprint('deploy', __name__)
@@ -84,7 +84,40 @@ def detail():
 @deploy_bp.route('/rollback', methods=['GET', 'POST'])
 @login_required
 def rollback():
-    pass
+    rollback_id = request.args.get('deploy_id')
+    rollback_user = User.get_username(request.session.get('id'))
+    rollback_data = DeployLog.query.get(id=deploy_id)
+    rollback_project = rollback_data.dply_item
+    rollback_host = rollback_data.dply_host
+    rollback_version = rollback_data.dply_version
+    rollback_type = Project.query.get(project_name=rollback_project).project_type
+    rollback_timestamp = DeployLog.get_deploy_timestamp(deploy_id)
+    rollback_data.dply_stat = "正在回滚"
+    db.session.commit()
+    rollback_deploy = ansible_rollback.delay(rollback_type, rollback_project, rollback_version, rollback_host, rollback_id, rollback_timestamp, rollback_user)
+    flash('回滚操作已提交', 'success')
+    return redirect(url_for('.index'))
+    
+   
+@deploy_bp.route('/again', methods=['GET', 'POST'])
+@login_required
+def again():
+    again_id = request.args.get('deploy_id')
+    again_user = User.get_username(request.session.get('id'))
+    again_data = DeployLog.query.get(again_id)
+    again_project = again_data.dply_item
+    again_host = again_data.dply_host
+    again_version = again_data.dply_version
+    again_type = Project.query.get(project_name=again_project).project_type
+    again_deploy = DeployLog(dply_type=again_type, dply_user=again_user, dply_item=again_project, dply_host=again_host, dply_version=again_version)
+    db.session.commit()
+    again_id = again_deploy.id
+    again_timestamp = DeployLog.get_deploy_timestamp(again_id)
+    again_sql = DeployLog.query.get(again_id)
+    again_sql.dply_stat = "正在重新部署"
+    again_deploy = ansible_deploy.delay(again_type, again_project, again_version, again_host, again_id, again_timestamp) 
+    flash('重新部署已提交', 'success')
+    return redirect(url_for('.index'))
 
 @deploy_bp.route('/upload', methods=['GET', 'POST'])
 @login_required
@@ -98,3 +131,4 @@ def upload():
             os.makedirs(bagdir)
         upfile.save(os.path.join(bagdir, upfile.filename))
     return render_template('deploy/upload_file.html')    
+

@@ -11,7 +11,8 @@ function showlog(deploy_id,logtype){
         alert("fslfjlasjf;sldfjasl;fjk")
 	var obj = document.getElementById("showlog");
 	obj.innerHTML = data;
- 	//window.open("/deploy/detail?deploy_id=" + deploy_id + "&logtype=" + logtype); //页面跳转并传参 */
+ 	/* window.open("/deploy/detail?deploy_id=" + deploy_id + "&logtype=" + logtype); //页面跳转并传参 */
+ 	window.open("/deploy/detail?deploy_id=" + deploy_id); //页面跳转并传参 */
 	});
 }
 function getlog(deploy_id,logtype){
@@ -24,6 +25,24 @@ function stoplog(){
 	window.location.reload();
 }
 </script>
+<script type="text/javascript">
+    function rollback(deploy_id) {
+        alert(deploy_id);
+        $.get("/deploy/rollback", {deploy_id: deploy_id}, function(data){
+            alert(data);
+            window.location.reload();
+        });
+    }
+</script>
+<script type="text/javascript">
+    function deploy_again(deploy_id) {
+        $.get("/deploy/again", {deploy_id: deploy_id}, function(data){
+            alert(data);
+            window.location.reload();
+        });
+    }
+</script>
+
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -71,12 +90,12 @@ function stoplog(){
                     <a class="btn btn-sm btn-danger" onclick="rollback({{a.id}})">
                         回滚
                     </a>
-                {% elif a.dply_state == "部署失败" %}
+                {% elif a.dply_stat == "部署失败" %}
                     <a class="btn btn-sm btn-warning" onclick="deploy_again({{a.id}})">
                         重新部署
                     </a>
                 {% endif %}
-                {% if "回滚" in a.dply_state %}
+                {% if "回滚" in a.dply_stat %}
                     <a class="btn btn-sm btn-setting btn-info" onclick="getlog({{a.id}},'rollback')">
                         <i class="glyphicon glyphicon-zoom-in icon-white"></i> 回滚日志
                     </a>
