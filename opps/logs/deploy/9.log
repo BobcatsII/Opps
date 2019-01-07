@@ -18,7 +18,8 @@ TASK [检查代码目录是否存在] ******************************************
 ok: [192.168.227.129]
 
 TASK [尝试停止当前版本APP服务] ***********************************************************
-changed: [192.168.227.129]
+fatal: [192.168.227.129]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": true}
+...ignoring
 
 TASK [检查程序是否停止] ****************************************************************
 changed: [192.168.227.129]

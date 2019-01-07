@@ -11,6 +11,8 @@
               href="{{ url_for('static', filename='css/%s.min.css' % request.cookies.get('theme', 'perfect_blue')) }}"
               type="text/css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/charisma-app.css') }}" type="text/css">  -->
         <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/metisMenu.min.css') }}" type="text/css">  -->
     {% endblock head %}
 </head>
@@ -99,6 +101,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/charisma.js') }}"></script> -->
     <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/metisMenu.min.js') }}"></script> -->
 {% endblock %}
 </body>

@@ -2,7 +2,7 @@
 
 import os
 import time
-from flask import render_template, flash, redirect, url_for, current_app, request, abort, Blueprint, jsonify
+from flask import render_template, flash, redirect, url_for, current_app, request, abort, Blueprint, jsonify, make_response
 from flask_login import current_user, login_required
 from opps.forms.deploy import CreateDeployForm
 from opps.extensions import db
@@ -60,26 +60,17 @@ def create():
         return redirect(url_for('.index'))
     return render_template('deploy/create_deploy.html', form=form)
 
-
-#ajax还有点问题
-@deploy_bp.route('/get_project', methods=['GET', 'POST'])
-@login_required
-def get_project():
-    type = request.args.get('type')
-    project = [ str(item_name.project_name) for item_name in  Project.query.filter_by(project_stat=1, project_type=type).order_by(Project.project_name) ]
-    a=str(project)
-    project = a.strip('[]').replace(' ', '')
-    return jsonify(project)
-        
 @deploy_bp.route('/detail', methods=['GET','POST'])
 @login_required
 def detail():
     deploy_id = request.args.get('deploy_id')
     logtype = request.args.get('logtype')
     logs_dir = current_app.config['DEPLOY_LOGS_DIR']
-    with open("{0}/{1}/{2}.log".format(logs_dir, logtype, deploy_id), "r") as fs:
-        lines = fs.readlines()
-    return jsonify(lines)
+    with open("{0}/{1}/{2}.log".format(logs_dir, logtype, deploy_id), "r") as text_file:
+        lines = text_file.readlines()
+    res = make_response('{0}'.format(lines), 200)
+    return res
+
 
 @deploy_bp.route('/rollback', methods=['GET', 'POST'])
 @login_required

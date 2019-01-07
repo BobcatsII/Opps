@@ -6,13 +6,12 @@
 <div class="page-header">
     <h3>主机列表
         <small class="text-muted"> (已添加主机: {{ pagination.total }})</small>
-        <span class="float-right"><a class="btn btn-primary btn-bg"
+        <span class="float-right"><a class="btn btn-primary btn-sm"
                              href="{{ url_for('host.create') }}">新增主机</a></span>
 
     </h3>
 </div>
 {% if host_pages %}
-<! --<table  class="table table-striped table-bordered bootstrap-datatable datatable responsive"> -->
 <table class="table table-striped">
     <thead>
     <tr>

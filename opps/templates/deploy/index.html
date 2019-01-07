@@ -6,25 +6,24 @@
 
 {% block content %}
 <script type="text/javascript">
-function showlog(deploy_id,logtype){
-	$.get("/deploy/detail", {deploy_id: deploy_id, logtype: logtype}, function(data){
-        alert("fslfjlasjf;sldfjasl;fjk")
-	var obj = document.getElementById("showlog");
-	obj.innerHTML = data;
- 	/* window.open("/deploy/detail?deploy_id=" + deploy_id + "&logtype=" + logtype); //页面跳转并传参 */
- 	window.open("/deploy/detail?deploy_id=" + deploy_id); //页面跳转并传参 */
-	});
-}
-function getlog(deploy_id,logtype){
-	showlog(deploy_id,logtype);
-	flush=setInterval(showlog, 3000, deploy_id, logtype);
-}
-
-function stoplog(){
-	clearTimeout(flush);
-	window.location.reload();
-}
+    function showlog(deploy_id, logtype){
+    	$.get("/deploy/detail", {deploy_id: deploy_id, logtype: logtype}, function(data){
+    	var obj = document.getElementById("showlog");
+    	obj.innerHTML = data;
+     	//window.open("/deploy/detail?deploy_id=" + deploy_id + "&logtype=" + logtype); //页面跳转并传参 */
+    	});
+    }
+    function getlog(deploy_id, logtype){
+    	showlog(deploy_id, logtype);
+    	flush = setInterval(showlog, 3000, deploy_id, logtype);
+    }
+    
+    function stoplog(){
+    	clearTimeout(flush);
+    	window.location.reload();
+    }
 </script>
+
 <script type="text/javascript">
     function rollback(deploy_id) {
         alert(deploy_id);
@@ -55,7 +54,7 @@ function stoplog(){
                          href="{{ url_for('deploy.create') }}">新增部署</a></span>
 </h3><div>
     <span class="float-right"><a class="btn btn-warning btn-sm"
-                         href="{{ url_for('deploy.upload') }}">上传文件</a></span><br/>
+                         href="{{ url_for('deploy.upload') }}">上传文件</a></span><br/></br>
 {% if deploy_pages %}
 <table class="table table-striped">
     <thead>
@@ -87,12 +86,10 @@ function stoplog(){
                     <i class="glyphicon glyphicon-zoom-in icon-white"></i> 部署日志
                 </a>
                 {% if a.dply_stat == "部署成功" %}
-                    <a class="btn btn-sm btn-danger" onclick="rollback({{a.id}})">
-                        回滚
+                    <a class="btn btn-sm btn-danger" onclick="rollback({{a.id}})"> 回滚
                     </a>
                 {% elif a.dply_stat == "部署失败" %}
-                    <a class="btn btn-sm btn-warning" onclick="deploy_again({{a.id}})">
-                        重新部署
+                    <a class="btn btn-sm btn-warning" onclick="deploy_again({{a.id}})"> 重新部署
                     </a>
                 {% endif %}
                 {% if "回滚" in a.dply_stat %}
@@ -110,25 +107,22 @@ function stoplog(){
 <div class="tip"><h5>当前没有部署任务.</h5></div>
 {% endif %}
 </div>
-
-<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-     aria-hidden="true">
-
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" onClick="stoplog()">×</button>
-                <h4>页面自动刷新</h4>
-            </div>
-            <div class="modal-body">
-            	<pre>
-                	<p id="showlog"></p>
-                </pre>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn btn-default" data-dismiss="modal" onClick="stoplog()">Close</a>
+    <div  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onClick="stoplog()">×</button>
+                    <h4 class="modal-title" id="myModalLabel">页面自动刷新</h4>
+                </div>
+                <div class="modal-body">
+                    <pre>
+                    	<p id="showlog"></p>
+                    </pre>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal" onClick="stoplog()">Close</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

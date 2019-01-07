@@ -87,7 +87,6 @@ def save_files(project,module,conf_text,version):
     if not os.path.exists(files_dir):
         os.makedirs(files_dir)
     conf_file=files_dir + '/' + module
-    print (conf_file)
     with open('%s'%conf_file,'wb') as f:
         f.write(conf_text.encode('utf-8'))
 
