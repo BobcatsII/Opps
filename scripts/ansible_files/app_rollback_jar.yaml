@@ -1,0 +1,30 @@
+---
+- hosts: "{{host}}"
+  remote_user: root
+  become: true
+  become_user: root
+  tasks:
+  - name: 检查程序端口
+    shell: netstat -lnp |grep `cat {{project_path}}/tpid`|awk -F':::' '{print $2}'|awk '{print $1}'
+    register: port
+
+  - name: 尝试停止当前版本APP服务
+    shell: fuser -k -n tcp {{port.stdout}}
+    no_log: false
+
+  - name: 检查程序是否停止
+    shell: netstat -ntlp|grep {{port.stdout}}|wc -l
+  
+  - name: 拷贝软链接
+    file: src={{code_path}} dest={{project_path}}/target/{{package_name}}.jar owner={{run_user}} group={{run_user}} state=link
+
+  - name: 启动服务
+    command: chdir={{project_path}} nohup bash startup.sh &
+    become_user: "{{run_user}}"
+ 
+  - name: 检查程序启动结果
+    wait_for: host={{ansible_default_ipv4.address}} port={{port.stdout}} delay=20 timeout=50    
+    no_log: false
+   
+  - name: 启动成功,添加版本号
+    shell: echo '{{version}}' > {{project_path}}/version.txt

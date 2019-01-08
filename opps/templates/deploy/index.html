@@ -10,7 +10,7 @@
     	$.get("/deploy/detail", {deploy_id: deploy_id, logtype: logtype}, function(data){
     	var obj = document.getElementById("showlog");
     	obj.innerHTML = data;
-     	//window.open("/deploy/detail?deploy_id=" + deploy_id + "&logtype=" + logtype); //页面跳转并传参 */
+        $('#myModal').modal();   //一句话show出dialog
     	});
     }
     function getlog(deploy_id, logtype){
@@ -26,17 +26,18 @@
 
 <script type="text/javascript">
     function rollback(deploy_id) {
-        alert(deploy_id);
+        //alert(deploy_id);
         $.get("/deploy/rollback", {deploy_id: deploy_id}, function(data){
-            alert(data);
+            //alert(data);
             window.location.reload();
         });
     }
 </script>
 <script type="text/javascript">
     function deploy_again(deploy_id) {
+        alert(deploy_id);
         $.get("/deploy/again", {deploy_id: deploy_id}, function(data){
-            alert(data);
+            //alert(data);
             window.location.reload();
         });
     }
@@ -107,22 +108,23 @@
 <div class="tip"><h5>当前没有部署任务.</h5></div>
 {% endif %}
 </div>
-    <div  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onClick="stoplog()">×</button>
-                    <h4 class="modal-title" id="myModalLabel">页面自动刷新</h4>
-                </div>
-                <div class="modal-body">
-                    <pre>
-                    	<p id="showlog"></p>
-                    </pre>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-default" data-dismiss="modal" onClick="stoplog()">Close</a>
-                </div>
+
+<div class="modal fade bs-example-modal-lg"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="myModalLabel">页面自动刷新</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onClick="stoplog()">×</button>
+            </div>
+            <div class="modal-body">
+                <pre>
+                	<p id="showlog"></p>
+                </pre>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal" onClick="stoplog()">Close</a>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

@@ -3394,3 +3394,251 @@ Trying again in 32.00 seconds...
 [2019-01-07 18:30:53,408: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7fd9a7cafb70> (args:('opps.tasks.ansible_deploy', 'e22bd0fa-2af7-4d75-8235-832958e45918', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 23, 1546857053), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'e22bd0fa-2af7-4d75-8235-832958e45918', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 23, 1546857053), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': 'a9a66837-f47f-31c1-a166-5e68a8a0b038', 'correlation_id': 'e22bd0fa-2af7-4d75-8235-832958e45918', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
 [2019-01-07 18:30:53,411: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[e22bd0fa-2af7-4d75-8235-832958e45918] pid:3086
 [2019-01-07 18:31:28,694: INFO/MainProcess] Task opps.tasks.ansible_deploy[e22bd0fa-2af7-4d75-8235-832958e45918] succeeded in 35.28495053199731s: (0, '')
+[2019-01-07 18:33:48,656: DEBUG/MainProcess] | Worker: Closing Hub...
+[2019-01-07 18:33:48,656: DEBUG/MainProcess] | Worker: Closing Pool...
+[2019-01-07 18:33:48,657: DEBUG/MainProcess] | Worker: Closing Consumer...
+[2019-01-07 18:33:48,657: DEBUG/MainProcess] | Worker: Stopping Consumer...
+[2019-01-07 18:33:48,660: DEBUG/MainProcess] | Consumer: Closing Connection...
+[2019-01-07 18:33:48,660: DEBUG/MainProcess] | Consumer: Closing Events...
+[2019-01-07 18:33:48,661: DEBUG/MainProcess] | Consumer: Closing Heart...
+[2019-01-07 18:33:48,674: DEBUG/MainProcess] | Consumer: Closing Mingle...
+[2019-01-07 18:33:48,675: DEBUG/MainProcess] | Consumer: Closing Tasks...
+[2019-01-07 18:33:48,675: DEBUG/MainProcess] | Consumer: Closing Control...
+[2019-01-07 18:33:48,675: DEBUG/MainProcess] | Consumer: Closing Gossip...
+[2019-01-07 18:33:48,676: DEBUG/MainProcess] | Consumer: Closing event loop...
+[2019-01-07 18:33:48,676: DEBUG/MainProcess] | Consumer: Stopping event loop...
+[2019-01-07 18:33:48,676: DEBUG/MainProcess] | Consumer: Stopping Gossip...
+[2019-01-08 10:50:36,684: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2019-01-08 10:50:36,739: DEBUG/MainProcess] | Worker: Building graph...
+[2019-01-08 10:50:36,739: DEBUG/MainProcess] | Worker: New boot order: {Timer, Hub, Queues (intra), Pool, Autoreloader, Autoscaler, StateDB, Beat, Consumer}
+[2019-01-08 10:50:36,762: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2019-01-08 10:50:36,763: DEBUG/MainProcess] | Consumer: Building graph...
+[2019-01-08 10:50:36,809: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Agent, Events, Mingle, Gossip, Tasks, Control, Heart, event loop}
+[2019-01-08 10:50:36,819: WARNING/MainProcess] /root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2019-01-08 10:50:36,823: DEBUG/MainProcess] | Worker: Starting Hub
+[2019-01-08 10:50:36,824: DEBUG/MainProcess] ^-- substep ok
+[2019-01-08 10:50:36,824: DEBUG/MainProcess] | Worker: Starting Pool
+[2019-01-08 10:50:36,852: DEBUG/MainProcess] ^-- substep ok
+[2019-01-08 10:50:36,856: DEBUG/MainProcess] | Worker: Starting Consumer
+[2019-01-08 10:50:36,857: DEBUG/MainProcess] | Consumer: Starting Connection
+[2019-01-08 10:50:36,875: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-08 10:50:36,876: DEBUG/MainProcess] Open OK!
+[2019-01-08 10:50:36,877: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2019-01-08 10:50:36,877: DEBUG/MainProcess] ^-- substep ok
+[2019-01-08 10:50:36,878: DEBUG/MainProcess] | Consumer: Starting Events
+[2019-01-08 10:50:36,887: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-08 10:50:36,889: DEBUG/MainProcess] Open OK!
+[2019-01-08 10:50:36,890: DEBUG/MainProcess] using channel_id: 1
+[2019-01-08 10:50:36,892: DEBUG/MainProcess] Channel open
+[2019-01-08 10:50:36,893: DEBUG/MainProcess] ^-- substep ok
+[2019-01-08 10:50:36,893: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2019-01-08 10:50:36,893: INFO/MainProcess] mingle: searching for neighbors
+[2019-01-08 10:50:36,894: DEBUG/MainProcess] using channel_id: 1
+[2019-01-08 10:50:36,895: DEBUG/MainProcess] Channel open
+[2019-01-08 10:50:37,918: INFO/MainProcess] mingle: all alone
+[2019-01-08 10:50:37,918: DEBUG/MainProcess] ^-- substep ok
+[2019-01-08 10:50:37,919: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2019-01-08 10:50:37,920: DEBUG/MainProcess] using channel_id: 2
+[2019-01-08 10:50:37,922: DEBUG/MainProcess] Channel open
+[2019-01-08 10:50:37,931: DEBUG/MainProcess] ^-- substep ok
+[2019-01-08 10:50:37,931: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2019-01-08 10:50:37,940: DEBUG/MainProcess] ^-- substep ok
+[2019-01-08 10:50:37,941: DEBUG/MainProcess] | Consumer: Starting Control
+[2019-01-08 10:50:37,942: DEBUG/MainProcess] using channel_id: 3
+[2019-01-08 10:50:37,944: DEBUG/MainProcess] Channel open
+[2019-01-08 10:50:37,950: DEBUG/MainProcess] ^-- substep ok
+[2019-01-08 10:50:37,950: DEBUG/MainProcess] | Consumer: Starting Heart
+[2019-01-08 10:50:37,953: DEBUG/MainProcess] ^-- substep ok
+[2019-01-08 10:50:37,954: DEBUG/MainProcess] | Consumer: Starting event loop
+[2019-01-08 10:50:37,956: WARNING/MainProcess] celery@test ready.
+[2019-01-08 10:50:37,956: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2019-01-08 10:50:37,957: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[2019-01-08 10:51:01,831: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[34873bb0-9e0a-48e1-bc58-7ba14923cef8]
+[2019-01-08 10:51:01,832: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', '34873bb0-9e0a-48e1-bc58-7ba14923cef8', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 25, 1546915862), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '34873bb0-9e0a-48e1-bc58-7ba14923cef8', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 25, 1546915862), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '28d9809c-e4f3-3f35-9267-09de53000483', 'correlation_id': '34873bb0-9e0a-48e1-bc58-7ba14923cef8', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 10:51:01,835: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[34873bb0-9e0a-48e1-bc58-7ba14923cef8] pid:2884
+[2019-01-08 10:51:11,605: DEBUG/Worker-1] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-08 10:51:11,607: DEBUG/Worker-1] Open OK!
+[2019-01-08 10:51:11,607: DEBUG/Worker-1] using channel_id: 1
+[2019-01-08 10:51:11,608: DEBUG/Worker-1] Channel open
+[2019-01-08 10:51:11,615: INFO/MainProcess] Task opps.tasks.ansible_deploy[34873bb0-9e0a-48e1-bc58-7ba14923cef8] succeeded in 9.782910719000029s: (1, '')
+[2019-01-08 14:30:37,030: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[600c20ac-f6a8-4b0e-95ef-caa437cc5988]
+[2019-01-08 14:30:37,287: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', '600c20ac-f6a8-4b0e-95ef-caa437cc5988', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 26, 1546929037), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '600c20ac-f6a8-4b0e-95ef-caa437cc5988', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 26, 1546929037), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '65f7949d-38fe-3efd-95c7-074dd7c24b63', 'correlation_id': '600c20ac-f6a8-4b0e-95ef-caa437cc5988', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 14:30:37,724: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[600c20ac-f6a8-4b0e-95ef-caa437cc5988] pid:2884
+[2019-01-08 14:30:40,836: INFO/MainProcess] Task opps.tasks.ansible_deploy[600c20ac-f6a8-4b0e-95ef-caa437cc5988] succeeded in 3.214256690000184s: (1, '')
+[2019-01-08 14:38:42,996: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[9c2c3847-1748-453e-aedf-b683a0de3f50]
+[2019-01-08 14:38:42,997: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', '9c2c3847-1748-453e-aedf-b683a0de3f50', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 27, 1546929523), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '9c2c3847-1748-453e-aedf-b683a0de3f50', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 27, 1546929523), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '65f7949d-38fe-3efd-95c7-074dd7c24b63', 'correlation_id': '9c2c3847-1748-453e-aedf-b683a0de3f50', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 14:38:43,003: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[9c2c3847-1748-453e-aedf-b683a0de3f50] pid:2884
+[2019-01-08 14:38:48,633: INFO/MainProcess] Task opps.tasks.ansible_deploy[9c2c3847-1748-453e-aedf-b683a0de3f50] succeeded in 5.634935128000507s: (1, '')
+[2019-01-08 15:09:52,335: INFO/MainProcess] Received task: opps.tasks.ansible_rollback[6dd87860-52aa-4cb9-a3d2-098741e41f91]
+[2019-01-08 15:09:52,335: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_rollback', '6dd87860-52aa-4cb9-a3d2-098741e41f91', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '23', 1546857053, 'linan'), {}, {'task': 'opps.tasks.ansible_rollback', 'id': '6dd87860-52aa-4cb9-a3d2-098741e41f91', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '23', 1546857053, 'linan'), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '775ee6c5-46bb-354b-b1c9-3735014863e2', 'correlation_id': '6dd87860-52aa-4cb9-a3d2-098741e41f91', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 15:09:52,338: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_rollback[6dd87860-52aa-4cb9-a3d2-098741e41f91] pid:2884
+[2019-01-08 15:09:56,627: INFO/MainProcess] Task opps.tasks.ansible_rollback[6dd87860-52aa-4cb9-a3d2-098741e41f91] succeeded in 4.290283922000526s: (1, '')
+[2019-01-08 15:51:52,981: ERROR/MainProcess] Received unregistered task of type 'opps.tasks.ansible_again'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you are using relative imports?
+Please see http://bit.ly/gLye1c for more information.
+
+The full contents of the message body was:
+{'task': 'opps.tasks.ansible_again', 'id': 'f37fe4ee-f6cf-45d2-b07a-2eb52785ba77', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 28, 1546933913), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None} (352b)
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 465, in on_task_received
+    strategies[type_](message, body,
+KeyError: 'opps.tasks.ansible_again'
+[2019-01-08 15:57:13,362: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[cf923e9d-c23f-4a80-ab8d-538cd715c85a]
+[2019-01-08 15:57:13,364: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', 'cf923e9d-c23f-4a80-ab8d-538cd715c85a', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 29, 1546934233), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'cf923e9d-c23f-4a80-ab8d-538cd715c85a', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 29, 1546934233), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': 'add3f26e-6e2c-336e-87a1-72fbfd4f183f', 'correlation_id': 'cf923e9d-c23f-4a80-ab8d-538cd715c85a', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 15:57:13,373: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[cf923e9d-c23f-4a80-ab8d-538cd715c85a] pid:2884
+[2019-01-08 15:57:52,727: INFO/MainProcess] Task opps.tasks.ansible_deploy[cf923e9d-c23f-4a80-ab8d-538cd715c85a] succeeded in 39.35691557099926s: (0, '')
+[2019-01-08 15:58:41,010: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[ca54e84e-a8ef-4dd6-b678-70bdcd60a921]
+[2019-01-08 15:58:41,010: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', 'ca54e84e-a8ef-4dd6-b678-70bdcd60a921', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 30, 1546934321), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'ca54e84e-a8ef-4dd6-b678-70bdcd60a921', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 30, 1546934321), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': 'add3f26e-6e2c-336e-87a1-72fbfd4f183f', 'correlation_id': 'ca54e84e-a8ef-4dd6-b678-70bdcd60a921', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 15:58:41,014: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[ca54e84e-a8ef-4dd6-b678-70bdcd60a921] pid:2884
+[2019-01-08 15:59:14,905: INFO/MainProcess] Task opps.tasks.ansible_deploy[ca54e84e-a8ef-4dd6-b678-70bdcd60a921] succeeded in 33.89404736199867s: (0, '')
+[2019-01-08 15:59:50,220: INFO/MainProcess] Received task: opps.tasks.ansible_rollback[2a94c7e5-30b8-4de3-8453-5d12c6e0cfcc]
+[2019-01-08 15:59:50,220: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_rollback', '2a94c7e5-30b8-4de3-8453-5d12c6e0cfcc', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '30', 1546934321, 'linan'), {}, {'task': 'opps.tasks.ansible_rollback', 'id': '2a94c7e5-30b8-4de3-8453-5d12c6e0cfcc', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '30', 1546934321, 'linan'), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': 'add3f26e-6e2c-336e-87a1-72fbfd4f183f', 'correlation_id': '2a94c7e5-30b8-4de3-8453-5d12c6e0cfcc', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 15:59:50,224: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_rollback[2a94c7e5-30b8-4de3-8453-5d12c6e0cfcc] pid:2884
+[2019-01-08 16:00:19,193: INFO/MainProcess] Task opps.tasks.ansible_rollback[2a94c7e5-30b8-4de3-8453-5d12c6e0cfcc] succeeded in 28.972016097999585s: (0, '')
+[2019-01-08 16:10:29,386: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[e376d310-acfd-41f7-84da-b45a33ce1e13]
+[2019-01-08 16:10:29,387: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', 'e376d310-acfd-41f7-84da-b45a33ce1e13', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 31, 1546935029), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'e376d310-acfd-41f7-84da-b45a33ce1e13', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 31, 1546935029), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': 'fe01e0ef-5f9b-3ab5-9980-36367cddbf09', 'correlation_id': 'e376d310-acfd-41f7-84da-b45a33ce1e13', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 16:10:29,391: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[e376d310-acfd-41f7-84da-b45a33ce1e13] pid:2884
+[2019-01-08 16:11:04,663: INFO/MainProcess] Task opps.tasks.ansible_deploy[e376d310-acfd-41f7-84da-b45a33ce1e13] succeeded in 35.27518906300247s: (0, '')
+[2019-01-08 16:11:35,726: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[16d30c52-ef28-4940-b900-0c746ead0ae9]
+[2019-01-08 16:11:35,726: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', '16d30c52-ef28-4940-b900-0c746ead0ae9', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 32, 1546935096), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '16d30c52-ef28-4940-b900-0c746ead0ae9', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 32, 1546935096), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': 'fe01e0ef-5f9b-3ab5-9980-36367cddbf09', 'correlation_id': '16d30c52-ef28-4940-b900-0c746ead0ae9', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 16:11:35,730: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[16d30c52-ef28-4940-b900-0c746ead0ae9] pid:2884
+[2019-01-08 16:12:09,581: INFO/MainProcess] Task opps.tasks.ansible_deploy[16d30c52-ef28-4940-b900-0c746ead0ae9] succeeded in 33.853024635998736s: (0, '')
+[2019-01-08 16:13:43,703: INFO/MainProcess] Received task: opps.tasks.ansible_rollback[e92e0ec2-3add-4fa3-bf67-b47ba02c947b]
+[2019-01-08 16:13:43,704: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_rollback', 'e92e0ec2-3add-4fa3-bf67-b47ba02c947b', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '32', 1546935029, 'linan'), {}, {'task': 'opps.tasks.ansible_rollback', 'id': 'e92e0ec2-3add-4fa3-bf67-b47ba02c947b', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '32', 1546935029, 'linan'), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '81d1e247-5efe-3182-a718-f1c3129950b6', 'correlation_id': 'e92e0ec2-3add-4fa3-bf67-b47ba02c947b', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 16:13:43,708: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_rollback[e92e0ec2-3add-4fa3-bf67-b47ba02c947b] pid:2884
+[2019-01-08 16:14:13,571: INFO/MainProcess] Task opps.tasks.ansible_rollback[e92e0ec2-3add-4fa3-bf67-b47ba02c947b] succeeded in 29.866484775000572s: (0, '')
+[2019-01-08 16:15:22,437: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[68e5140e-01c4-4aee-ada0-500f430dbaa3]
+[2019-01-08 16:15:22,438: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', '68e5140e-01c4-4aee-ada0-500f430dbaa3', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 33, 1546935322), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '68e5140e-01c4-4aee-ada0-500f430dbaa3', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 33, 1546935322), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '81d1e247-5efe-3182-a718-f1c3129950b6', 'correlation_id': '68e5140e-01c4-4aee-ada0-500f430dbaa3', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 16:15:22,443: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[68e5140e-01c4-4aee-ada0-500f430dbaa3] pid:2884
+[2019-01-08 16:15:56,892: INFO/MainProcess] Task opps.tasks.ansible_deploy[68e5140e-01c4-4aee-ada0-500f430dbaa3] succeeded in 34.45267032599804s: (0, '')
+[2019-01-08 16:17:30,368: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[a86c4c18-77f5-48d6-85b2-2c3476f0d764]
+[2019-01-08 16:17:30,368: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', 'a86c4c18-77f5-48d6-85b2-2c3476f0d764', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 34, 1546935450), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'a86c4c18-77f5-48d6-85b2-2c3476f0d764', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 34, 1546935450), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '3a3606c7-395c-3f44-93ef-67949d8dcc43', 'correlation_id': 'a86c4c18-77f5-48d6-85b2-2c3476f0d764', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 16:17:30,371: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[a86c4c18-77f5-48d6-85b2-2c3476f0d764] pid:2884
+[2019-01-08 16:18:04,967: INFO/MainProcess] Task opps.tasks.ansible_deploy[a86c4c18-77f5-48d6-85b2-2c3476f0d764] succeeded in 34.597835276003025s: (0, '')
+[2019-01-08 16:18:33,312: INFO/MainProcess] Received task: opps.tasks.ansible_rollback[16fa33e3-4a11-4d2b-b3d6-0c090f187bb2]
+[2019-01-08 16:18:33,312: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_rollback', '16fa33e3-4a11-4d2b-b3d6-0c090f187bb2', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '34', 1546935322, 'linan'), {}, {'task': 'opps.tasks.ansible_rollback', 'id': '16fa33e3-4a11-4d2b-b3d6-0c090f187bb2', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '34', 1546935322, 'linan'), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '3a3606c7-395c-3f44-93ef-67949d8dcc43', 'correlation_id': '16fa33e3-4a11-4d2b-b3d6-0c090f187bb2', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 16:18:33,316: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_rollback[16fa33e3-4a11-4d2b-b3d6-0c090f187bb2] pid:2884
+[2019-01-08 16:19:02,369: INFO/MainProcess] Task opps.tasks.ansible_rollback[16fa33e3-4a11-4d2b-b3d6-0c090f187bb2] succeeded in 29.05550959500033s: (0, '')
+[2019-01-08 16:46:23,647: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[9601baa3-6c39-43f4-b81c-989f5c1df0d3]
+[2019-01-08 16:46:23,648: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', '9601baa3-6c39-43f4-b81c-989f5c1df0d3', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 35, 1546937184), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '9601baa3-6c39-43f4-b81c-989f5c1df0d3', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 35, 1546937184), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '3a3606c7-395c-3f44-93ef-67949d8dcc43', 'correlation_id': '9601baa3-6c39-43f4-b81c-989f5c1df0d3', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 16:46:23,651: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[9601baa3-6c39-43f4-b81c-989f5c1df0d3] pid:2884
+[2019-01-08 16:46:35,764: INFO/MainProcess] Task opps.tasks.ansible_deploy[9601baa3-6c39-43f4-b81c-989f5c1df0d3] succeeded in 12.11496789299781s: (1, '')
+[2019-01-08 16:49:42,601: ERROR/MainProcess] Received unregistered task of type 'opps.tasks.ansible_again'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you are using relative imports?
+Please see http://bit.ly/gLye1c for more information.
+
+The full contents of the message body was:
+{'task': 'opps.tasks.ansible_again', 'id': '5af91efe-b724-4550-b86c-906f2a326ae3', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 36, 1546937383), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None} (352b)
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 465, in on_task_received
+    strategies[type_](message, body,
+KeyError: 'opps.tasks.ansible_again'
+[2019-01-08 17:55:01,698: ERROR/MainProcess] Received unregistered task of type 'opps.tasks.ansible_again'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you are using relative imports?
+Please see http://bit.ly/gLye1c for more information.
+
+The full contents of the message body was:
+{'task': 'opps.tasks.ansible_again', 'id': '9700147b-d543-48a0-9d81-92c8c1e5b9e8', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 35, 1546941301), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None} (352b)
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 465, in on_task_received
+    strategies[type_](message, body,
+KeyError: 'opps.tasks.ansible_again'
+[2019-01-08 17:56:47,290: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[cf7b8718-646b-4657-b138-8ae071453461]
+[2019-01-08 17:56:47,290: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', 'cf7b8718-646b-4657-b138-8ae071453461', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 37, 1546941407), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'cf7b8718-646b-4657-b138-8ae071453461', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 37, 1546941407), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '015458cd-2aa1-3c9e-aa16-5de14682a472', 'correlation_id': 'cf7b8718-646b-4657-b138-8ae071453461', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 17:56:47,294: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[cf7b8718-646b-4657-b138-8ae071453461] pid:2884
+[2019-01-08 17:57:24,305: INFO/MainProcess] Task opps.tasks.ansible_deploy[cf7b8718-646b-4657-b138-8ae071453461] succeeded in 37.01370635100102s: (0, '')
+[2019-01-08 17:58:05,554: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[6d10941f-bb51-403d-a50b-203538598a9e]
+[2019-01-08 17:58:05,555: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', '6d10941f-bb51-403d-a50b-203538598a9e', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 38, 1546941486), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '6d10941f-bb51-403d-a50b-203538598a9e', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 38, 1546941486), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '015458cd-2aa1-3c9e-aa16-5de14682a472', 'correlation_id': '6d10941f-bb51-403d-a50b-203538598a9e', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 17:58:05,558: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[6d10941f-bb51-403d-a50b-203538598a9e] pid:2884
+[2019-01-08 17:58:10,430: INFO/MainProcess] Task opps.tasks.ansible_deploy[6d10941f-bb51-403d-a50b-203538598a9e] succeeded in 4.874392273999547s: (1, '')
+[2019-01-08 17:59:11,021: ERROR/MainProcess] Received unregistered task of type 'opps.tasks.ansible_again'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you are using relative imports?
+Please see http://bit.ly/gLye1c for more information.
+
+The full contents of the message body was:
+{'task': 'opps.tasks.ansible_again', 'id': '4f3b933f-f773-4310-8dbb-d117057df75a', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 38, 1546941551), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None} (352b)
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 465, in on_task_received
+    strategies[type_](message, body,
+KeyError: 'opps.tasks.ansible_again'
+[2019-01-08 18:14:39,964: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[ede2f1c7-3284-4e49-b179-119346f45aa0]
+[2019-01-08 18:14:39,964: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', 'ede2f1c7-3284-4e49-b179-119346f45aa0', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 39, 1546942480), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'ede2f1c7-3284-4e49-b179-119346f45aa0', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 39, 1546942480), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '45ef238b-e1fe-3c52-859a-c08d64ecdff9', 'correlation_id': 'ede2f1c7-3284-4e49-b179-119346f45aa0', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 18:14:39,967: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[ede2f1c7-3284-4e49-b179-119346f45aa0] pid:2884
+[2019-01-08 18:14:51,327: INFO/MainProcess] Task opps.tasks.ansible_deploy[ede2f1c7-3284-4e49-b179-119346f45aa0] succeeded in 11.361595292000857s: (1, '')
+[2019-01-08 18:16:45,701: ERROR/MainProcess] Received unregistered task of type 'opps.tasks.ansible_again'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you are using relative imports?
+Please see http://bit.ly/gLye1c for more information.
+
+The full contents of the message body was:
+{'task': 'opps.tasks.ansible_again', 'id': 'a2772c1c-36cc-499a-9451-b1d67f09a8a3', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 39, 1546942605, 'linan'), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None} (364b)
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 465, in on_task_received
+    strategies[type_](message, body,
+KeyError: 'opps.tasks.ansible_again'
+[2019-01-08 18:32:11,635: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[7f1b1a88-c9f0-4ddf-85d3-1f6d0b3279aa]
+[2019-01-08 18:32:11,636: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', '7f1b1a88-c9f0-4ddf-85d3-1f6d0b3279aa', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 40, 1546943532), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '7f1b1a88-c9f0-4ddf-85d3-1f6d0b3279aa', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 40, 1546943532), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '9a10b5ec-e55d-31fc-84af-9e51936e4333', 'correlation_id': '7f1b1a88-c9f0-4ddf-85d3-1f6d0b3279aa', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 18:32:11,638: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[7f1b1a88-c9f0-4ddf-85d3-1f6d0b3279aa] pid:2884
+[2019-01-08 18:32:23,450: INFO/MainProcess] Task opps.tasks.ansible_deploy[7f1b1a88-c9f0-4ddf-85d3-1f6d0b3279aa] succeeded in 11.813740328001586s: (1, '')
+[2019-01-08 18:33:38,466: ERROR/MainProcess] Received unregistered task of type 'opps.tasks.ansible_again'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you are using relative imports?
+Please see http://bit.ly/gLye1c for more information.
+
+The full contents of the message body was:
+{'task': 'opps.tasks.ansible_again', 'id': '0d522aa4-4ccb-4996-a9ae-18a40749407e', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 40, 1546943618, 'linan'), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None} (364b)
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 465, in on_task_received
+    strategies[type_](message, body,
+KeyError: 'opps.tasks.ansible_again'
+[2019-01-08 18:35:55,502: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[4a23b5cf-782d-456f-baa4-89023863bc9b]
+[2019-01-08 18:35:55,502: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f23c21e1620> (args:('opps.tasks.ansible_deploy', '4a23b5cf-782d-456f-baa4-89023863bc9b', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 41, 1546943755), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '4a23b5cf-782d-456f-baa4-89023863bc9b', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 41, 1546943755), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '50c77f13-3e5c-32c2-bd04-92d7fa0e5119', 'correlation_id': '4a23b5cf-782d-456f-baa4-89023863bc9b', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-08 18:35:55,585: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[4a23b5cf-782d-456f-baa4-89023863bc9b] pid:2884
+[2019-01-08 18:36:07,101: INFO/MainProcess] Task opps.tasks.ansible_deploy[4a23b5cf-782d-456f-baa4-89023863bc9b] succeeded in 11.598082380998676s: (1, '')
+[2019-01-08 18:38:51,925: ERROR/MainProcess] Received unregistered task of type 'opps.tasks.ansible_again'.
+The message has been ignored and discarded.
+
+Did you remember to import the module containing this task?
+Or maybe you are using relative imports?
+Please see http://bit.ly/gLye1c for more information.
+
+The full contents of the message body was:
+{'task': 'opps.tasks.ansible_again', 'id': '9480bc87-e8a7-4de8-9863-e8f7e4fcbc7d', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 41, 1546943931, 'linan'), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None} (364b)
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 465, in on_task_received
+    strategies[type_](message, body,
+KeyError: 'opps.tasks.ansible_again'

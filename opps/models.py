@@ -118,8 +118,8 @@ class User(db.Model, UserMixin):
         return permission is not None and self.role is not None and permission in self.role.permissions
     
     @classmethod
-    def get_username(cls,uid):
-        username = cls.query.get(id=uid).username
+    def get_username(cls, id):
+        username = cls.query.get(id).username
         return username
 
 class DeployLog(db.Model):

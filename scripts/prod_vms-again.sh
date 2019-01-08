@@ -8,7 +8,7 @@ host=$3
 types=$4
 datestamp=$5
 ansible_hosts="$script_path/ansible_files/app.hosts"
-datestamp=`date +'%s'`
+#datestamp=`date +'%s'`
 user=root
 
 if [ -z $version ];then
@@ -24,16 +24,14 @@ fi
 if [[ "$types" == "app" ]];then
         package_name=${project_name}
         package_source="/data/deploy/upload_file"
-        package_tmp=`ls -d ${package_source}/*/*${project_name}*`
-        pdir="/data/deploy/upload_file/${version}"
-        bagtag=`echo $package_tmp |awk -F'.' '{print \$2}'`
-        package_path="${pdir}/${bagtag}"
-        mkdir -p $package_path
-        mv $package_tmp $package_path
+        #package_tmp=`ls -d ${package_source}/*/*${project_name}*`
+        package_file=`ls ${package_source}/${version}/*/*${project_name}*`
+        bagtag=`echo $package_file |awk -F'.' '{print $NF}'`
+        package_path="${package_file}"
 	project_path="/opt/app/${project_name}"
-        code_dir="/data/repos/$version/$project_name"
+        code_dir="/data/repos/$version/$project_name/"
         code_path="$code_dir/$project_name"".${bagtag}_""$datestamp"
-        yaml_file="$script_path/ansible_files/app_${bagtag}.yaml"
+        yaml_file="$script_path/ansible_files/app_again_${bagtag}.yaml"
 elif [[ "$types" == "conf" ]];then
         package_source="/data/deploy/config_file"
         package_path=`ls ${package_source}/${version}/*${project_name}*/*.py`
@@ -42,9 +40,9 @@ elif [[ "$types" == "conf" ]];then
             filename=`echo $package_path|awk -F'/' '{print $NF}'`
             project_path="/opt/pro/${project_name}/research/api-server"
             project_file="${project_path}/${filename}"
-            code_dir="/data/repos/$version/$project_name"
+            code_dir="/data/repos/$version/$project_name/"
             code_path="$code_dir/${filename}_${datestamp}"
-            yaml_file="$script_path/ansible_files/config.yaml"
+            yaml_file="$script_path/ansible_files/config_again.yaml"
 #        elif [[ $project_name =~ "trans" ]];then
 #            package_name=${project_name}
 #            filename=`echo $package_path|awk -F'/' '{print $NF}'`
