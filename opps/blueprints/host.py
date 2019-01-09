@@ -6,11 +6,13 @@ from flask_login import current_user, login_required
 from opps.forms.host import HostForm
 from opps.extensions import db
 from opps.models import Hosts
+from opps.decorators import permission_required
 
 host_bp = Blueprint('host', __name__)
 
 @host_bp.route('/')
 @login_required
+@permission_required('BROWSE')
 def index():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['HOSTS_PER_PAGE']
@@ -21,6 +23,7 @@ def index():
 
 @host_bp.route('/create', methods=['GET', 'POST'])
 @login_required
+@permission_required('UPLOAD')
 def create():
     form = HostForm()
     if form.validate_on_submit():

@@ -53,7 +53,7 @@
                     <td><img src="{{ url_for('main.get_avatar', filename=user.avatar_s) }}"></td>
                     <td>{{ user.username }}</td>
                     <td>{{ user.role.name }}</td>
-                    <td>{{ moment(user.member_since).format('LL') }}</td>
+                    <td>{{ moment(user.member_since).format('L') }}</td>
                     <td>
                         {% if user.locked %}
                             <form class="inline" action="{{ url_for('admin.unlock_user', user_id=user.id) }}"

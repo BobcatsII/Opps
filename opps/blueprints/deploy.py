@@ -8,11 +8,13 @@ from opps.forms.deploy import CreateDeployForm
 from opps.extensions import db
 from opps.models import DeployLog, Project, Config, User
 from opps.tasks import ansible_deploy, ansible_rollback, ansible_again
+from opps.decorators import permission_required
 
 deploy_bp = Blueprint('deploy', __name__)
 
 @deploy_bp.route('/')
 @login_required
+@permission_required('BROWSE')
 def index():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['DEPLOY_ITEM_PER_PAGE']
@@ -22,6 +24,7 @@ def index():
 
 @deploy_bp.route('/create', methods=['GET', 'POST'])
 @login_required
+@permission_required('DEPLOY')
 def create():
     form = CreateDeployForm()
     if form.validate_on_submit():
@@ -62,6 +65,7 @@ def create():
 
 @deploy_bp.route('/detail', methods=['GET','POST'])
 @login_required
+@permission_required('BROWSE')
 def detail():
     deploy_id = request.args.get('deploy_id')
     logtype = request.args.get('logtype')
@@ -73,6 +77,7 @@ def detail():
 
 @deploy_bp.route('/rollback', methods=['GET', 'POST'])
 @login_required
+@permission_required('DEPLOY')
 def rollback():
     rollback_user = User.query.get(current_user.get_id()).username     #回滚用户为当前在线用户
     rollback_id = request.args.get('deploy_id')
@@ -92,6 +97,7 @@ def rollback():
    
 @deploy_bp.route('/again', methods=['GET', 'POST'])
 @login_required
+@permission_required('DEPLOY')
 def again():
     again_user = User.query.get(current_user.get_id()).username
     again_id = request.args.get('deploy_id')
@@ -100,26 +106,22 @@ def again():
     again_host = again_data.dply_host
     again_version = again_data.dply_version
     again_type = again_data.dply_type
-#    again_deploy = DeployLog(dply_type=again_type, dply_user=again_user, dply_item=again_project, dply_host=again_host, dply_version=again_version)
-#    db.session.add(again_deploy)
-#    db.session.commit()
-#    again_id = again_deploy.id
-    now = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-    again_data.dply_date = now
+    again_deploy = DeployLog(dply_type=again_type, dply_user=again_user, dply_item=again_project, dply_host=again_host, dply_version=again_version)
+    db.session.add(again_deploy)
     db.session.commit()
     again_last = DeployLog.query.order_by(DeployLog.dply_date.desc()).first()
-    again_id = again_last.id
-    again_timestamp = DeployLog.get_deploy_timestamp(again_id)
-    #again_sql = DeployLog.query.get(again_id)
-    again_last.dply_stat = "正在重部"
+    again_newid = again_last.id
+    again_timestamp = DeployLog.get_deploy_timestamp(again_newid)
+    again_sql = DeployLog.query.get(again_newid)
+    again_sql.dply_stat = "正在重部"
     db.session.commit()
-    #print (again_type, again_project, again_version, again_host, again_id, again_timestamp, again_user)
-    again_deploy = ansible_again.delay(again_type, again_project, again_version, again_host, again_id, again_timestamp, again_user) 
+    again_deploy = ansible_again.delay(again_type, again_project, again_version, again_host, again_newid, again_timestamp, again_user) 
     flash('重新部署已提交', 'success')
     return redirect(url_for('.index'))
 
 @deploy_bp.route('/upload', methods=['GET', 'POST'])
 @login_required
+@permission_required('UPLOAD')
 def upload():
     filedir = current_app.config['UPLODE_FILE_DIR']
     if request.method == 'POST' and 'file' in request.files:

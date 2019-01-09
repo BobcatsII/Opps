@@ -6,11 +6,13 @@ from flask_login import current_user, login_required
 from opps.forms.project import ProjectForm
 from opps.extensions import db
 from opps.models import Project, User
+from opps.decorators import permission_required
 
 project_bp = Blueprint('project', __name__)
 
 @project_bp.route('/')
 @login_required
+@permission_required('BROWSE')
 def index():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['PROJECTS_PER_PAGE']
@@ -21,6 +23,7 @@ def index():
 
 @project_bp.route('/create', methods=['GET', 'POST'])
 @login_required
+@permission_required('UPLOAD')
 def create():
     form = ProjectForm()
     if form.validate_on_submit():
@@ -37,6 +40,7 @@ def create():
 
 @project_bp.route('/disable/<int:proj_id>', methods=['GET', 'POST'])
 @login_required
+@permission_required('DEPLOY')
 def disable(proj_id):
    sql = Project.query.get(proj_id)
    sql.project_stat = 0

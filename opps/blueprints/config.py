@@ -7,11 +7,13 @@ from opps.forms.config import CreateConfigForm
 from opps.extensions import db
 from opps.models import Config, Project, Version
 from opps.utils import get_conf_file_path, save_files, get_files
+from opps.decorators import permission_required
 
 config_bp = Blueprint('config', __name__)
 
 @config_bp.route('/')
 @login_required
+@permission_required('BROWSE')
 def index():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['CONFIG_ITEM_PER_PAGE']
@@ -21,6 +23,7 @@ def index():
 
 @config_bp.route('/create', methods=['GET', 'POST'])
 @login_required
+@permission_required('UPLOAD')
 def create():
     form = CreateConfigForm()
     if form.validate_on_submit():

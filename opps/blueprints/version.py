@@ -6,11 +6,13 @@ from flask_login import current_user, login_required
 from opps.forms.version import VersionForm
 from opps.extensions import db
 from opps.models import Version
+from opps.decorators import permission_required
 
 version_bp = Blueprint('version', __name__)
 
 @version_bp.route('/')
 @login_required
+@permission_required('BROWSE')
 def index():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['VERSIONS_PER_PAGE']
@@ -21,6 +23,7 @@ def index():
 
 @version_bp.route('/create', methods=['GET', 'POST'])
 @login_required
+@permission_required('UPLOAD')
 def create():
     form = VersionForm()
     if form.validate_on_submit():

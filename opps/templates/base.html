@@ -29,24 +29,6 @@
                 <div class="navbar-nav mr-auto">
                     {{ render_nav_item('main.index', 'DashBoard') }}
                 </div>
-<!--
-                <div class="nav navbar-nav navbar-right">
-                    {% if current_user.is_authenticated %}
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true"
-                               aria-expanded="false">
-                                New <span class="caret"></span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="aaaaa">Post0</a>
-                                <a class="dropdown-item" href="aaaaaa">Post1</a>
-                                <a class="dropdown-item" href="aaaaa">Post2</a>
-                            </div>
-                        </li> 
-                    {% endif %}    
-                </div>
--->
                 <div class="navbar-nav ml-auto">
                 {% if current_user.is_authenticated %}
                     <div class="dropdown nav-item">
@@ -98,6 +80,7 @@
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    {{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}
 </body>

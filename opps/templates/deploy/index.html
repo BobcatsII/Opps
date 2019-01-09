@@ -26,18 +26,14 @@
 
 <script type="text/javascript">
     function rollback(deploy_id) {
-        //alert(deploy_id);
         $.get("/deploy/rollback", {deploy_id: deploy_id}, function(data){
-            //alert(data);
             window.location.reload();
         });
     }
 </script>
 <script type="text/javascript">
     function deploy_again(deploy_id) {
-        alert(deploy_id);
         $.get("/deploy/again", {deploy_id: deploy_id}, function(data){
-            //alert(data);
             window.location.reload();
         });
     }

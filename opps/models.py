@@ -56,7 +56,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, index=True)
     email  = db.Column(db.String(254), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    member_since = db.Column(db.DateTime(), default=datetime.now)
+    member_since = db.Column(db.DateTime, default=datetime.now)
     avatar_s = db.Column(db.String(64))
     avatar_m = db.Column(db.String(64))
     avatar_l = db.Column(db.String(64))

@@ -1,0 +1,14 @@
+
+开始执行部署
+
+
+PLAY [192.168.227.129] *********************************************************
+
+TASK [Gathering Facts] *********************************************************
+fatal: [192.168.227.129]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.227.129 port 22: Connection timed out\r\n", "unreachable": true}
+	to retry, use: --limit @/opt/scripts/deploy/ansible_files/app_war.retry
+
+PLAY RECAP *********************************************************************
+192.168.227.129            : ok=0    changed=0    unreachable=1    failed=0   
+
+部署失败，联系运维

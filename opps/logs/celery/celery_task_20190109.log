@@ -1,0 +1,366 @@
+[2019-01-09 17:02:54,374: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2019-01-09 17:02:54,378: DEBUG/MainProcess] | Worker: Building graph...
+[2019-01-09 17:02:54,379: DEBUG/MainProcess] | Worker: New boot order: {StateDB, Timer, Hub, Queues (intra), Pool, Autoreloader, Autoscaler, Beat, Consumer}
+[2019-01-09 17:02:54,384: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2019-01-09 17:02:54,384: DEBUG/MainProcess] | Consumer: Building graph...
+[2019-01-09 17:02:54,390: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Events, Mingle, Tasks, Control, Gossip, Heart, Agent, event loop}
+[2019-01-09 17:02:54,391: WARNING/MainProcess] /root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2019-01-09 17:02:54,395: DEBUG/MainProcess] | Worker: Starting Hub
+[2019-01-09 17:02:54,396: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 17:02:54,396: DEBUG/MainProcess] | Worker: Starting Pool
+[2019-01-09 17:02:54,512: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 17:02:54,513: DEBUG/MainProcess] | Worker: Starting Consumer
+[2019-01-09 17:02:54,513: DEBUG/MainProcess] | Consumer: Starting Connection
+[2019-01-09 17:02:54,819: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 17:02:54,823: DEBUG/MainProcess] Open OK!
+[2019-01-09 17:02:54,825: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2019-01-09 17:02:54,825: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 17:02:54,826: DEBUG/MainProcess] | Consumer: Starting Events
+[2019-01-09 17:02:54,840: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 17:02:54,842: DEBUG/MainProcess] Open OK!
+[2019-01-09 17:02:54,843: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 17:02:54,879: DEBUG/MainProcess] Channel open
+[2019-01-09 17:02:54,900: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 17:02:54,901: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2019-01-09 17:02:54,901: INFO/MainProcess] mingle: searching for neighbors
+[2019-01-09 17:02:54,902: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 17:02:54,903: DEBUG/MainProcess] Channel open
+[2019-01-09 17:02:55,915: INFO/MainProcess] mingle: all alone
+[2019-01-09 17:02:55,916: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 17:02:55,916: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2019-01-09 17:02:55,964: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 17:02:55,964: DEBUG/MainProcess] | Consumer: Starting Control
+[2019-01-09 17:02:55,984: DEBUG/MainProcess] using channel_id: 2
+[2019-01-09 17:02:55,986: DEBUG/MainProcess] Channel open
+[2019-01-09 17:02:55,990: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 17:02:55,991: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2019-01-09 17:02:55,991: DEBUG/MainProcess] using channel_id: 3
+[2019-01-09 17:02:55,992: DEBUG/MainProcess] Channel open
+[2019-01-09 17:02:55,999: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 17:02:56,000: DEBUG/MainProcess] | Consumer: Starting Heart
+[2019-01-09 17:02:56,003: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 17:02:56,004: DEBUG/MainProcess] | Consumer: Starting event loop
+[2019-01-09 17:02:56,005: WARNING/MainProcess] celery@test ready.
+[2019-01-09 17:02:56,006: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2019-01-09 17:02:56,008: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[2019-01-09 18:04:44,751: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 280, in start
+    blueprint.start(self)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/bootsteps.py", line 123, in start
+    step.start(parent)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 884, in start
+    c.loop(*c.loop_args())
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/loops.py", line 76, in asynloop
+    next(loop)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/async/hub.py", line 340, in create_loop
+    cb(*cbargs)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/transport/base.py", line 164, in on_readable
+    reader(loop)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/transport/base.py", line 146, in _read
+    drain_events(timeout=0)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/connection.py", line 303, in drain_events
+    chanmap, None, timeout=timeout,
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/connection.py", line 366, in _wait_multiple
+    channel, method_sig, args, content = read_timeout(timeout)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/connection.py", line 337, in read_timeout
+    return self.method_reader.read_method()
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/method_framing.py", line 189, in read_method
+    raise m
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/method_framing.py", line 107, in _next_method
+    frame_type, channel, payload = read_frame()
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/transport.py", line 154, in read_frame
+    frame_header = read(7, True)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/transport.py", line 277, in _read
+    s = recv(n - len(rbuf))
+ConnectionResetError: [Errno 104] Connection reset by peer
+[2019-01-09 18:04:44,911: DEBUG/MainProcess] | Consumer: Restarting event loop...
+[2019-01-09 18:04:44,912: DEBUG/MainProcess] | Consumer: Restarting Heart...
+[2019-01-09 18:04:44,913: DEBUG/MainProcess] | Consumer: Restarting Gossip...
+[2019-01-09 18:04:44,915: DEBUG/MainProcess] | Consumer: Restarting Control...
+[2019-01-09 18:04:44,915: DEBUG/MainProcess] | Consumer: Restarting Tasks...
+[2019-01-09 18:04:44,916: DEBUG/MainProcess] Canceling task consumer...
+[2019-01-09 18:04:44,916: DEBUG/MainProcess] | Consumer: Restarting Mingle...
+[2019-01-09 18:04:44,916: DEBUG/MainProcess] | Consumer: Restarting Events...
+[2019-01-09 18:04:44,916: DEBUG/MainProcess] | Consumer: Restarting Connection...
+[2019-01-09 18:04:44,917: DEBUG/MainProcess] | Consumer: Starting Connection
+[2019-01-09 18:04:44,985: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 2.00 seconds...
+
+[2019-01-09 18:04:47,037: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 4.00 seconds...
+
+[2019-01-09 18:04:51,051: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 6.00 seconds...
+
+[2019-01-09 18:04:57,077: ERROR/MainProcess] consumer: Cannot connect to amqp://linan:**@127.0.0.1:5672/linanhost: [Errno 111] Connection refused.
+Trying again in 8.00 seconds...
+
+[2019-01-09 18:05:05,103: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 18:05:05,105: DEBUG/MainProcess] Open OK!
+[2019-01-09 18:05:05,106: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2019-01-09 18:05:05,106: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:05:05,106: DEBUG/MainProcess] | Consumer: Starting Events
+[2019-01-09 18:05:05,119: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 18:05:05,120: DEBUG/MainProcess] Open OK!
+[2019-01-09 18:05:05,120: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 18:05:05,121: DEBUG/MainProcess] Channel open
+[2019-01-09 18:05:05,125: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:05:05,126: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2019-01-09 18:05:05,126: INFO/MainProcess] mingle: searching for neighbors
+[2019-01-09 18:05:05,150: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 18:05:05,151: DEBUG/MainProcess] Channel open
+[2019-01-09 18:05:06,174: INFO/MainProcess] mingle: all alone
+[2019-01-09 18:05:06,175: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:05:06,175: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2019-01-09 18:05:06,216: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:05:06,216: DEBUG/MainProcess] | Consumer: Starting Control
+[2019-01-09 18:05:06,217: DEBUG/MainProcess] using channel_id: 2
+[2019-01-09 18:05:06,219: DEBUG/MainProcess] Channel open
+[2019-01-09 18:05:06,223: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:05:06,224: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2019-01-09 18:05:06,224: DEBUG/MainProcess] using channel_id: 3
+[2019-01-09 18:05:06,225: DEBUG/MainProcess] Channel open
+[2019-01-09 18:05:06,232: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:05:06,232: DEBUG/MainProcess] | Consumer: Starting Heart
+[2019-01-09 18:05:06,234: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:05:06,235: DEBUG/MainProcess] | Consumer: Starting event loop
+[2019-01-09 18:05:06,236: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2019-01-09 18:05:06,237: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[2019-01-09 18:15:25,190: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 280, in start
+    blueprint.start(self)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/bootsteps.py", line 123, in start
+    step.start(parent)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 884, in start
+    c.loop(*c.loop_args())
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/loops.py", line 76, in asynloop
+    next(loop)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/async/hub.py", line 340, in create_loop
+    cb(*cbargs)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/transport/base.py", line 164, in on_readable
+    reader(loop)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/transport/base.py", line 146, in _read
+    drain_events(timeout=0)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/connection.py", line 324, in drain_events
+    return amqp_method(channel, args)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/channel.py", line 1647, in _basic_cancel_notify
+    raise ConsumerCancelled(consumer_tag, (60, 30))
+amqp.exceptions.ConsumerCancelled: Basic.cancel: (0) None8
+[2019-01-09 18:15:25,234: DEBUG/MainProcess] Closed channel #1
+[2019-01-09 18:15:25,239: DEBUG/MainProcess] Closed channel #2
+[2019-01-09 18:15:25,240: DEBUG/MainProcess] Closed channel #3
+[2019-01-09 18:15:25,240: DEBUG/MainProcess] | Consumer: Restarting event loop...
+[2019-01-09 18:15:25,240: DEBUG/MainProcess] | Consumer: Restarting Heart...
+[2019-01-09 18:15:25,241: DEBUG/MainProcess] | Consumer: Restarting Gossip...
+[2019-01-09 18:15:25,241: DEBUG/MainProcess] | Consumer: Restarting Control...
+[2019-01-09 18:15:25,241: DEBUG/MainProcess] | Consumer: Restarting Tasks...
+[2019-01-09 18:15:25,242: DEBUG/MainProcess] Canceling task consumer...
+[2019-01-09 18:15:25,243: DEBUG/MainProcess] | Consumer: Restarting Mingle...
+[2019-01-09 18:15:25,243: DEBUG/MainProcess] | Consumer: Restarting Events...
+[2019-01-09 18:15:25,243: DEBUG/MainProcess] | Consumer: Restarting Connection...
+[2019-01-09 18:15:25,244: DEBUG/MainProcess] | Consumer: Starting Connection
+[2019-01-09 18:15:25,263: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 18:15:25,266: DEBUG/MainProcess] Open OK!
+[2019-01-09 18:15:25,267: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2019-01-09 18:15:25,267: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:25,268: DEBUG/MainProcess] | Consumer: Starting Events
+[2019-01-09 18:15:25,269: DEBUG/MainProcess] Closed channel #1
+[2019-01-09 18:15:25,286: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 18:15:25,288: DEBUG/MainProcess] Open OK!
+[2019-01-09 18:15:25,292: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 18:15:25,297: DEBUG/MainProcess] Channel open
+[2019-01-09 18:15:25,297: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:25,297: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2019-01-09 18:15:25,298: INFO/MainProcess] mingle: searching for neighbors
+[2019-01-09 18:15:25,298: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 18:15:25,299: DEBUG/MainProcess] Channel open
+[2019-01-09 18:15:26,310: INFO/MainProcess] mingle: all alone
+[2019-01-09 18:15:26,311: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:26,311: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2019-01-09 18:15:26,325: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:26,325: DEBUG/MainProcess] | Consumer: Starting Control
+[2019-01-09 18:15:26,325: DEBUG/MainProcess] using channel_id: 2
+[2019-01-09 18:15:26,326: DEBUG/MainProcess] Channel open
+[2019-01-09 18:15:26,329: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:26,329: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2019-01-09 18:15:26,329: DEBUG/MainProcess] using channel_id: 3
+[2019-01-09 18:15:26,331: DEBUG/MainProcess] Channel open
+[2019-01-09 18:15:26,337: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:26,338: DEBUG/MainProcess] | Consumer: Starting Heart
+[2019-01-09 18:15:26,339: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:26,339: DEBUG/MainProcess] | Consumer: Starting event loop
+[2019-01-09 18:15:26,340: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2019-01-09 18:15:26,341: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[2019-01-09 18:15:30,296: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 280, in start
+    blueprint.start(self)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/bootsteps.py", line 123, in start
+    step.start(parent)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/consumer.py", line 884, in start
+    c.loop(*c.loop_args())
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/worker/loops.py", line 76, in asynloop
+    next(loop)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/async/hub.py", line 340, in create_loop
+    cb(*cbargs)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/transport/base.py", line 164, in on_readable
+    reader(loop)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/kombu/transport/base.py", line 146, in _read
+    drain_events(timeout=0)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/connection.py", line 324, in drain_events
+    return amqp_method(channel, args)
+  File "/root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/amqp/channel.py", line 1647, in _basic_cancel_notify
+    raise ConsumerCancelled(consumer_tag, (60, 30))
+amqp.exceptions.ConsumerCancelled: Basic.cancel: (0) None11
+[2019-01-09 18:15:30,298: DEBUG/MainProcess] Closed channel #1
+[2019-01-09 18:15:30,301: DEBUG/MainProcess] Closed channel #2
+[2019-01-09 18:15:30,301: DEBUG/MainProcess] Closed channel #3
+[2019-01-09 18:15:30,301: DEBUG/MainProcess] | Consumer: Restarting event loop...
+[2019-01-09 18:15:30,302: DEBUG/MainProcess] | Consumer: Restarting Heart...
+[2019-01-09 18:15:30,302: DEBUG/MainProcess] | Consumer: Restarting Gossip...
+[2019-01-09 18:15:30,302: DEBUG/MainProcess] | Consumer: Restarting Control...
+[2019-01-09 18:15:30,302: DEBUG/MainProcess] | Consumer: Restarting Tasks...
+[2019-01-09 18:15:30,303: DEBUG/MainProcess] Canceling task consumer...
+[2019-01-09 18:15:30,303: DEBUG/MainProcess] | Consumer: Restarting Mingle...
+[2019-01-09 18:15:30,304: DEBUG/MainProcess] | Consumer: Restarting Events...
+[2019-01-09 18:15:30,304: DEBUG/MainProcess] | Consumer: Restarting Connection...
+[2019-01-09 18:15:30,305: DEBUG/MainProcess] | Consumer: Starting Connection
+[2019-01-09 18:15:30,315: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 18:15:30,317: DEBUG/MainProcess] Open OK!
+[2019-01-09 18:15:30,318: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2019-01-09 18:15:30,318: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:30,318: DEBUG/MainProcess] | Consumer: Starting Events
+[2019-01-09 18:15:30,319: DEBUG/MainProcess] Closed channel #1
+[2019-01-09 18:15:30,333: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 18:15:30,334: DEBUG/MainProcess] Open OK!
+[2019-01-09 18:15:30,335: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 18:15:30,337: DEBUG/MainProcess] Channel open
+[2019-01-09 18:15:30,338: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:30,338: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2019-01-09 18:15:30,339: INFO/MainProcess] mingle: searching for neighbors
+[2019-01-09 18:15:30,339: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 18:15:30,344: DEBUG/MainProcess] Channel open
+[2019-01-09 18:15:31,361: INFO/MainProcess] mingle: all alone
+[2019-01-09 18:15:31,361: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:31,361: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2019-01-09 18:15:31,364: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:31,364: DEBUG/MainProcess] | Consumer: Starting Control
+[2019-01-09 18:15:31,365: DEBUG/MainProcess] using channel_id: 2
+[2019-01-09 18:15:31,366: DEBUG/MainProcess] Channel open
+[2019-01-09 18:15:31,369: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:31,370: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2019-01-09 18:15:31,370: DEBUG/MainProcess] using channel_id: 3
+[2019-01-09 18:15:31,371: DEBUG/MainProcess] Channel open
+[2019-01-09 18:15:31,376: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:31,376: DEBUG/MainProcess] | Consumer: Starting Heart
+[2019-01-09 18:15:31,378: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:15:31,378: DEBUG/MainProcess] | Consumer: Starting event loop
+[2019-01-09 18:15:31,379: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2019-01-09 18:15:31,379: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[2019-01-09 18:17:33,792: DEBUG/MainProcess] | Worker: Preparing bootsteps.
+[2019-01-09 18:17:33,819: DEBUG/MainProcess] | Worker: Building graph...
+[2019-01-09 18:17:33,820: DEBUG/MainProcess] | Worker: New boot order: {Timer, Hub, Queues (intra), Pool, Autoreloader, Autoscaler, Beat, StateDB, Consumer}
+[2019-01-09 18:17:33,843: DEBUG/MainProcess] | Consumer: Preparing bootsteps.
+[2019-01-09 18:17:33,843: DEBUG/MainProcess] | Consumer: Building graph...
+[2019-01-09 18:17:33,875: DEBUG/MainProcess] | Consumer: New boot order: {Connection, Events, Mingle, Tasks, Control, Gossip, Agent, Heart, event loop}
+[2019-01-09 18:17:33,890: WARNING/MainProcess] /root/.local/virtualenvs/2opps-19phkSFA/lib/python3.6/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2019-01-09 18:17:33,914: DEBUG/MainProcess] | Worker: Starting Hub
+[2019-01-09 18:17:33,914: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:17:33,914: DEBUG/MainProcess] | Worker: Starting Pool
+[2019-01-09 18:17:34,004: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:17:34,023: DEBUG/MainProcess] | Worker: Starting Consumer
+[2019-01-09 18:17:34,024: DEBUG/MainProcess] | Consumer: Starting Connection
+[2019-01-09 18:17:34,107: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 18:17:34,109: DEBUG/MainProcess] Open OK!
+[2019-01-09 18:17:34,110: INFO/MainProcess] Connected to amqp://linan:**@127.0.0.1:5672/linanhost
+[2019-01-09 18:17:34,110: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:17:34,110: DEBUG/MainProcess] | Consumer: Starting Events
+[2019-01-09 18:17:34,121: DEBUG/MainProcess] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 18:17:34,123: DEBUG/MainProcess] Open OK!
+[2019-01-09 18:17:34,136: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 18:17:34,167: DEBUG/MainProcess] Channel open
+[2019-01-09 18:17:34,168: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:17:34,168: DEBUG/MainProcess] | Consumer: Starting Mingle
+[2019-01-09 18:17:34,169: INFO/MainProcess] mingle: searching for neighbors
+[2019-01-09 18:17:34,190: DEBUG/MainProcess] using channel_id: 1
+[2019-01-09 18:17:34,192: DEBUG/MainProcess] Channel open
+[2019-01-09 18:17:35,203: INFO/MainProcess] mingle: all alone
+[2019-01-09 18:17:35,204: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:17:35,204: DEBUG/MainProcess] | Consumer: Starting Tasks
+[2019-01-09 18:17:35,236: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:17:35,237: DEBUG/MainProcess] | Consumer: Starting Control
+[2019-01-09 18:17:35,237: DEBUG/MainProcess] using channel_id: 2
+[2019-01-09 18:17:35,238: DEBUG/MainProcess] Channel open
+[2019-01-09 18:17:35,242: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:17:35,242: DEBUG/MainProcess] | Consumer: Starting Gossip
+[2019-01-09 18:17:35,243: DEBUG/MainProcess] using channel_id: 3
+[2019-01-09 18:17:35,243: DEBUG/MainProcess] Channel open
+[2019-01-09 18:17:35,256: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:17:35,256: DEBUG/MainProcess] | Consumer: Starting Heart
+[2019-01-09 18:17:35,269: DEBUG/MainProcess] ^-- substep ok
+[2019-01-09 18:17:35,269: DEBUG/MainProcess] | Consumer: Starting event loop
+[2019-01-09 18:17:35,271: WARNING/MainProcess] celery@test ready.
+[2019-01-09 18:17:35,271: DEBUG/MainProcess] | Worker: Hub.register Pool...
+[2019-01-09 18:17:35,272: DEBUG/MainProcess] basic.qos: prefetch_count->4
+[2019-01-09 18:38:43,143: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[c662925d-55ad-4de5-912d-e961216583b5]
+[2019-01-09 18:38:43,174: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f2c7bd5ac80> (args:('opps.tasks.ansible_deploy', 'c662925d-55ad-4de5-912d-e961216583b5', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 59, 1547030323), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'c662925d-55ad-4de5-912d-e961216583b5', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 59, 1547030323), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '1b5a5457-c427-3a95-94b8-b483197d6b80', 'correlation_id': 'c662925d-55ad-4de5-912d-e961216583b5', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-09 18:38:43,178: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[c662925d-55ad-4de5-912d-e961216583b5] pid:18064
+[2019-01-09 18:39:25,876: DEBUG/Worker-1] Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@localhost', 'copyright': 'Copyright (C) 2007-2018 Pivotal Software, Inc.', 'information': 'Licensed under the MPL.  See http://www.rabbitmq.com/', 'platform': 'Erlang/OTP 18.3', 'product': 'RabbitMQ', 'version': '3.6.15'}, mechanisms: ['PLAIN', 'AMQPLAIN'], locales: ['en_US']
+[2019-01-09 18:39:25,878: DEBUG/Worker-1] Open OK!
+[2019-01-09 18:39:25,879: DEBUG/Worker-1] using channel_id: 1
+[2019-01-09 18:39:25,880: DEBUG/Worker-1] Channel open
+[2019-01-09 18:39:26,049: INFO/MainProcess] Task opps.tasks.ansible_deploy[c662925d-55ad-4de5-912d-e961216583b5] succeeded in 42.87370602499868s: (0, '')
+[2019-01-09 18:39:45,234: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[ac4504f6-54c1-42d0-9994-4b8444f855e3]
+[2019-01-09 18:39:45,235: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f2c7bd5ac80> (args:('opps.tasks.ansible_deploy', 'ac4504f6-54c1-42d0-9994-4b8444f855e3', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 60, 1547030385), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'ac4504f6-54c1-42d0-9994-4b8444f855e3', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 60, 1547030385), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '1b5a5457-c427-3a95-94b8-b483197d6b80', 'correlation_id': 'ac4504f6-54c1-42d0-9994-4b8444f855e3', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-09 18:39:45,238: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[ac4504f6-54c1-42d0-9994-4b8444f855e3] pid:18064
+[2019-01-09 18:40:18,470: INFO/MainProcess] Task opps.tasks.ansible_deploy[ac4504f6-54c1-42d0-9994-4b8444f855e3] succeeded in 33.23472981800296s: (0, '')
+[2019-01-09 18:40:45,034: INFO/MainProcess] Received task: opps.tasks.ansible_rollback[c7806142-9357-4d37-8721-566a83874f09]
+[2019-01-09 18:40:45,035: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f2c7bd5ac80> (args:('opps.tasks.ansible_rollback', 'c7806142-9357-4d37-8721-566a83874f09', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '60', 1547030323, 'linan'), {}, {'task': 'opps.tasks.ansible_rollback', 'id': 'c7806142-9357-4d37-8721-566a83874f09', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', '60', 1547030323, 'linan'), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '1b5a5457-c427-3a95-94b8-b483197d6b80', 'correlation_id': 'c7806142-9357-4d37-8721-566a83874f09', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-09 18:40:45,038: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_rollback[c7806142-9357-4d37-8721-566a83874f09] pid:18064
+[2019-01-09 18:41:13,603: INFO/MainProcess] Task opps.tasks.ansible_rollback[c7806142-9357-4d37-8721-566a83874f09] succeeded in 28.56722240500676s: (0, '')
+[2019-01-09 18:41:50,370: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[e9603dfe-f2c5-49dd-aa80-3616b7481f92]
+[2019-01-09 18:41:50,370: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f2c7bd5ac80> (args:('opps.tasks.ansible_deploy', 'e9603dfe-f2c5-49dd-aa80-3616b7481f92', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 61, 1547030510), {}, {'task': 'opps.tasks.ansible_deploy', 'id': 'e9603dfe-f2c5-49dd-aa80-3616b7481f92', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 61, 1547030510), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '1b5a5457-c427-3a95-94b8-b483197d6b80', 'correlation_id': 'e9603dfe-f2c5-49dd-aa80-3616b7481f92', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-09 18:41:50,373: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[e9603dfe-f2c5-49dd-aa80-3616b7481f92] pid:18064
+[2019-01-09 18:42:59,033: INFO/MainProcess] Task opps.tasks.ansible_deploy[e9603dfe-f2c5-49dd-aa80-3616b7481f92] succeeded in 68.66157773400482s: (1, '')
+[2019-01-09 18:43:19,286: INFO/MainProcess] Received task: opps.tasks.ansible_deploy[3286e785-7fc3-4033-80c3-9ef9fca53aca]
+[2019-01-09 18:43:19,287: DEBUG/MainProcess] TaskPool: Apply <function _fast_trace_task at 0x7f2c7bd5ac80> (args:('opps.tasks.ansible_deploy', '3286e785-7fc3-4033-80c3-9ef9fca53aca', ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 62, 1547030599), {}, {'task': 'opps.tasks.ansible_deploy', 'id': '3286e785-7fc3-4033-80c3-9ef9fca53aca', 'args': ('app', 'global_manage_live_service', '1.1.2', '192.168.227.129', 62, 1547030599), 'kwargs': {}, 'retries': 0, 'eta': None, 'expires': None, 'utc': True, 'callbacks': None, 'errbacks': None, 'timelimit': (None, None), 'taskset': None, 'chord': None, 'headers': {}, 'reply_to': '1b5a5457-c427-3a95-94b8-b483197d6b80', 'correlation_id': '3286e785-7fc3-4033-80c3-9ef9fca53aca', 'delivery_info': {'exchange': 'celery', 'routing_key': 'celery', 'priority': 0, 'redelivered': False}, 'hostname': 'celery@test', 'is_eager': False, 'group': None}) kwargs:{})
+[2019-01-09 18:43:19,290: DEBUG/MainProcess] Task accepted: opps.tasks.ansible_deploy[3286e785-7fc3-4033-80c3-9ef9fca53aca] pid:18064
+[2019-01-09 18:43:30,650: INFO/MainProcess] Task opps.tasks.ansible_deploy[3286e785-7fc3-4033-80c3-9ef9fca53aca] succeeded in 11.363039243005915s: (1, '')

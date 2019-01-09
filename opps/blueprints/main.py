@@ -4,7 +4,7 @@ import os
 from flask import render_template, flash, redirect, url_for, current_app, request, abort, Blueprint, send_from_directory
 from flask_login import current_user, login_required
 from sqlalchemy.sql.expression import func
-
+from opps.decorators import admin_required, permission_required
 from opps.extensions import db
 from opps.models import User
 from opps.forms.auth import LoginForm
@@ -15,6 +15,8 @@ from opps.models import Project, Version, Config, Hosts, DeployLog
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
+@login_required
+@permission_required('BROWSE')
 def index():
     if current_user.is_authenticated: 
         #项目统计
