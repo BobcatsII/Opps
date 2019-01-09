@@ -1,8 +1,0 @@
-ls: cannot access /data/deploy/upload_file/*/*global_manage_live_service*: No such file or directory
-mv: missing destination file operand after `/data/deploy/upload_file/1.1.2/'
-Try `mv --help' for more information.
-
-开始执行部署
-
-ERROR! the playbook: /opt/scripts/deploy/ansible_files/app_.yaml could not be found
-部署失败，联系运维
