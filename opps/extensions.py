@@ -8,6 +8,7 @@ from flask_wtf import CSRFProtect
 from flask_mail import Mail
 from flask_moment import Moment
 from flask_avatars import Avatars
+from flask_migrate import Migrate
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
@@ -17,6 +18,7 @@ csrf = CSRFProtect()
 mail = Mail()
 moment = Moment()
 avatars = Avatars()
+migrate = Migrate()
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -25,7 +27,7 @@ def load_user(user_id):
     return user
 
 login_manager.login_view = 'auth.login'
-# login_manager.login_message = 'Your custom message'
+login_manager.login_message = '访问页面请在下方登录.'
 login_manager.login_message_category = 'warning'
 
 login_manager.refresh_view = 'auth.re_authenticate'

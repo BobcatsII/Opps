@@ -12,7 +12,7 @@ class Operations:
 
 
 class BaseConfig(object):
-    SECRET_KEY = os.getenv('SECRET_KEY', 'secret string')
+    SECRET_KEY = os.getenv('SECRET_KEY', 'cHuG4gWntmCKhL_otkxQEA')
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True
@@ -79,7 +79,7 @@ class TestingConfig(BaseConfig):
     pass
 
 class ProductionConfig(BaseConfig):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:linan123@192.168.277.128:3306/ops?charset=utf8"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:tysxwg07@192.168.23.71:3306/ops?charset=utf8"
 
 
 
