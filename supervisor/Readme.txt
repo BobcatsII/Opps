@@ -20,6 +20,7 @@
 5.在配置文件目录中添加测试配置文件 
     如：/etc/supervisor/conf.d/opps.conf
     --------------------------------------
+    eg:
     文本内容：
     [program:opps]
     command=pipenv run gunicorn -w 1 -b 0.0.0.0:5000 wsgi:app
@@ -27,26 +28,40 @@
     user=root
     autostart=true
     autorestart=true
+    startretries=10
     stopasgroup=true
     killasgroup=true
+    redirect_stderr=true		#把stderr重定向到stdout文件，使日志保存在同一个文件里，默认不写为false
     --------------------------------------
 
     然后在主配置文件 supervisord.conf 里添加
-        ① #让Pipenv里的Click可以正确处理编码问题
+		① 自定义socket文件路径
+			[unix_http_server]
+			file=/data/logs/supervisor/supervisor.sock
+			
+        ② supervisord应用配置
             [supervisord]
-            environment=LC_ALL='en_US.UTF-8',LANG='en_US.UTF-8'
-        
-        ② #web管理界面登录验证
+			logfile=/data/logs/supervisor/supervisord.log			#自定义supervisord日志
+			loglevel=debug											#调试用debug，调试完成后用info，other：warn,trace
+			pidfile=/data/logs/supervisor/supervisord.pid			#自定义pid文件路径
+			childlogdir=/data/logs/supervisor						#自定义子项目日志生成路径
+            environment=LC_ALL='en_US.UTF-8',LANG='en_US.UTF-8'		#让Pipenv里的Click可以正确处理编码问题
+			
+		③ supervisorctl连接配置
+			[supervisorctl]
+			serverurl=unix:///data/logs/supervisor/supervisor.sock	#指定连接的socket文件路径
+		
+        ④ #web管理界面登录验证
             [inet_http_server]
             port=0.0.0.0:9001
             username=linan
             password=linan123
         
-        ③ 引入自定义配置文件
+        ⑤ 引入自定义配置文件
             [include]
             files = conf.d/*.conf
 
-6.启动supervisor---手动启动
+6.启动supervisor -- 手动启动
     # supervisord -c /etc/supervisor/supervisord.conf
     # pstree -p | grep supervisord
     查看supervisord.log发现program convert已启动
