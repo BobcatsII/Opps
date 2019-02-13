@@ -5,18 +5,19 @@ Automated Deployment Tool
 ## Installation
 
 ```
-##use python3 
+-- Use python3 --
 $ git clone https://github.com/BobcatsII/Opps.git
 $ cd Opps
-$ /opt/pro/rabbitmq3/sbin/rabbitmq-server >& /dev/null &    # Setup, Start Rabbitmq(version==3.6.15)
 $ pipenv install
-$ cd PyMySQL                # https://github.com/PyMySQL/PyMySQL 
+$ cd PyMySQL                #https://github.com/PyMySQL/PyMySQL 
 $ python setup.py install  
 $ pipenv shell
 $ flask initdb --drop       # Initialize the database.
 $ flask init                # Initializing the roles and permissions.
-$ nohup celery -A opps.tasks.celery  worker -l debug -f opps/logs/celery/celery_task_`date +%Y%m%d`.log & 
-##$ gunicorn -w 1 -b 0.0.0.0:5000 wsgi:app
-$ supervisord -c /etc/supervisor/supervisord.conf  # Start flask with supervisor
-* Running on http://your_ip:8000/
+-- Supervisord setup/usage please view the file supervisor/Readme.txt --
+$ supervisord -c /etc/supervisor/supervisord.conf  # Start opps/celery/rabbitmq with supervisor
+-- View the supervisor web page
+* http://your_ip:9001
+
+* Running on http://your_ip:8000/ view project page
 ```
