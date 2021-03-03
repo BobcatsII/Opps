@@ -1,6 +1,6 @@
 # Opps
-
-Automated Deployment Tool
+Flask
+Automated Deployment Tool 
 
 ## Installation
 
